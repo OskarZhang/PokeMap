@@ -1,0 +1,16 @@
+PODS:
+  - Bolts/Tasks (1.8.4)
+  - GoogleMaps (1.13.2)
+  - Parse (1.13.0):
+    - Bolts/Tasks (~> 1.6)
+
+DEPENDENCIES:
+  - GoogleMaps
+  - Parse
+
+SPEC CHECKSUMS:
+  Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
+  GoogleMaps: b20a103ff307f58392e603cf142e59d7e30374c1
+  Parse: f51c24d2feb412e4b2d6cc73d37cb24e8d0089bc
+
+COCOAPODS: 0.39.0

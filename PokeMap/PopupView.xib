@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="HRw-Sv-UvG" customClass="PopupView" customModule="PokeMap" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="427" height="267"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PopupFrame.png" translatesAutoresizingMaskIntoConstraints="NO" id="ubA-5J-dC2">
+                    <rect key="frame" x="0.0" y="0.0" width="427" height="267"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="ubA-5J-dC2" secondAttribute="height" multiplier="427:267" id="sdT-H5-TQv"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pgL-dM-JH4">
+                    <rect key="frame" x="73" y="52" width="281" height="92"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="92" id="QbZ-CZ-dqV"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2xp-GW-8Ng">
+                    <rect key="frame" x="144" y="152" width="138" height="43"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="2xp-GW-8Ng" secondAttribute="height" multiplier="138:43" id="hVq-dV-bnO"/>
+                    </constraints>
+                    <state key="normal" title="Button" image="Gotit.png"/>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="ubA-5J-dC2" secondAttribute="bottom" id="1k8-Ux-UxL"/>
+                <constraint firstAttribute="trailing" secondItem="2xp-GW-8Ng" secondAttribute="trailing" constant="145" id="BCX-d3-QIP"/>
+                <constraint firstItem="2xp-GW-8Ng" firstAttribute="top" secondItem="pgL-dM-JH4" secondAttribute="bottom" constant="8" id="IAV-2v-t0B"/>
+                <constraint firstAttribute="trailing" secondItem="ubA-5J-dC2" secondAttribute="trailing" id="JEI-RD-BzC"/>
+                <constraint firstItem="ubA-5J-dC2" firstAttribute="top" secondItem="pgL-dM-JH4" secondAttribute="bottom" constant="-144" id="bsF-Bt-Rys"/>
+                <constraint firstAttribute="trailing" secondItem="pgL-dM-JH4" secondAttribute="trailing" constant="73" id="gmm-Y9-8JB"/>
+                <constraint firstItem="2xp-GW-8Ng" firstAttribute="leading" secondItem="HRw-Sv-UvG" secondAttribute="leading" constant="144" id="hej-Nn-bVx"/>
+                <constraint firstItem="ubA-5J-dC2" firstAttribute="leading" secondItem="HRw-Sv-UvG" secondAttribute="leading" id="lgI-nN-Pw4"/>
+                <constraint firstItem="pgL-dM-JH4" firstAttribute="leading" secondItem="HRw-Sv-UvG" secondAttribute="leading" constant="73" id="m2R-fR-U9q"/>
+                <constraint firstItem="ubA-5J-dC2" firstAttribute="top" secondItem="HRw-Sv-UvG" secondAttribute="top" id="rOM-dL-z85"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="tipsLabel" destination="pgL-dM-JH4" id="10y-dD-Wg3"/>
+            </connections>
+            <point key="canvasLocation" x="385.5" y="257.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="Gotit.png" width="138" height="43"/>
+        <image name="PopupFrame.png" width="311" height="212"/>
+    </resources>
+</document>
