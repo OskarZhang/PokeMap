@@ -8,7 +8,7 @@
 
 import Foundation
 import UIKit
-
+import Parse
 class LogPokemonViewController:UIViewController,UITableViewDelegate,UISearchBarDelegate {
 
     @IBOutlet weak var searchBar:UISearchBar!
@@ -22,18 +22,24 @@ class LogPokemonViewController:UIViewController,UITableViewDelegate,UISearchBarD
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureTableView()
+        configrueSearchBar()
+    }
+
+    
+    
+    override func viewDidAppear(animated: Bool) {
+        searchBar.becomeFirstResponder()
+        
+    }
+    
+    
+    func configureTableView() {
         searchBar.delegate = self
         tableView.delegate = self
         tableView.dataSource = dataSource
         tableView.estimatedRowHeight = 114
         tableView.rowHeight = UITableViewAutomaticDimension
-        
-        
-        configrueSearchBar()
-    }
-
-    override func viewDidAppear(animated: Bool) {
-        searchBar.becomeFirstResponder()
     }
     
     func configrueSearchBar() {
@@ -47,10 +53,7 @@ class LogPokemonViewController:UIViewController,UITableViewDelegate,UISearchBarD
     func getPokemons(keywords:String) {
         PMClient.sharedClient.autocompletePokemonByName(keywords, page: currentPage) { (pokemons, error) in
             if (error == nil && pokemons != nil) {
-                let pokemonObjects = pokemons.flatMap({ (object) -> Pokemon? in
-                    return object as? Pokemon
-                })
-                self.dataSource.pokemons = pokemonObjects
+                self.dataSource.pokemons = pokemons
                 self.tableView.reloadData()
             }
         }
@@ -73,10 +76,7 @@ class LogPokemonViewController:UIViewController,UITableViewDelegate,UISearchBarD
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         submissionCoordinator?.moveToLocationVC(dataSource.pokemons[indexPath.item])
-        
     }
-    
-    
     func scrollViewDidEndDragging(scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         self.view.endEditing(true)
     }
@@ -95,20 +95,15 @@ class LogPokemonViewController:UIViewController,UITableViewDelegate,UISearchBarD
 }
 
 
-
-
 class LogPokemonViewDataSource:NSObject,UITableViewDataSource {
     var pokemons:[Pokemon] = []
-
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return  pokemons.count
     }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("searchCell", forIndexPath: indexPath) as! PokemonSearchCell
-        cell.nameLabel.text =  pokemons[indexPath.item].name!
-        cell.nameLabel.font = UIFont(name: "Pocket Monk", size: 26)
-        
-        cell.pokemonIconImageView?.image = UIImage(named: pokemons[indexPath.item].pid!)
+        cell.nameLabel.text =  pokemons[indexPath.item].name //["name"] as? String
+        cell.pokemonIconImageView?.image = UIImage(named: (pokemons[indexPath.item]).pid!)//  ["pid"] as! String)
         return cell
     }
 }

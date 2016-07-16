@@ -12,33 +12,33 @@ import UIKit
 class SubmissionCoordinator:NSObject {
     weak var mainVC:MainMapViewController!
     var pokemonVC:LogPokemonViewController!
-    var locationVC:LogMapViewController!
+    var mapVC:LogMapViewController!
     var pokemonSelected:Pokemon!
     var locationSelected:CLLocation!
     var city:String!
     var state:String!
     var country:String!
-    init(mainVC:MainMapViewController,pokemonVC:LogPokemonViewController,locationVC:LogMapViewController) {
+    init(mainVC:MainMapViewController,pokemonVC:LogPokemonViewController,mapVC:LogMapViewController) {
         super.init()
         self.mainVC = mainVC
         self.pokemonVC = pokemonVC
-        self.locationVC = locationVC
+        self.mapVC = mapVC
         pokemonVC.submissionCoordinator = self
-        locationVC.submissionCoordinator = self
+        mapVC.submissionCoordinator = self
     }
     func moveToLocationVC(pokemon:Pokemon) {
         pokemonVC.view.endEditing(true)
         pokemonVC.dismissViewControllerAnimated(true) {
-            self.locationVC.modalPresentationStyle = .OverCurrentContext
+            self.mapVC.modalPresentationStyle = .OverCurrentContext
             self.pokemonSelected = pokemon
             let fileName = "\(pokemon.pid!)"
-            self.locationVC.pokemonIcon = UIImage(named: fileName)
-            self.mainVC.presentViewController(self.locationVC, animated: true, completion: nil)
+            self.mapVC.pokemonIcon = UIImage(named: fileName)
+            self.mainVC.presentViewController(self.mapVC, animated: true, completion: nil)
         }
     }
     func dismissLocationVC() {
         
-        locationVC.dismissViewControllerAnimated(true, completion: {
+        mapVC.dismissViewControllerAnimated(true, completion: {
             self.mainVC.turnOffBlur()
         })
     }
@@ -56,6 +56,13 @@ class SubmissionCoordinator:NSObject {
                     }
                 })
             }
+        }
+    }
+    
+    func startSubmission() {
+        pokemonVC.modalPresentationStyle = .OverCurrentContext
+        mainVC.turnOnBlur { 
+            self.mainVC.presentViewController(self.pokemonVC, animated: true, completion: nil)
         }
     }
     

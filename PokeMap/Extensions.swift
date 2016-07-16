@@ -19,6 +19,17 @@ extension UIImage {
         UIGraphicsEndImageContext()
         return img
     }
+    func resize (sizeChange:CGSize)-> UIImage{
+        
+        let hasAlpha = true
+        let scale: CGFloat = 0.0 // Use scale factor of main screen
+        
+        UIGraphicsBeginImageContextWithOptions(sizeChange, !hasAlpha, scale)
+        self.drawInRect(CGRect(origin: CGPointZero, size: sizeChange))
+        
+        let scaledImage = UIGraphicsGetImageFromCurrentImageContext()
+        return scaledImage
+    }
 }
 
 extension UITableView {
@@ -76,4 +87,5 @@ func debounce( delay:NSTimeInterval, queue:dispatch_queue_t, action: (()->()) ) 
         }
     }
 }
+
 

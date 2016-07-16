@@ -25,7 +25,6 @@ class User:PFUser {
         let query = super.query()
         return query
     }
-    
 }
 
 class Pokemon: PFObject,PFSubclassing {
@@ -49,6 +48,7 @@ class Pokemon: PFObject,PFSubclassing {
     }
     override static func query() -> PFQuery? {
         let query = super.query()
+        
         return query
     }
 }

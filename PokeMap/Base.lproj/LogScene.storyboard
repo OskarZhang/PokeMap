@@ -4,6 +4,11 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="Pocket Monk.otf">
+            <string>PocketMonk</string>
+        </mutableArray>
+    </customFonts>
     <scenes>
         <!--Log Pokemon View Controller-->
         <scene sceneID="dLC-Ub-yoc">
@@ -44,7 +49,7 @@
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="asda" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4VF-ID-k7m">
                                                             <rect key="frame" x="8" y="8" width="454" height="81.5"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                                            <fontDescription key="fontDescription" name="PocketMonk" family="Pocket Monk" pointSize="26"/>
                                                             <color key="textColor" red="0.0078431372550000003" green="0.1019607843" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
@@ -83,12 +88,12 @@
                                 </prototypes>
                             </tableView>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rC3-8n-dbN">
-                                <rect key="frame" x="537" y="42" width="40" height="40"/>
+                                <rect key="frame" x="547" y="50" width="30" height="20"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="KCo-Q2-RyR"/>
-                                    <constraint firstAttribute="width" constant="40" id="SXv-TY-I9d"/>
+                                    <constraint firstAttribute="height" constant="20" id="KCo-Q2-RyR"/>
+                                    <constraint firstAttribute="width" constant="30" id="SXv-TY-I9d"/>
                                 </constraints>
-                                <state key="normal" image="menuDown.png"/>
+                                <state key="normal" image="menuDown"/>
                                 <connections>
                                     <action selector="dismissView:" destination="eYW-Py-cAy" eventType="touchUpInside" id="hPD-tp-ynE"/>
                                 </connections>
@@ -99,7 +104,7 @@
                             <constraint firstItem="biw-4V-uT7" firstAttribute="leading" secondItem="y05-1p-Jp2" secondAttribute="leading" constant="20" id="36K-I0-g8E"/>
                             <constraint firstItem="biw-4V-uT7" firstAttribute="top" secondItem="sip-o8-dH5" secondAttribute="bottom" id="41I-b0-pqW"/>
                             <constraint firstAttribute="trailing" secondItem="biw-4V-uT7" secondAttribute="trailing" constant="20" id="5eR-aX-TPP"/>
-                            <constraint firstItem="rC3-8n-dbN" firstAttribute="top" secondItem="M8T-c9-4Vk" secondAttribute="bottom" constant="22" id="9Jp-xN-nBD"/>
+                            <constraint firstItem="rC3-8n-dbN" firstAttribute="top" secondItem="M8T-c9-4Vk" secondAttribute="bottom" constant="30" id="9Jp-xN-nBD"/>
                             <constraint firstItem="rC3-8n-dbN" firstAttribute="trailing" secondItem="y05-1p-Jp2" secondAttribute="trailingMargin" constant="-3" id="Cj8-4I-61C"/>
                             <constraint firstItem="sip-o8-dH5" firstAttribute="leading" secondItem="y05-1p-Jp2" secondAttribute="leading" id="SFP-Uk-LUx"/>
                             <constraint firstItem="qIo-4d-Xfj" firstAttribute="top" secondItem="biw-4V-uT7" secondAttribute="bottom" constant="8" id="d7a-ya-547"/>
@@ -113,11 +118,7 @@
                                 <action selector="didClickCancel:" destination="eYW-Py-cAy" id="WE5-pa-Yg2"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Next" id="DFf-M7-Jgh">
-                            <connections>
-                                <segue destination="9ne-v2-63w" kind="show" id="www-3G-BCJ"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Next" id="DFf-M7-Jgh"/>
                     </navigationItem>
                     <connections>
                         <outlet property="searchBar" destination="sip-o8-dH5" id="1ZP-rf-ZPX"/>
@@ -131,7 +132,6 @@
         <!--Log Map View Controller-->
         <scene sceneID="SHq-jj-6Ly">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="sqg-1F-NPS" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="logMapViewController" id="9ne-v2-63w" customClass="LogMapViewController" customModule="PokeMap" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Nz7-7W-Q1c"/>
@@ -180,10 +180,10 @@
                                 <rect key="frame" x="0.0" y="100" width="600" height="400"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LbI-Mh-rbg">
-                                        <rect key="frame" x="280" y="180" width="40" height="40"/>
+                                        <rect key="frame" x="270" y="170" width="60" height="60"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="40" id="9vS-Oq-qWf"/>
-                                            <constraint firstAttribute="height" constant="40" id="HnZ-JJ-2i1"/>
+                                            <constraint firstAttribute="width" constant="60" id="9vS-Oq-qWf"/>
+                                            <constraint firstAttribute="height" constant="60" id="HnZ-JJ-2i1"/>
                                         </constraints>
                                     </imageView>
                                 </subviews>
@@ -194,12 +194,12 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BsB-hc-C28">
-                                <rect key="frame" x="537" y="42" width="40" height="40"/>
+                                <rect key="frame" x="547" y="50" width="30" height="20"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="SGw-qU-OrG"/>
-                                    <constraint firstAttribute="width" constant="40" id="vw0-96-sdN"/>
+                                    <constraint firstAttribute="height" constant="20" id="SGw-qU-OrG"/>
+                                    <constraint firstAttribute="width" constant="30" id="vw0-96-sdN"/>
                                 </constraints>
-                                <state key="normal" image="menuDown.png"/>
+                                <state key="normal" image="menuDown"/>
                                 <connections>
                                     <action selector="dismissView:" destination="9ne-v2-63w" eventType="touchUpInside" id="2EK-kG-dw0"/>
                                 </connections>
@@ -214,23 +214,23 @@
                             <constraint firstItem="PhX-dw-1hw" firstAttribute="leading" secondItem="8TG-9a-6sQ" secondAttribute="leading" id="ebp-ck-mEE"/>
                             <constraint firstItem="64Z-Hy-Od3" firstAttribute="top" secondItem="Nz7-7W-Q1c" secondAttribute="bottom" constant="80" id="kZX-Ho-3u8"/>
                             <constraint firstItem="BsB-hc-C28" firstAttribute="trailing" secondItem="8TG-9a-6sQ" secondAttribute="trailingMargin" constant="-3" id="qEm-ef-GLk"/>
-                            <constraint firstItem="BsB-hc-C28" firstAttribute="top" secondItem="Nz7-7W-Q1c" secondAttribute="bottom" constant="22" id="zcE-oO-NU9"/>
+                            <constraint firstItem="BsB-hc-C28" firstAttribute="top" secondItem="Nz7-7W-Q1c" secondAttribute="bottom" constant="30" id="zcE-oO-NU9"/>
                             <constraint firstItem="kj3-K0-Ga0" firstAttribute="top" secondItem="PhX-dw-1hw" secondAttribute="bottom" id="zxT-jR-MC8"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="addressLabel" destination="gUS-3g-qhl" id="LOe-k2-KjI"/>
                         <outlet property="dropButton" destination="A7J-wB-ohY" id="lgi-c4-N4c"/>
-                        <outlet property="keyboardConstraint" destination="zxT-jR-MC8" id="WFz-b5-oaV"/>
                         <outlet property="mapContainerView" destination="64Z-Hy-Od3" id="4lv-C8-33W"/>
                         <outlet property="pokemonIconView" destination="LbI-Mh-rbg" id="TdD-1t-o4v"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sqg-1F-NPS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="885" y="340"/>
         </scene>
     </scenes>
     <resources>
-        <image name="menuDown.png" width="42" height="23"/>
+        <image name="menuDown" width="42" height="23"/>
     </resources>
 </document>

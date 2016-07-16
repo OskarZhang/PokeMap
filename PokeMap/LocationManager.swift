@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import Parse
 import CoreLocation
 class LocationManager: NSObject,CLLocationManagerDelegate {
     static var sharedLocationManager = LocationManager()
@@ -19,6 +20,7 @@ class LocationManager: NSObject,CLLocationManagerDelegate {
         locationManager.requestAlwaysAuthorization()
         super.init()
         locationManager.delegate = self
+        
     }
     
     func startLocationRecording() {
@@ -34,8 +36,21 @@ class LocationManager: NSObject,CLLocationManagerDelegate {
             currentLocation = locations.first
             let notification = NSNotification(name: "didUpdateLocation", object: currentLocation)
             NSNotificationCenter.defaultCenter().postNotification(notification)
+            
         }
-        
+        currentLocation = locations.first
+        if UIApplication.sharedApplication().applicationState == .Inactive {
+//            PMClient.sharedClient.getPokemonNearby(currentLocation.coordinate, range: 1, completion: { (sightings, error) in
+//                for sighting in sightings {
+//                    if sighting.pokemon!.name! != "Zubat" {
+//                        let notification = UILocalNotification()
+//                        notification.fireDate = NSDate(timeIntervalSinceNow: 5)
+//                        notification.alertBody = "There is a \(sighting.pokemon!.name!) nearby!"
+//                        UIApplication.sharedApplication().scheduleLocalNotification(notification)
+//                    }
+//                }
+//            })
+        }
     }
     
     func startMonitoringSignificantChanges(yes:Bool) {
@@ -44,6 +59,7 @@ class LocationManager: NSObject,CLLocationManagerDelegate {
         }
         else {
             locationManager.stopMonitoringSignificantLocationChanges()
+            locationManager.startUpdatingLocation()
         }
     }
     
@@ -72,7 +88,10 @@ class LocationManager: NSObject,CLLocationManagerDelegate {
                 completion(nil,false)
             }
         })
-        
+    }
+    
+    func subscribeToLocationChange(observer:AnyObject,selector:Selector) {
+        NSNotificationCenter.defaultCenter().addObserver(observer, selector: selector, name: "didUpdateLocation", object: nil)
     }
     
     

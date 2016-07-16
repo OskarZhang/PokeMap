@@ -19,26 +19,47 @@ class PMClient {
             completion(sightings as? [Sighting],error)
         })
     }
-    func autocompletePokemonByName(keywords:String,page:Int,completion:([PFObject]!,NSError?)->()) {
+    func autocompletePokemonByName(keywords:String,page:Int,completion:([Pokemon]!,NSError?)->()) {
         let pokemonQuery = Pokemon.query()!
-//        pokemonQuery.whereKey("name", matchesRegex: keywords, modifiers: "i")
+        pokemonQuery.fromLocalDatastore()
         pokemonQuery.whereKey("name", containsString: keywords.capitalizedString)
         pokemonQuery.limit = 20
         pokemonQuery.skip = 20 * page
-        pokemonQuery.findObjectsInBackgroundWithBlock { (pokemons, error) in
-            completion(pokemons,error)
+        if !NSUserDefaults.standardUserDefaults().boolForKey("hasCachedPokemons") {
+            downloadPokemons()?.continueWithSuccessBlock({ (task) -> AnyObject? in
+                pokemonQuery.findObjectsInBackgroundWithBlock { (pokemons, error) in
+                    completion(pokemons as! [Pokemon],error)
+                }
+                return nil
+            })
+        } else {
+            pokemonQuery.findObjectsInBackgroundWithBlock { (pokemons , error) in
+                completion(pokemons as! [Pokemon],error)
+            }
         }
     }
 
     func addPokemon(pokemon:Pokemon,location:CLLocation,city:String,state:String,country:String,completion:(NSError?)->()) {
         let parseLocation = PFGeoPoint(location: location)
+        let user = PFUser.currentUser()
         let dict:Dictionary = ["pokemon":pokemon,"location":parseLocation,"state":state,"country":country,"city":city]
         let sighting = PFObject(className: "Sighting",dictionary: dict)
+        sighting["user"] = user
         sighting.saveInBackgroundWithBlock { (success, error) in
             completion(error)
         }
     }
     
-    
+    func downloadPokemons() -> BFTask? {
+        return Pokemon.query()?.findObjectsInBackground().continueWithBlock({ (task) -> AnyObject? in
+            let pokemons = task.result as! [Pokemon]
+            return PFObject.pinAllInBackground(pokemons)
+        }).continueWithBlock({ (task) -> AnyObject? in
+            if task.error == nil {
+                NSUserDefaults.standardUserDefaults().setBool(true, forKey: ("hasCachedPokemons"))
+            }
+            return nil
+        })
+    }
     
 }
