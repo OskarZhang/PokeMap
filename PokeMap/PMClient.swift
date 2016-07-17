@@ -10,19 +10,34 @@ import Foundation
 import Parse
 class PMClient {
     static var sharedClient: PMClient = PMClient()
-    func getPokemonNearby(location:CLLocationCoordinate2D,range:Int,completion:([Sighting]!,NSError?)->()) {
-        let sightingQuery = Sighting.query()!
-        sightingQuery.includeKey("pokemon")
-        let parseLocation = PFGeoPoint(latitude: location.latitude, longitude: location.longitude)
-        sightingQuery.whereKey("location", nearGeoPoint: parseLocation, withinMiles: Double(range))
+    var types:[Type] = []
+    var filterApplied:Bool {
+        get {
+            return types.count > 0
+        }
+    }
+    func getPokemonNearby(location:CLLocationCoordinate2D,zoomLevel:Int,completion:([Sighting]!,NSError?)->()) {
+        let sightingQuery = Sighting.getNearbyQuery(location, googleMapsZoomLevel: zoomLevel)
+        
         sightingQuery.findObjectsInBackgroundWithBlock({ (sightings, error) in
             completion(sightings as? [Sighting],error)
         })
     }
-    func autocompletePokemonByName(keywords:String,page:Int,completion:([Pokemon]!,NSError?)->()) {
+    
+    func getPokemonNearbyLive(location:CLLocationCoordinate2D,zoomLevel:Int) -> Subscription<Sighting>{
+        let sightingQuery = Sighting.getNearbyQuery(location, googleMapsZoomLevel: zoomLevel)
+        if types.count > 0 {
+            sightingQuery.whereKey("type", containedIn: types)
+        }
+        return sightingQuery.subscribe()
+    }
+    
+    func autocompletePokemonByName(keywords:String?,page:Int,completion:([Pokemon]!,NSError?)->()) {
         let pokemonQuery = Pokemon.query()!
         pokemonQuery.fromLocalDatastore()
-        pokemonQuery.whereKey("name", containsString: keywords.capitalizedString)
+        if let keywords = keywords {
+            pokemonQuery.whereKey("name", containsString: keywords.capitalizedString)
+        }
         pokemonQuery.limit = 20
         pokemonQuery.skip = 20 * page
         if !NSUserDefaults.standardUserDefaults().boolForKey("hasCachedPokemons") {
@@ -33,12 +48,31 @@ class PMClient {
                 return nil
             })
         } else {
-            pokemonQuery.findObjectsInBackgroundWithBlock { (pokemons , error) in
+            pokemonQuery.findObjectsInBackgroundWithBlock { (pokemons, error) in
                 completion(pokemons as! [Pokemon],error)
+            }
+            
+        }
+    }
+    
+    
+    func getTypes(completion:([Type],[Type],NSError?)->Void) {
+        let typesQuery = Type.query()!
+        typesQuery.fromLocalDatastore()
+        if !NSUserDefaults.standardUserDefaults().boolForKey("hasCachedTypes") {
+            downloadTypes()?.continueWithSuccessBlock({ (task) -> AnyObject? in
+                typesQuery.findObjectsInBackgroundWithBlock { (objects, error) in
+                    completion(objects as! [Type],self.types,error)
+                }
+                return nil
+            })
+        } else {
+            typesQuery.findObjectsInBackgroundWithBlock { (objects , error) in
+                completion(objects as! [Type],self.types,error)
             }
         }
     }
-
+    
     func addPokemon(pokemon:Pokemon,location:CLLocation,city:String,state:String,country:String,completion:(NSError?)->()) {
         let parseLocation = PFGeoPoint(location: location)
         let user = PFUser.currentUser()
@@ -57,9 +91,26 @@ class PMClient {
         }).continueWithBlock({ (task) -> AnyObject? in
             if task.error == nil {
                 NSUserDefaults.standardUserDefaults().setBool(true, forKey: ("hasCachedPokemons"))
+                
             }
             return nil
         })
+    }
+    
+    func downloadTypes() -> BFTask? {
+        return Type.query()?.findObjectsInBackground().continueWithBlock({ (task) -> AnyObject? in
+            let types = task.result as! [Type]
+            return PFObject.pinAllInBackground(types)
+        }).continueWithBlock({ (task) -> AnyObject? in
+            if task.error == nil {
+                NSUserDefaults.standardUserDefaults().setBool(true, forKey: ("hasCachedTypess"))
+            }
+            return nil
+        })
+    }
+    
+    func applyFilters(types:[Type]!) {
+        self.types = types
     }
     
 }

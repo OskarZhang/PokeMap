@@ -4,3 +4,6 @@ use_frameworks!
 
 pod 'Parse'
 pod 'GoogleMaps'
+pod 'Bolts-Swift'
+pod 'SocketRocket'
+#pod 'ParseLiveQuery'

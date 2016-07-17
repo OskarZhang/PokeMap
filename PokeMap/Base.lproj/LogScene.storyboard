@@ -88,7 +88,7 @@
                                 </prototypes>
                             </tableView>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rC3-8n-dbN">
-                                <rect key="frame" x="547" y="50" width="30" height="20"/>
+                                <rect key="frame" x="555" y="50" width="30" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="KCo-Q2-RyR"/>
                                     <constraint firstAttribute="width" constant="30" id="SXv-TY-I9d"/>
@@ -105,7 +105,7 @@
                             <constraint firstItem="biw-4V-uT7" firstAttribute="top" secondItem="sip-o8-dH5" secondAttribute="bottom" id="41I-b0-pqW"/>
                             <constraint firstAttribute="trailing" secondItem="biw-4V-uT7" secondAttribute="trailing" constant="20" id="5eR-aX-TPP"/>
                             <constraint firstItem="rC3-8n-dbN" firstAttribute="top" secondItem="M8T-c9-4Vk" secondAttribute="bottom" constant="30" id="9Jp-xN-nBD"/>
-                            <constraint firstItem="rC3-8n-dbN" firstAttribute="trailing" secondItem="y05-1p-Jp2" secondAttribute="trailingMargin" constant="-3" id="Cj8-4I-61C"/>
+                            <constraint firstAttribute="trailing" secondItem="rC3-8n-dbN" secondAttribute="trailing" constant="15" id="OTr-gl-eqB"/>
                             <constraint firstItem="sip-o8-dH5" firstAttribute="leading" secondItem="y05-1p-Jp2" secondAttribute="leading" id="SFP-Uk-LUx"/>
                             <constraint firstItem="qIo-4d-Xfj" firstAttribute="top" secondItem="biw-4V-uT7" secondAttribute="bottom" constant="8" id="d7a-ya-547"/>
                             <constraint firstAttribute="trailing" secondItem="sip-o8-dH5" secondAttribute="trailing" id="rMi-VI-A60"/>
@@ -194,7 +194,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BsB-hc-C28">
-                                <rect key="frame" x="547" y="50" width="30" height="20"/>
+                                <rect key="frame" x="550" y="50" width="30" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="SGw-qU-OrG"/>
                                     <constraint firstAttribute="width" constant="30" id="vw0-96-sdN"/>
@@ -213,7 +213,7 @@
                             <constraint firstItem="PhX-dw-1hw" firstAttribute="top" secondItem="64Z-Hy-Od3" secondAttribute="bottom" id="dD0-lS-kYx"/>
                             <constraint firstItem="PhX-dw-1hw" firstAttribute="leading" secondItem="8TG-9a-6sQ" secondAttribute="leading" id="ebp-ck-mEE"/>
                             <constraint firstItem="64Z-Hy-Od3" firstAttribute="top" secondItem="Nz7-7W-Q1c" secondAttribute="bottom" constant="80" id="kZX-Ho-3u8"/>
-                            <constraint firstItem="BsB-hc-C28" firstAttribute="trailing" secondItem="8TG-9a-6sQ" secondAttribute="trailingMargin" constant="-3" id="qEm-ef-GLk"/>
+                            <constraint firstItem="BsB-hc-C28" firstAttribute="trailing" secondItem="8TG-9a-6sQ" secondAttribute="trailingMargin" id="qEm-ef-GLk"/>
                             <constraint firstItem="BsB-hc-C28" firstAttribute="top" secondItem="Nz7-7W-Q1c" secondAttribute="bottom" constant="30" id="zcE-oO-NU9"/>
                             <constraint firstItem="kj3-K0-Ga0" firstAttribute="top" secondItem="PhX-dw-1hw" secondAttribute="bottom" id="zxT-jR-MC8"/>
                         </constraints>

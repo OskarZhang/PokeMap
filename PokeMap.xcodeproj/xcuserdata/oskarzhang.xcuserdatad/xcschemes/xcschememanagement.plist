@@ -4,10 +4,22 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>PokeMap 2.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<true/>
+			<key>orderHint</key>
+			<integer>6</integer>
+		</dict>
 		<key>PokeMap.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
+		</dict>
+		<key>PokeMap_Location.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>7</integer>
 		</dict>
 		<key>WithLocation.xcscheme</key>
 		<dict>

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="Pocket Monk.otf">
+            <string>PocketMonk</string>
+        </mutableArray>
+    </customFonts>
+    <scenes>
+        <!--Filter View Controller-->
+        <scene sceneID="bxx-6Q-DtV">
+            <objects>
+                <viewController storyboardIdentifier="filterViewController" id="h23-VH-WKd" customClass="FilterViewController" customModule="PokeMap" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="nPy-Kg-Fp6"/>
+                        <viewControllerLayoutGuide type="bottom" id="GLX-0j-n2g"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Ew6-ob-BtB">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="PGZ-gk-OZK">
+                                <rect key="frame" x="0.0" y="100" width="600" height="500"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="filterCell" rowHeight="114" id="Z7g-Zi-QF9" customClass="FilterCell" customModule="PokeMap" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="600" height="114"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Z7g-Zi-QF9" id="PGO-oD-JU3">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="113.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="asda" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7sx-fN-bZM">
+                                                    <rect key="frame" x="8" y="15" width="584" height="82"/>
+                                                    <fontDescription key="fontDescription" name="PocketMonk" family="Pocket Monk" pointSize="26"/>
+                                                    <color key="textColor" red="0.0078431372550000003" green="0.1019607843" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="7sx-fN-bZM" firstAttribute="top" secondItem="PGO-oD-JU3" secondAttribute="topMargin" constant="7" id="33u-eU-INj"/>
+                                                <constraint firstItem="7sx-fN-bZM" firstAttribute="leading" secondItem="PGO-oD-JU3" secondAttribute="leadingMargin" id="JB6-A6-ZdO"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="7sx-fN-bZM" secondAttribute="bottom" constant="9" id="Tuo-mr-b5d"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="7sx-fN-bZM" secondAttribute="trailing" id="q10-oe-sdD"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <outlet property="titleLabel" destination="7sx-fN-bZM" id="wJi-ez-Zue"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KRF-gs-KOW">
+                                <rect key="frame" x="490" y="35" width="90" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="2Cg-xU-Aw8"/>
+                                    <constraint firstAttribute="width" constant="90" id="e5C-tM-RZH"/>
+                                </constraints>
+                                <state key="normal" image="ApplyFilterButton"/>
+                                <connections>
+                                    <action selector="saveAll" destination="h23-VH-WKd" eventType="touchUpInside" id="ORE-iJ-PqD"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="GLX-0j-n2g" firstAttribute="top" secondItem="PGZ-gk-OZK" secondAttribute="bottom" id="IUl-pT-Mhm"/>
+                            <constraint firstItem="PGZ-gk-OZK" firstAttribute="top" secondItem="nPy-Kg-Fp6" secondAttribute="bottom" constant="80" id="KSG-bX-3Oy"/>
+                            <constraint firstItem="PGZ-gk-OZK" firstAttribute="leading" secondItem="Ew6-ob-BtB" secondAttribute="leading" id="cpW-DM-TwG"/>
+                            <constraint firstAttribute="trailing" secondItem="PGZ-gk-OZK" secondAttribute="trailing" id="mQi-AF-LNu"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="KRF-gs-KOW" secondAttribute="trailing" id="nIx-JZ-CeM"/>
+                            <constraint firstItem="KRF-gs-KOW" firstAttribute="top" secondItem="nPy-Kg-Fp6" secondAttribute="bottom" constant="15" id="wCF-AS-aan"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="PGZ-gk-OZK" id="m97-LJ-79A"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gYF-zC-TlB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1095" y="363"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="ApplyFilterButton" width="145" height="96"/>
+    </resources>
+</document>

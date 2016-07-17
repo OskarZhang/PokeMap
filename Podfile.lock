@@ -1,16 +1,22 @@
 PODS:
+  - Bolts-Swift (1.1.0)
   - Bolts/Tasks (1.8.4)
   - GoogleMaps (1.13.2)
   - Parse (1.13.0):
     - Bolts/Tasks (~> 1.6)
+  - SocketRocket (0.5.1)
 
 DEPENDENCIES:
+  - Bolts-Swift
   - GoogleMaps
   - Parse
+  - SocketRocket
 
 SPEC CHECKSUMS:
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
+  Bolts-Swift: 63ef77f967f795415531da45eef419eab79ec730
   GoogleMaps: b20a103ff307f58392e603cf142e59d7e30374c1
   Parse: f51c24d2feb412e4b2d6cc73d37cb24e8d0089bc
+  SocketRocket: d57c7159b83c3c6655745cd15302aa24b6bae531
 
 COCOAPODS: 0.39.0

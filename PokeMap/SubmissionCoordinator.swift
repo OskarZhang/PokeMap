@@ -15,6 +15,11 @@ class SubmissionCoordinator:NSObject {
     var mapVC:LogMapViewController!
     var pokemonSelected:Pokemon!
     var locationSelected:CLLocation!
+    weak var activeVC:UIViewController! {
+        didSet {
+            mainVC.titleLabel.text = activeVC.title
+        }
+    }
     var city:String!
     var state:String!
     var country:String!
@@ -35,13 +40,9 @@ class SubmissionCoordinator:NSObject {
             self.mapVC.pokemonIcon = UIImage(named: fileName)
             self.mainVC.presentViewController(self.mapVC, animated: true, completion: nil)
         }
+        activeVC = mapVC
     }
-    func dismissLocationVC() {
-        
-        mapVC.dismissViewControllerAnimated(true, completion: {
-            self.mainVC.turnOffBlur()
-        })
-    }
+    
     func finishSubmission(location:CLLocation) {
         locationSelected = location
         LocationManager.locationToCityName(location) {
@@ -52,7 +53,7 @@ class SubmissionCoordinator:NSObject {
                 self.country = locationNames!.2
                 PMClient.sharedClient.addPokemon(self.pokemonSelected, location: self.locationSelected, city: self.city, state: self.state, country: self.country, completion: { (error) in
                     if error == nil {
-                        self.dismissLocationVC()
+                        self.dismissViewController(self.mapVC)
                     }
                 })
             }
@@ -61,13 +62,16 @@ class SubmissionCoordinator:NSObject {
     
     func startSubmission() {
         pokemonVC.modalPresentationStyle = .OverCurrentContext
-        mainVC.turnOnBlur { 
+        activeVC = pokemonVC
+        mainVC.turnOnBlur {
             self.mainVC.presentViewController(self.pokemonVC, animated: true, completion: nil)
         }
     }
     
-    func dismissViewController(viewController:UIViewController) {
     
+    
+    func dismissViewController(viewController:UIViewController) {
+        self.mainVC.title = nil
         viewController.dismissViewControllerAnimated(true, completion: {
             self.mainVC.turnOffBlur()
         })

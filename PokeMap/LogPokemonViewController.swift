@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import Parse
 class LogPokemonViewController:UIViewController,UITableViewDelegate,UISearchBarDelegate {
-
+    
     @IBOutlet weak var searchBar:UISearchBar!
     @IBOutlet weak var tableView:UITableView!
     static let id = "logPokemonViewController"
@@ -24,8 +24,13 @@ class LogPokemonViewController:UIViewController,UITableViewDelegate,UISearchBarD
         super.viewDidLoad()
         configureTableView()
         configrueSearchBar()
+        getPokemons(nil)
     }
-
+    
+    override func awakeFromNib() {
+        self.title = "Record Sighting"
+    }
+    
     
     
     override func viewDidAppear(animated: Bool) {
@@ -50,7 +55,7 @@ class LogPokemonViewController:UIViewController,UITableViewDelegate,UISearchBarD
         searchBar.tintColor = UIColor.whiteColor()
     }
     
-    func getPokemons(keywords:String) {
+    func getPokemons(keywords:String!) {
         PMClient.sharedClient.autocompletePokemonByName(keywords, page: currentPage) { (pokemons, error) in
             if (error == nil && pokemons != nil) {
                 self.dataSource.pokemons = pokemons
@@ -91,6 +96,9 @@ class LogPokemonViewController:UIViewController,UITableViewDelegate,UISearchBarD
     func tableView(tableView: UITableView, didUnhighlightRowAtIndexPath indexPath: NSIndexPath) {
         let cell = tableView.cellForRowAtIndexPath(indexPath) as! PokemonSearchCell
         cell.containerView.backgroundColor = UIColor(hex: 0xffffff).colorWithAlphaComponent(0.35)
+    }
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return .LightContent
     }
 }
 

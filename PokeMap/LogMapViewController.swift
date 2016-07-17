@@ -17,13 +17,17 @@ class LogMapViewController:UIViewController,UITextFieldDelegate {
     @IBOutlet weak var addressLabel: UILabel!
     var pokemonIcon:UIImage!
     var submissionCoordinator:SubmissionCoordinator?
-
+    
     override func viewDidLoad() {
         pokemonIconView.image = pokemonIcon
         setupMapView()
         configureButtons()
         setMapLocation()
         LocationManager.sharedLocationManager.subscribeToLocationChange(self, selector: #selector(self.setMapLocation))
+    }
+    
+    override func awakeFromNib() {
+        self.title = "Set Location"
     }
     
     func configureButtons() {
@@ -69,7 +73,7 @@ class LogMapViewController:UIViewController,UITextFieldDelegate {
     func stopLoading() {
         dropButton.enabled = false
     }
-
+    
     @IBAction func didClickAdd(sender: AnyObject) {
         let location = CLLocation(latitude: mapView.camera.target.latitude, longitude: mapView.camera.target.longitude)
         submissionCoordinator?.finishSubmission(location)
@@ -78,6 +82,10 @@ class LogMapViewController:UIViewController,UITextFieldDelegate {
     @IBAction func dismissView(sender: AnyObject) {
         self.view.endEditing(true)
         submissionCoordinator?.dismissViewController(self)
+    }
+    
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return .LightContent
     }
 }
 
