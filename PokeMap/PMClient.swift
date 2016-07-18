@@ -11,26 +11,49 @@ import Parse
 class PMClient {
     static var sharedClient: PMClient = PMClient()
     var types:[Type] = []
+    var latestGetPokemonTime:NSDate!
+    
+    var livemodeTimer:NSTimer?
+    var timerInfo:LiveModeData?
     var filterApplied:Bool {
         get {
             return types.count > 0
         }
     }
-    func getPokemonNearby(location:CLLocationCoordinate2D,zoomLevel:Int,completion:([Sighting]!,NSError?)->()) {
-        let sightingQuery = Sighting.getNearbyQuery(location, googleMapsZoomLevel: zoomLevel)
-        
+    
+    func getPokemonNearby(location:CLLocationCoordinate2D,range:Double,live:Bool = false,completion:([Sighting]!,NSError?)->()) {
+        let currentTime = NSDate()
+        latestGetPokemonTime = currentTime
+        let sightingQuery = Sighting.getNearbyQuery(location, range: range)
+        if live {
+            sightingQuery.whereKey("createdAt", greaterThan: NSDate().dateByAddingTimeInterval(-60*30))
+        }
         sightingQuery.findObjectsInBackgroundWithBlock({ (sightings, error) in
-            completion(sightings as? [Sighting],error)
+            if (self.latestGetPokemonTime == currentTime) {
+                completion(sightings as? [Sighting],error)
+            }
         })
     }
     
-    func getPokemonNearbyLive(location:CLLocationCoordinate2D,zoomLevel:Int) -> Subscription<Sighting>{
-        let sightingQuery = Sighting.getNearbyQuery(location, googleMapsZoomLevel: zoomLevel)
-        if types.count > 0 {
-            sightingQuery.whereKey("type", containedIn: types)
-        }
-        return sightingQuery.subscribe()
+    func getPokemonNearbyAllTime(location:CLLocationCoordinate2D,range:Double,completion:([Sighting]!,NSError?)->()) {
+        livemodeTimer?.invalidate()
+        timerInfo = nil
+        getPokemonNearby(location, range: range, completion: completion)
     }
+    
+
+    func getPokemonNearbyLive(location:CLLocationCoordinate2D,range:Double,callback:([Sighting]!,NSError?)->()) {
+        livemodeTimer?.invalidate()
+        timerInfo = LiveModeData(location: location, range: range, callback: callback)
+        livemodeTimer = NSTimer.scheduledTimerWithTimeInterval(5, target: self, selector: #selector(self.handleLiveModeTimer), userInfo: nil, repeats: true)
+        handleLiveModeTimer()
+    }
+    
+    
+    @objc func handleLiveModeTimer() {
+        getPokemonNearby(timerInfo!.location, range: timerInfo!.range, live:true, completion: timerInfo!.callback)
+    }
+    
     
     func autocompletePokemonByName(keywords:String?,page:Int,completion:([Pokemon]!,NSError?)->()) {
         let pokemonQuery = Pokemon.query()!
@@ -113,4 +136,11 @@ class PMClient {
         self.types = types
     }
     
+}
+
+
+struct LiveModeData {
+    var location:CLLocationCoordinate2D
+    var range:Double
+    var callback:([Sighting]!,NSError?)->()
 }

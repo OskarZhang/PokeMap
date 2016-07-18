@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 class PokemonSearchCell:UITableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
-    
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var pokemonIconImageView: UIImageView!
     

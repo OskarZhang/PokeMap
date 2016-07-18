@@ -30,7 +30,7 @@ class MainMapViewController: UIViewController,GMSMapViewDelegate {
     var LABEL_TRAILING_PADDING:CGFloat = 110 //because of filter apply button
     
     
-    
+    var markerView:MarkerInfoView!
     var titleLabel = UILabel()
     
     var addButton:UIButton = UIButton()
@@ -130,24 +130,7 @@ class MainMapViewController: UIViewController,GMSMapViewDelegate {
 
     }
     
-    func mapView(mapView: GMSMapView, markerInfoWindow marker: GMSMarker) -> UIView?{
-        
-        let frame = CGRect(x: 0, y: 0, width: self.view.frame.width/4*3, height: 180)
-        let sighting = (marker.userData as! Sighting)
-        var name = sighting.user?.nickname
-        if name == nil {
-            name = "uniorns"
-        }
-        
-        
-        return MarkerInfoView.getView(name!, charmaPoint: sighting.charma?.integerValue ?? 0, withMessage: true, frame: frame, charmaAction: {
-                let orgCharma = sighting.charma?.integerValue ?? 0
-                sighting.charma = NSNumber(integer: orgCharma+1)
-                sighting.hasUpvoted = true
-                
-                sighting.saveInBackground()
-        })
-    }
+    
     var zoom:Float = 0
     var inModalPresentation = false
     func didClickHomeButton() {
@@ -167,7 +150,6 @@ class MainMapViewController: UIViewController,GMSMapViewDelegate {
         let orgCharma = sighting.charma?.integerValue ?? 0
         sighting.charma = NSNumber(integer: orgCharma+1)
         sighting.hasUpvoted = true
-//        marker.
         sighting.saveInBackground()
     }
     func didClickSwitchMode() {
@@ -179,8 +161,39 @@ class MainMapViewController: UIViewController,GMSMapViewDelegate {
         if let location = LocationManager.sharedLocationManager.currentLocation {
             mapView.animateToCameraPosition(GMSCameraPosition(target: location.coordinate, zoom: 13, bearing: 30, viewingAngle: 30))
         }
-        
     }
+    
+    func mapView(mapView: GMSMapView, didTapMarker marker: GMSMarker) -> Bool {
+        let sighting = (marker.userData as! Sighting)
+        
+        var name = sighting.user?.nickname
+        if name == nil {
+            name = "uniorns"
+        }
+        markerView = MarkerInfoView.getView(name!, charmaPoint: sighting.charma?.integerValue ?? 0, withMessage: true, charmaAction: {
+            let orgCharma = sighting.charma?.integerValue ?? 0
+            sighting.charma = NSNumber(integer: orgCharma+1)
+            sighting.hasUpvoted = true
+            sighting.saveInBackground()
+        })
+        enableTouchToDismiss()
+        return true
+    }
+    
+    func enableTouchToDismiss() {
+        blurView.userInteractionEnabled = true
+        let gestureRecognizer = UIGestureRecognizer(target: self, action: #selector(self.didTapBlurView))
+        blurView.addGestureRecognizer(gestureRecognizer)
+    }
+    func didTapBlurView() {
+        if let infoview = markerView {
+            infoview.removeFromSuperview()
+            markerView = nil
+            blurView.userInteractionEnabled = false
+        }
+    }
+    
+    
     
     func initiateSubmissionScene() {
         let logVC = UIStoryboard(name: "LogScene", bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier("logPokemonViewController") as! LogPokemonViewController
@@ -230,115 +243,3 @@ class MainMapViewController: UIViewController,GMSMapViewDelegate {
     
     
 }
-
-class MainMapViewControllerDataSource:NSObject {
-    var markers:[GMSMarker] = []
-    var allTimeSightings:[Sighting] = []
-    var recentSightings:[Sighting] = []
-    var recentFetchedAt:NSDate!
-    var allTimeFetchedAt:NSDate!
-    var realTimeSocket:Subscription<Sighting>!
-    var realTimeMode:Bool = true
-    weak var mapView:GMSMapView!
-    var lastFetchedLocation:CLLocation!
-    
-    init(mapView:GMSMapView!) {
-        self.mapView = mapView
-    }
-    
-    var sightings:[Sighting]! {
-        didSet {
-            var toAdd:[Sighting] = []
-            var toDelete:[Sighting] = []
-            if oldValue != nil {
-                let oldSet = Set(oldValue)
-                let newSet = Set(sightings)
-                toDelete = Array<Sighting>(oldSet.subtract(newSet))
-                toAdd = Array<Sighting>(newSet.subtract(oldSet))
-                
-                
-            } else {
-                toAdd = sightings
-            }
-            
-            print("new: \(sightings.count)")
-            print("old: \(oldValue == nil ? 0 : oldValue.count)")
-            
-            print("sets:")
-            print(toAdd.count)
-            print(toDelete.count)
-            
-            
-            print("Camera Zoom:\(mapView.camera.zoom * 5)")
-            markers = markers.filter { (marker) -> Bool in
-                for removed in toDelete {
-                    if (marker.userData as! Sighting).objectId == removed.objectId {
-                        marker.map = nil
-                        return false
-                    }
-                }
-                return true
-            }
-            
-            for sighting in toAdd {
-                if let pokemon = sighting.pokemon {
-                    let position = CLLocationCoordinate2D(latitude: sighting.location!.latitude,longitude: sighting.location!.longitude)
-                    let marker = GMSMarker(position: position)
-                    marker.title = pokemon.sound ?? "Hey"
-                    marker.userData = sighting
-                    marker.icon = UIImage(named: pokemon.pid!)!.resize(CGSize(width: 40, height: 40))
-                    marker.map = self.mapView
-                    markers.append(marker)
-                }
-            }
-        }
-    }
-    
-    func fetchPokemons(location:CLLocationCoordinate2D,zoomLevel:Int,modeSwitch:Bool) {
-        //clllocation
-        let cllocation = CLLocation(latitude: location.latitude, longitude: location.longitude)
-        if let lastLocation = lastFetchedLocation where cllocation.distanceFromLocation(lastLocation) <= 1000 && !modeSwitch {
-            return
-        }
-        lastFetchedLocation = cllocation
-        if !realTimeMode {
-            self.allTimeFetchedAt = NSDate()
-            PMClient.sharedClient.getPokemonNearby(location, zoomLevel: zoomLevel, completion: { (sightings, error) in
-                if error == nil {
-                    self.allTimeSightings = sightings
-                    self.updateViews()
-                }
-            })
-            
-        } else {
-            self.recentFetchedAt = NSDate()
-            allTimeSightings = []
-            realTimeSocket = PMClient.sharedClient.getPokemonNearbyLive(lastFetchedLocation.coordinate, zoomLevel: zoomLevel)
-            realTimeSocket.handle(Event.Created) { query, object in
-                print(object.objectId)
-                self.allTimeSightings.append(object)
-                self.updateViews()
-            }
-            
-        }
-    }
-    
-    func switchMode() {
-        realTimeMode = !realTimeMode
-        mapView.clear()
-        if recentFetchedAt != nil && allTimeFetchedAt != nil {
-            if (realTimeMode && recentFetchedAt?.compare(allTimeFetchedAt) == .OrderedAscending) ||
-                (!realTimeMode && allTimeFetchedAt.compare(recentFetchedAt) == .OrderedAscending) {
-                updateViews()
-                return
-            }
-        }
-        fetchPokemons(mapView.camera.target, zoomLevel: Int(mapView.camera.zoom), modeSwitch: true)
-    }
-    
-    func updateViews() {
-        sightings = realTimeMode ? recentSightings : allTimeSightings
-    }
-    
-}
-

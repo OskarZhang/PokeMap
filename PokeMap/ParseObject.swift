@@ -82,14 +82,14 @@ class Sighting: PFObject,PFSubclassing {
         return query
     }
     
-    static func getNearbyQuery(location:CLLocationCoordinate2D,googleMapsZoomLevel:Int) -> PFQuery {
+    static func getNearbyQuery(location:CLLocationCoordinate2D,range:Double) -> PFQuery {
         let sightingQuery = query()!
+        sightingQuery.limit = 100
         sightingQuery.includeKey("pokemon")
         sightingQuery.includeKey("user")
 
-        let range:Int = Int(256 * (2^googleMapsZoomLevel)/1000)
         let parseLocation = PFGeoPoint(latitude: location.latitude, longitude: location.longitude)
-        sightingQuery.whereKey("location", nearGeoPoint: parseLocation, withinKilometers : Double(range))
+        sightingQuery.whereKey("location", nearGeoPoint: parseLocation, withinKilometers : range)
         return sightingQuery
     }
 }

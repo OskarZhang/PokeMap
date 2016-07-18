@@ -34,6 +34,9 @@
 		4B477A341D3728D200052172 /* LogPokemonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B477A331D3728D200052172 /* LogPokemonViewController.swift */; };
 		4B477A361D37304000052172 /* LogMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B477A351D37304000052172 /* LogMapViewController.swift */; };
 		4B477A381D37352E00052172 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B477A371D37352E00052172 /* LocationManager.swift */; };
+		4B66537C1D3C51BE00057D15 /* MainMapViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B66537B1D3C51BE00057D15 /* MainMapViewDataSource.swift */; };
+		4B66537E1D3C57DF00057D15 /* PopupNameView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B66537D1D3C57DF00057D15 /* PopupNameView.xib */; };
+		4B6653801D3C59AE00057D15 /* PopupNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B66537F1D3C59AE00057D15 /* PopupNameView.swift */; };
 		4B987B1E1D37522400F38E74 /* ParseObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B987B1D1D37522400F38E74 /* ParseObject.swift */; };
 		4BBA8D121D376B460092308A /* PopupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4BBA8D111D376B460092308A /* PopupView.xib */; };
 		4BBA8D201D376CEB0092308A /* PopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BBA8D1F1D376CEB0092308A /* PopupView.swift */; };
@@ -224,6 +227,9 @@
 		4B477A331D3728D200052172 /* LogPokemonViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogPokemonViewController.swift; sourceTree = "<group>"; };
 		4B477A351D37304000052172 /* LogMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogMapViewController.swift; sourceTree = "<group>"; };
 		4B477A371D37352E00052172 /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		4B66537B1D3C51BE00057D15 /* MainMapViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMapViewDataSource.swift; sourceTree = "<group>"; };
+		4B66537D1D3C57DF00057D15 /* PopupNameView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PopupNameView.xib; sourceTree = "<group>"; };
+		4B66537F1D3C59AE00057D15 /* PopupNameView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopupNameView.swift; sourceTree = "<group>"; };
 		4B987B1D1D37522400F38E74 /* ParseObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseObject.swift; sourceTree = "<group>"; };
 		4BBA8D111D376B460092308A /* PopupView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PopupView.xib; sourceTree = "<group>"; };
 		4BBA8D1F1D376CEB0092308A /* PopupView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopupView.swift; sourceTree = "<group>"; };
@@ -508,6 +514,7 @@
 		4BBA8D271D376E540092308A /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				4B66537B1D3C51BE00057D15 /* MainMapViewDataSource.swift */,
 				4B477A211D3721F800052172 /* MainMapViewController.swift */,
 				4B477A331D3728D200052172 /* LogPokemonViewController.swift */,
 				4B477A351D37304000052172 /* LogMapViewController.swift */,
@@ -519,6 +526,8 @@
 		4BBA8D2E1D3779D00092308A /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				4B66537D1D3C57DF00057D15 /* PopupNameView.xib */,
+				4B66537F1D3C59AE00057D15 /* PopupNameView.swift */,
 				4BBA8D111D376B460092308A /* PopupView.xib */,
 				4BBA8D1F1D376CEB0092308A /* PopupView.swift */,
 				4B0AC7511D3B166C00A07E06 /* Storyboards */,
@@ -849,6 +858,7 @@
 				4BBA8F701D38B6860092308A /* 109.png in Resources */,
 				4BBA8F561D38B6860092308A /* 083.png in Resources */,
 				4BBA8F301D38B6860092308A /* 045.png in Resources */,
+				4B66537E1D3C57DF00057D15 /* PopupNameView.xib in Resources */,
 				4BBA8F1E1D38B6860092308A /* 027.png in Resources */,
 				4BBA8F281D38B6860092308A /* 037.png in Resources */,
 				4BBA8F751D38B6860092308A /* 114.png in Resources */,
@@ -997,12 +1007,14 @@
 				4B477A381D37352E00052172 /* LocationManager.swift in Sources */,
 				4B477A201D3721F800052172 /* AppDelegate.swift in Sources */,
 				4B0AC7561D3B460100A07E06 /* AppCoordinator.swift in Sources */,
+				4B66537C1D3C51BE00057D15 /* MainMapViewDataSource.swift in Sources */,
 				4B477A361D37304000052172 /* LogMapViewController.swift in Sources */,
 				4B2D59041D37598D00EC3539 /* PMClient.swift in Sources */,
 				4B0AC75A1D3B68B200A07E06 /* MarkerInfoView.swift in Sources */,
 				4B0AC7431D3A1FBF00A07E06 /* QueryEncoder.swift in Sources */,
 				4B0AC7421D3A1FBF00A07E06 /* Operation.swift in Sources */,
 				4B0AC7461D3A1FBF00A07E06 /* Subscription.swift in Sources */,
+				4B6653801D3C59AE00057D15 /* PopupNameView.swift in Sources */,
 				4B0AC74C1D3B0C3D00A07E06 /* FilterViewController.swift in Sources */,
 				4B477A341D3728D200052172 /* LogPokemonViewController.swift in Sources */,
 				4B987B1E1D37522400F38E74 /* ParseObject.swift in Sources */,

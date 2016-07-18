@@ -71,7 +71,7 @@ class SubmissionCoordinator:NSObject {
     
     
     func dismissViewController(viewController:UIViewController) {
-        self.mainVC.title = nil
+        self.mainVC.titleLabel.text = nil
         viewController.dismissViewControllerAnimated(true, completion: {
             self.mainVC.turnOffBlur()
         })
