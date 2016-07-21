@@ -19,30 +19,7 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>4</string>
-	<key>Fabric</key>
-	<dict>
-		<key>APIKey</key>
-		<string>4252d89aaf538de24f0e2d6064cc9c4e8f26ea1f</string>
-		<key>Kits</key>
-		<array>
-			<dict>
-				<key>KitInfo</key>
-				<dict/>
-				<key>KitName</key>
-				<string>Crashlytics</string>
-			</dict>
-			<dict>
-				<key>KitInfo</key>
-				<dict>
-					<key>publishable</key>
-					<string>pk_test_0mAcKClhmv8X7BBLTyngBLqM</string>
-				</dict>
-				<key>KitName</key>
-				<string>STPAPIClient</string>
-			</dict>
-		</array>
-	</dict>
+	<string>8</string>
 	<key>LSApplicationCategoryType</key>
 	<string></string>
 	<key>LSRequiresIPhoneOS</key>
@@ -59,12 +36,6 @@
 	<key>UIAppFonts</key>
 	<array>
 		<string>Pocket Monk.otf</string>
-	</array>
-	<key>UIBackgroundModes</key>
-	<array>
-		<string>external-accessory</string>
-		<string>location</string>
-		<string>remote-notification</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>

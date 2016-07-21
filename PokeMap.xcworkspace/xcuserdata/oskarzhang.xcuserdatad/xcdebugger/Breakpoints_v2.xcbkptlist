@@ -9,29 +9,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "PokeMap/MainMapViewController.swift"
-            timestampString = "490493097.310845"
+            filePath = "PokeMap/PMClient.swift"
+            timestampString = "490730849.93355"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "189"
-            endingLineNumber = "189"
-            landmarkName = "didTapBlurView()"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "PokeMap/MarkerInfoView.swift"
-            timestampString = "490493731.774188"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "40"
-            endingLineNumber = "40"
-            landmarkName = "getView(_:charmaPoint:withMessage:charmaAction:)"
+            startingLineNumber = "41"
+            endingLineNumber = "41"
+            landmarkName = "getPokemonNearby(_:range:live:completion:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

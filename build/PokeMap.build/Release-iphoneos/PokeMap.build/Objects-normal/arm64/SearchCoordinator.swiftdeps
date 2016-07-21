@@ -1,0 +1,445 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+- "SearchCoordinator"
+provides-nominal:
+- "C7PokeMap17SearchCoordinator"
+provides-member:
+- ["C7PokeMap17SearchCoordinator", ""]
+provides-dynamic-lookup:
+- "mainVC"
+- "searchVC"
+- "dismissSearchView"
+- "showSearchView"
+depends-top-level:
+- "BooleanLiteralType"
+- "SearchCoordinator"
+- !private "UIStoryboard"
+- "PokemonSearchViewController"
+- "MainMapViewController"
+- !private "NSBundle"
+- !private "StringLiteralType"
+- "NSObject"
+depends-member:
+- !private ["Ps9AnyObject", "NSBundle"]
+- !private ["Ps9AnyObject", "UIStoryboard"]
+- !private ["Ps9AnyObject", "coordinator"]
+- !private ["Ps9AnyObject", "didUpdateFilter"]
+- ["Ps9AnyObject", "dismissSearchView"]
+- !private ["Ps9AnyObject", "dismissViewControllerAnimated"]
+- ["Ps9AnyObject", "init"]
+- !private ["Ps9AnyObject", "instantiateViewControllerWithIdentifier"]
+- !private ["Ps9AnyObject", "mainBundle"]
+- ["Ps9AnyObject", "mainVC"]
+- !private ["Ps9AnyObject", "modalPresentationStyle"]
+- !private ["Ps9AnyObject", "presentViewController"]
+- ["Ps9AnyObject", "searchVC"]
+- ["Ps9AnyObject", "showSearchView"]
+- !private ["Ps9AnyObject", "text"]
+- !private ["Ps9AnyObject", "titleLabel"]
+- !private ["Ps9AnyObject", "turnOffBlur"]
+- !private ["Ps9AnyObject", "turnOnBlur"]
+- !private ["Ps9AnyObject", "updateSearchButton"]
+- ["Ps9AnyObject", ""]
+- !private ["Ps11CVarArgType", "NSBundle"]
+- !private ["Ps11CVarArgType", "UIStoryboard"]
+- !private ["Ps11CVarArgType", "coordinator"]
+- !private ["Ps11CVarArgType", "didUpdateFilter"]
+- ["Ps11CVarArgType", "dismissSearchView"]
+- !private ["Ps11CVarArgType", "dismissViewControllerAnimated"]
+- ["Ps11CVarArgType", "init"]
+- !private ["Ps11CVarArgType", "instantiateViewControllerWithIdentifier"]
+- !private ["Ps11CVarArgType", "mainBundle"]
+- ["Ps11CVarArgType", "mainVC"]
+- !private ["Ps11CVarArgType", "modalPresentationStyle"]
+- !private ["Ps11CVarArgType", "presentViewController"]
+- ["Ps11CVarArgType", "searchVC"]
+- ["Ps11CVarArgType", "showSearchView"]
+- !private ["Ps11CVarArgType", "text"]
+- !private ["Ps11CVarArgType", "titleLabel"]
+- !private ["Ps11CVarArgType", "turnOffBlur"]
+- !private ["Ps11CVarArgType", "turnOnBlur"]
+- !private ["Ps11CVarArgType", "updateSearchButton"]
+- ["Ps11CVarArgType", ""]
+- !private ["Ps28CustomDebugStringConvertible", "NSBundle"]
+- !private ["Ps28CustomDebugStringConvertible", "UIStoryboard"]
+- !private ["Ps28CustomDebugStringConvertible", "coordinator"]
+- !private ["Ps28CustomDebugStringConvertible", "didUpdateFilter"]
+- ["Ps28CustomDebugStringConvertible", "dismissSearchView"]
+- !private ["Ps28CustomDebugStringConvertible", "dismissViewControllerAnimated"]
+- ["Ps28CustomDebugStringConvertible", "init"]
+- !private ["Ps28CustomDebugStringConvertible", "instantiateViewControllerWithIdentifier"]
+- !private ["Ps28CustomDebugStringConvertible", "mainBundle"]
+- ["Ps28CustomDebugStringConvertible", "mainVC"]
+- !private ["Ps28CustomDebugStringConvertible", "modalPresentationStyle"]
+- !private ["Ps28CustomDebugStringConvertible", "presentViewController"]
+- ["Ps28CustomDebugStringConvertible", "searchVC"]
+- ["Ps28CustomDebugStringConvertible", "showSearchView"]
+- !private ["Ps28CustomDebugStringConvertible", "text"]
+- !private ["Ps28CustomDebugStringConvertible", "titleLabel"]
+- !private ["Ps28CustomDebugStringConvertible", "turnOffBlur"]
+- !private ["Ps28CustomDebugStringConvertible", "turnOnBlur"]
+- !private ["Ps28CustomDebugStringConvertible", "updateSearchButton"]
+- ["Ps28CustomDebugStringConvertible", ""]
+- !private ["Ps23CustomStringConvertible", "NSBundle"]
+- !private ["Ps23CustomStringConvertible", "UIStoryboard"]
+- !private ["Ps23CustomStringConvertible", "coordinator"]
+- !private ["Ps23CustomStringConvertible", "didUpdateFilter"]
+- ["Ps23CustomStringConvertible", "dismissSearchView"]
+- !private ["Ps23CustomStringConvertible", "dismissViewControllerAnimated"]
+- ["Ps23CustomStringConvertible", "init"]
+- !private ["Ps23CustomStringConvertible", "instantiateViewControllerWithIdentifier"]
+- !private ["Ps23CustomStringConvertible", "mainBundle"]
+- ["Ps23CustomStringConvertible", "mainVC"]
+- !private ["Ps23CustomStringConvertible", "modalPresentationStyle"]
+- !private ["Ps23CustomStringConvertible", "presentViewController"]
+- ["Ps23CustomStringConvertible", "searchVC"]
+- ["Ps23CustomStringConvertible", "showSearchView"]
+- !private ["Ps23CustomStringConvertible", "text"]
+- !private ["Ps23CustomStringConvertible", "titleLabel"]
+- !private ["Ps23CustomStringConvertible", "turnOffBlur"]
+- !private ["Ps23CustomStringConvertible", "turnOnBlur"]
+- !private ["Ps23CustomStringConvertible", "updateSearchButton"]
+- ["Ps23CustomStringConvertible", ""]
+- !private ["P7PokeMap19EasyTipViewDelegate", "didUpdateFilter"]
+- !private ["P7PokeMap19EasyTipViewDelegate", "presentViewController"]
+- !private ["P7PokeMap19EasyTipViewDelegate", "titleLabel"]
+- !private ["P7PokeMap19EasyTipViewDelegate", "turnOffBlur"]
+- !private ["P7PokeMap19EasyTipViewDelegate", "turnOnBlur"]
+- !private ["P7PokeMap19EasyTipViewDelegate", "updateSearchButton"]
+- !private ["Ps9Equatable", "NSBundle"]
+- !private ["Ps9Equatable", "OverCurrentContext"]
+- !private ["Ps9Equatable", "UIStoryboard"]
+- !private ["Ps9Equatable", "coordinator"]
+- !private ["Ps9Equatable", "didUpdateFilter"]
+- ["Ps9Equatable", "dismissSearchView"]
+- !private ["Ps9Equatable", "dismissViewControllerAnimated"]
+- ["Ps9Equatable", "init"]
+- !private ["Ps9Equatable", "instantiateViewControllerWithIdentifier"]
+- !private ["Ps9Equatable", "mainBundle"]
+- ["Ps9Equatable", "mainVC"]
+- !private ["Ps9Equatable", "modalPresentationStyle"]
+- !private ["Ps9Equatable", "presentViewController"]
+- ["Ps9Equatable", "searchVC"]
+- ["Ps9Equatable", "showSearchView"]
+- !private ["Ps9Equatable", "text"]
+- !private ["Ps9Equatable", "titleLabel"]
+- !private ["Ps9Equatable", "turnOffBlur"]
+- !private ["Ps9Equatable", "turnOnBlur"]
+- !private ["Ps9Equatable", "updateSearchButton"]
+- ["Ps9Equatable", ""]
+- !private ["PSo18GMSMapViewDelegate", "didUpdateFilter"]
+- !private ["PSo18GMSMapViewDelegate", "presentViewController"]
+- !private ["PSo18GMSMapViewDelegate", "titleLabel"]
+- !private ["PSo18GMSMapViewDelegate", "turnOffBlur"]
+- !private ["PSo18GMSMapViewDelegate", "turnOnBlur"]
+- !private ["PSo18GMSMapViewDelegate", "updateSearchButton"]
+- !private ["Ps8Hashable", "NSBundle"]
+- !private ["Ps8Hashable", "OverCurrentContext"]
+- !private ["Ps8Hashable", "UIStoryboard"]
+- !private ["Ps8Hashable", "coordinator"]
+- !private ["Ps8Hashable", "didUpdateFilter"]
+- ["Ps8Hashable", "dismissSearchView"]
+- !private ["Ps8Hashable", "dismissViewControllerAnimated"]
+- ["Ps8Hashable", "init"]
+- !private ["Ps8Hashable", "instantiateViewControllerWithIdentifier"]
+- !private ["Ps8Hashable", "mainBundle"]
+- ["Ps8Hashable", "mainVC"]
+- !private ["Ps8Hashable", "modalPresentationStyle"]
+- !private ["Ps8Hashable", "presentViewController"]
+- ["Ps8Hashable", "searchVC"]
+- ["Ps8Hashable", "showSearchView"]
+- !private ["Ps8Hashable", "text"]
+- !private ["Ps8Hashable", "titleLabel"]
+- !private ["Ps8Hashable", "turnOffBlur"]
+- !private ["Ps8Hashable", "turnOnBlur"]
+- !private ["Ps8Hashable", "updateSearchButton"]
+- ["Ps8Hashable", ""]
+- !private ["C7PokeMap24LogPokemonViewController", "coordinator"]
+- !private ["C7PokeMap24LogPokemonViewController", "dismissViewControllerAnimated"]
+- !private ["C7PokeMap24LogPokemonViewController", "modalPresentationStyle"]
+- !private ["C7PokeMap21MainMapViewController", "didUpdateFilter"]
+- !private ["C7PokeMap21MainMapViewController", "presentViewController"]
+- !private ["C7PokeMap21MainMapViewController", "titleLabel"]
+- !private ["C7PokeMap21MainMapViewController", "turnOffBlur"]
+- !private ["C7PokeMap21MainMapViewController", "turnOnBlur"]
+- !private ["C7PokeMap21MainMapViewController", "updateSearchButton"]
+- !private ["CSo8NSBundle", "mainBundle"]
+- !private ["PSo8NSCoding", "coordinator"]
+- !private ["PSo8NSCoding", "didUpdateFilter"]
+- !private ["PSo8NSCoding", "dismissViewControllerAnimated"]
+- !private ["PSo8NSCoding", "modalPresentationStyle"]
+- !private ["PSo8NSCoding", "presentViewController"]
+- !private ["PSo8NSCoding", "text"]
+- !private ["PSo8NSCoding", "titleLabel"]
+- !private ["PSo8NSCoding", "turnOffBlur"]
+- !private ["PSo8NSCoding", "turnOnBlur"]
+- !private ["PSo8NSCoding", "updateSearchButton"]
+- !private ["PSo26NSExtensionRequestHandling", "coordinator"]
+- !private ["PSo26NSExtensionRequestHandling", "didUpdateFilter"]
+- !private ["PSo26NSExtensionRequestHandling", "dismissViewControllerAnimated"]
+- !private ["PSo26NSExtensionRequestHandling", "modalPresentationStyle"]
+- !private ["PSo26NSExtensionRequestHandling", "presentViewController"]
+- !private ["PSo26NSExtensionRequestHandling", "titleLabel"]
+- !private ["PSo26NSExtensionRequestHandling", "turnOffBlur"]
+- !private ["PSo26NSExtensionRequestHandling", "turnOnBlur"]
+- !private ["PSo26NSExtensionRequestHandling", "updateSearchButton"]
+- ["CSo8NSObject", "MainMapViewController"]
+- !private ["CSo8NSObject", "NSBundle"]
+- ["CSo8NSObject", "PokemonSearchViewController"]
+- !private ["CSo8NSObject", "UIStoryboard"]
+- !private ["CSo8NSObject", "coordinator"]
+- !private ["CSo8NSObject", "didUpdateFilter"]
+- ["CSo8NSObject", "dismissSearchView"]
+- !private ["CSo8NSObject", "dismissViewControllerAnimated"]
+- ["CSo8NSObject", "init"]
+- !private ["CSo8NSObject", "instantiateViewControllerWithIdentifier"]
+- !private ["CSo8NSObject", "mainBundle"]
+- ["CSo8NSObject", "mainVC"]
+- !private ["CSo8NSObject", "modalPresentationStyle"]
+- !private ["CSo8NSObject", "presentViewController"]
+- ["CSo8NSObject", "searchVC"]
+- ["CSo8NSObject", "showSearchView"]
+- !private ["CSo8NSObject", "text"]
+- !private ["CSo8NSObject", "titleLabel"]
+- !private ["CSo8NSObject", "turnOffBlur"]
+- !private ["CSo8NSObject", "turnOnBlur"]
+- !private ["CSo8NSObject", "updateSearchButton"]
+- ["CSo8NSObject", ""]
+- !private ["PSo16NSObjectProtocol", "NSBundle"]
+- !private ["PSo16NSObjectProtocol", "UIStoryboard"]
+- !private ["PSo16NSObjectProtocol", "coordinator"]
+- !private ["PSo16NSObjectProtocol", "didUpdateFilter"]
+- ["PSo16NSObjectProtocol", "dismissSearchView"]
+- !private ["PSo16NSObjectProtocol", "dismissViewControllerAnimated"]
+- ["PSo16NSObjectProtocol", "init"]
+- !private ["PSo16NSObjectProtocol", "instantiateViewControllerWithIdentifier"]
+- !private ["PSo16NSObjectProtocol", "mainBundle"]
+- ["PSo16NSObjectProtocol", "mainVC"]
+- !private ["PSo16NSObjectProtocol", "modalPresentationStyle"]
+- !private ["PSo16NSObjectProtocol", "presentViewController"]
+- ["PSo16NSObjectProtocol", "searchVC"]
+- ["PSo16NSObjectProtocol", "showSearchView"]
+- !private ["PSo16NSObjectProtocol", "text"]
+- !private ["PSo16NSObjectProtocol", "titleLabel"]
+- !private ["PSo16NSObjectProtocol", "turnOffBlur"]
+- !private ["PSo16NSObjectProtocol", "turnOnBlur"]
+- !private ["PSo16NSObjectProtocol", "updateSearchButton"]
+- ["PSo16NSObjectProtocol", ""]
+- !private ["Sq", "deinit"]
+- !private ["C7PokeMap27PokemonSearchViewController", "coordinator"]
+- !private ["C7PokeMap27PokemonSearchViewController", "dismissViewControllerAnimated"]
+- !private ["C7PokeMap27PokemonSearchViewController", "modalPresentationStyle"]
+- !private ["Ps16RawRepresentable", "OverCurrentContext"]
+- ["C7PokeMap17SearchCoordinator", "MainMapViewController"]
+- !private ["C7PokeMap17SearchCoordinator", "NSBundle"]
+- ["C7PokeMap17SearchCoordinator", "PokemonSearchViewController"]
+- !private ["C7PokeMap17SearchCoordinator", "UIStoryboard"]
+- ["C7PokeMap17SearchCoordinator", "deinit"]
+- ["C7PokeMap17SearchCoordinator", "dismissSearchView"]
+- ["C7PokeMap17SearchCoordinator", "init"]
+- ["C7PokeMap17SearchCoordinator", "mainVC"]
+- ["C7PokeMap17SearchCoordinator", "searchVC"]
+- ["C7PokeMap17SearchCoordinator", "showSearchView"]
+- !private ["Vs12StaticString", "deinit"]
+- !private ["PSo29UIAccessibilityIdentification", "text"]
+- !private ["PSo12UIAppearance", "text"]
+- !private ["PSo21UIAppearanceContainer", "coordinator"]
+- !private ["PSo21UIAppearanceContainer", "didUpdateFilter"]
+- !private ["PSo21UIAppearanceContainer", "dismissViewControllerAnimated"]
+- !private ["PSo21UIAppearanceContainer", "modalPresentationStyle"]
+- !private ["PSo21UIAppearanceContainer", "presentViewController"]
+- !private ["PSo21UIAppearanceContainer", "text"]
+- !private ["PSo21UIAppearanceContainer", "titleLabel"]
+- !private ["PSo21UIAppearanceContainer", "turnOffBlur"]
+- !private ["PSo21UIAppearanceContainer", "turnOnBlur"]
+- !private ["PSo21UIAppearanceContainer", "updateSearchButton"]
+- !private ["PSo24UIBarPositioningDelegate", "coordinator"]
+- !private ["PSo24UIBarPositioningDelegate", "dismissViewControllerAnimated"]
+- !private ["PSo24UIBarPositioningDelegate", "modalPresentationStyle"]
+- !private ["PSo18UIContentContainer", "coordinator"]
+- !private ["PSo18UIContentContainer", "didUpdateFilter"]
+- !private ["PSo18UIContentContainer", "dismissViewControllerAnimated"]
+- !private ["PSo18UIContentContainer", "modalPresentationStyle"]
+- !private ["PSo18UIContentContainer", "presentViewController"]
+- !private ["PSo18UIContentContainer", "titleLabel"]
+- !private ["PSo18UIContentContainer", "turnOffBlur"]
+- !private ["PSo18UIContentContainer", "turnOnBlur"]
+- !private ["PSo18UIContentContainer", "updateSearchButton"]
+- !private ["PSo17UICoordinateSpace", "text"]
+- !private ["PSo13UIDynamicItem", "text"]
+- !private ["PSo18UIFocusEnvironment", "coordinator"]
+- !private ["PSo18UIFocusEnvironment", "didUpdateFilter"]
+- !private ["PSo18UIFocusEnvironment", "dismissViewControllerAnimated"]
+- !private ["PSo18UIFocusEnvironment", "modalPresentationStyle"]
+- !private ["PSo18UIFocusEnvironment", "presentViewController"]
+- !private ["PSo18UIFocusEnvironment", "text"]
+- !private ["PSo18UIFocusEnvironment", "titleLabel"]
+- !private ["PSo18UIFocusEnvironment", "turnOffBlur"]
+- !private ["PSo18UIFocusEnvironment", "turnOnBlur"]
+- !private ["PSo18UIFocusEnvironment", "updateSearchButton"]
+- !private ["CSo7UILabel", "text"]
+- !private ["OSC24UIModalPresentationStyle", "OverCurrentContext"]
+- !private ["CSo11UIResponder", "coordinator"]
+- !private ["CSo11UIResponder", "didUpdateFilter"]
+- !private ["CSo11UIResponder", "dismissViewControllerAnimated"]
+- !private ["CSo11UIResponder", "modalPresentationStyle"]
+- !private ["CSo11UIResponder", "presentViewController"]
+- !private ["CSo11UIResponder", "text"]
+- !private ["CSo11UIResponder", "titleLabel"]
+- !private ["CSo11UIResponder", "turnOffBlur"]
+- !private ["CSo11UIResponder", "turnOnBlur"]
+- !private ["CSo11UIResponder", "updateSearchButton"]
+- !private ["PSo20UIScrollViewDelegate", "coordinator"]
+- !private ["PSo20UIScrollViewDelegate", "dismissViewControllerAnimated"]
+- !private ["PSo20UIScrollViewDelegate", "modalPresentationStyle"]
+- !private ["PSo19UISearchBarDelegate", "coordinator"]
+- !private ["PSo19UISearchBarDelegate", "dismissViewControllerAnimated"]
+- !private ["PSo19UISearchBarDelegate", "modalPresentationStyle"]
+- !private ["PSo16UIStateRestoring", "coordinator"]
+- !private ["PSo16UIStateRestoring", "didUpdateFilter"]
+- !private ["PSo16UIStateRestoring", "dismissViewControllerAnimated"]
+- !private ["PSo16UIStateRestoring", "modalPresentationStyle"]
+- !private ["PSo16UIStateRestoring", "presentViewController"]
+- !private ["PSo16UIStateRestoring", "titleLabel"]
+- !private ["PSo16UIStateRestoring", "turnOffBlur"]
+- !private ["PSo16UIStateRestoring", "turnOnBlur"]
+- !private ["PSo16UIStateRestoring", "updateSearchButton"]
+- !private ["CSo12UIStoryboard", "init"]
+- !private ["CSo12UIStoryboard", "instantiateViewControllerWithIdentifier"]
+- !private ["PSo19UITableViewDelegate", "coordinator"]
+- !private ["PSo19UITableViewDelegate", "dismissViewControllerAnimated"]
+- !private ["PSo19UITableViewDelegate", "modalPresentationStyle"]
+- !private ["PSo18UITraitEnvironment", "coordinator"]
+- !private ["PSo18UITraitEnvironment", "didUpdateFilter"]
+- !private ["PSo18UITraitEnvironment", "dismissViewControllerAnimated"]
+- !private ["PSo18UITraitEnvironment", "modalPresentationStyle"]
+- !private ["PSo18UITraitEnvironment", "presentViewController"]
+- !private ["PSo18UITraitEnvironment", "text"]
+- !private ["PSo18UITraitEnvironment", "titleLabel"]
+- !private ["PSo18UITraitEnvironment", "turnOffBlur"]
+- !private ["PSo18UITraitEnvironment", "turnOnBlur"]
+- !private ["PSo18UITraitEnvironment", "updateSearchButton"]
+- !private ["CSo6UIView", "text"]
+- !private ["CSo16UIViewController", "coordinator"]
+- !private ["CSo16UIViewController", "deinit"]
+- !private ["CSo16UIViewController", "didUpdateFilter"]
+- !private ["CSo16UIViewController", "dismissViewControllerAnimated"]
+- !private ["CSo16UIViewController", "modalPresentationStyle"]
+- !private ["CSo16UIViewController", "presentViewController"]
+- !private ["CSo16UIViewController", "titleLabel"]
+- !private ["CSo16UIViewController", "turnOffBlur"]
+- !private ["CSo16UIViewController", "turnOnBlur"]
+- !private ["CSo16UIViewController", "updateSearchButton"]
+- !private ["Ps12_Reflectable", "text"]
+depends-nominal:
+- "Ps9AnyObject"
+- "Ps11CVarArgType"
+- "Ps28CustomDebugStringConvertible"
+- "Ps23CustomStringConvertible"
+- !private "P7PokeMap19EasyTipViewDelegate"
+- "Ps9Equatable"
+- !private "PSo18GMSMapViewDelegate"
+- "Ps8Hashable"
+- !private "C7PokeMap24LogPokemonViewController"
+- !private "C7PokeMap21MainMapViewController"
+- !private "CSo8NSBundle"
+- !private "PSo8NSCoding"
+- !private "PSo26NSExtensionRequestHandling"
+- "CSo8NSObject"
+- "PSo16NSObjectProtocol"
+- !private "Sq"
+- !private "C7PokeMap27PokemonSearchViewController"
+- !private "Ps16RawRepresentable"
+- "C7PokeMap17SearchCoordinator"
+- !private "Vs12StaticString"
+- !private "PSo29UIAccessibilityIdentification"
+- !private "PSo12UIAppearance"
+- !private "PSo21UIAppearanceContainer"
+- !private "PSo24UIBarPositioningDelegate"
+- !private "PSo18UIContentContainer"
+- !private "PSo17UICoordinateSpace"
+- !private "PSo13UIDynamicItem"
+- !private "PSo18UIFocusEnvironment"
+- !private "CSo7UILabel"
+- !private "OSC24UIModalPresentationStyle"
+- !private "CSo11UIResponder"
+- !private "PSo20UIScrollViewDelegate"
+- !private "PSo19UISearchBarDelegate"
+- !private "PSo16UIStateRestoring"
+- !private "CSo12UIStoryboard"
+- !private "PSo19UITableViewDelegate"
+- !private "PSo18UITraitEnvironment"
+- !private "CSo6UIView"
+- !private "CSo16UIViewController"
+- !private "Ps12_Reflectable"
+depends-dynamic-lookup:
+depends-external:
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/Swift.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/Foundation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/Darwin.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/Dispatch.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/ObjectiveC.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/CoreGraphics.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/UIKit.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/CoreImage.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/CoreLocation.swiftmodule"
+- "/Users/oskarzhang/workspace/Poke-New/new/PokeMap/Pods/Headers/Public/GoogleMaps/GoogleMaps/GMSURLTileLayer.h"
+- "/Users/oskarzhang/workspace/Poke-New/new/PokeMap/Pods/Headers/Public/GoogleMaps/GoogleMaps/GMSTileLayer.h"
+- "/Users/oskarzhang/workspace/Poke-New/new/PokeMap/Pods/Headers/Public/GoogleMaps/GoogleMaps/GMSSyncTileLayer.h"
+- "/Users/oskarzhang/workspace/Poke-New/new/PokeMap/Pods/Headers/Public/GoogleMaps/GoogleMaps/GMSServices.h"
+- "/Users/oskarzhang/workspace/Poke-New/new/PokeMap/Pods/Headers/Public/GoogleMaps/GoogleMaps/GMSPolyline.h"
+- "/Users/oskarzhang/workspace/Poke-New/new/PokeMap/Pods/Headers/Public/GoogleMaps/GoogleMaps/GMSPolygon.h"
+- "/Users/oskarzhang/workspace/Poke-New/new/PokeMap/Pods/Headers/Public/GoogleMaps/GoogleMaps/GMSPlaceTypes.h"
+- "/Users/oskarzhang/workspace/Poke-New/new/PokeMap/Pods/Headers/Public/GoogleMaps/GoogleMaps/GMSUserAddedPlace.h"
+- "/Users/oskarzhang/workspace/Poke-New/new/PokeMap/Pods/Headers/Public/GoogleMaps/GoogleMaps/GMSPlacesErrors.h"
+- "/Users/oskarzhang/workspace/Poke-New/new/PokeMap/Pods/Headers/Public/GoogleMaps/GoogleMaps/GMSPlacesClient.h"
+- "/Users/oskarzhang/workspace/Poke-New/new/PokeMap/Pods/Headers/Public/GoogleMaps/GoogleMaps/GMSPlacePickerConfig.h"
+- "/Users/oskarzhang/workspace/Poke-New/new/PokeMap/Pods/Headers/Public/GoogleMaps/GoogleMaps/GMSPlacePicker.h"
+- "/Users/oskarzhang/workspace/Poke-New/new/PokeMap/Pods/Headers/Public/GoogleMaps/GoogleMaps/GMSPlacePhotoMetadataList.h"
+- "/Users/oskarzhang/workspace/Poke-New/new/PokeMap/Pods/Headers/Public/GoogleMaps/GoogleMaps/GMSPlacePhotoMetadata.h"
+- "/Users/oskarzhang/workspace/Poke-New/new/PokeMap/Pods/Headers/Public/GoogleMaps/GoogleMaps/GMSPlaceLikelihoodList.h"
+- "/Users/oskarzhang/workspace/Poke-New/new/PokeMap/Pods/Headers/Public/GoogleMaps/GoogleMaps/GMSPlaceLikelihood.h"
+- "/Users/oskarzhang/workspace/Poke-New/new/PokeMap/Pods/Headers/Public/GoogleMaps/GoogleMaps/GMSPanoramaView.h"
+- "/Users/oskarzhang/workspace/Poke-New/new/PokeMap/Pods/Headers/Public/GoogleMaps/GoogleMaps/GMSPanoramaService.h"
+- "/Users/oskarzhang/workspace/Poke-New/new/PokeMap/Pods/Headers/Public/GoogleMaps/GoogleMaps/GMSPanoramaLink.h"
+- "/Users/oskarzhang/workspace/Poke-New/new/PokeMap/Pods/Headers/Public/GoogleMaps/GoogleMaps/GMSPanoramaLayer.h"
+- "/Users/oskarzhang/workspace/Poke-New/new/PokeMap/Pods/Headers/Public/GoogleMaps/GoogleMaps/GMSPanoramaCameraUpdate.h"
+- "/Users/oskarzhang/workspace/Poke-New/new/PokeMap/Pods/Headers/Public/GoogleMaps/GoogleMaps/GMSPanoramaCamera.h"
+- "/Users/oskarzhang/workspace/Poke-New/new/PokeMap/Pods/Headers/Public/GoogleMaps/GoogleMaps/GMSPanorama.h"
+- "/Users/oskarzhang/workspace/Poke-New/new/PokeMap/Pods/Headers/Public/GoogleMaps/GoogleMaps/GMSOrientation.h"
+- "/Users/oskarzhang/workspace/Poke-New/new/PokeMap/Pods/Headers/Public/GoogleMaps/GoogleMaps/GMSMutablePath.h"
+- "/Users/oskarzhang/workspace/Poke-New/new/PokeMap/Pods/Headers/Public/GoogleMaps/GoogleMaps/GMSMarkerLayer.h"
+- "/Users/oskarzhang/workspace/Poke-New/new/PokeMap/Pods/Headers/Public/GoogleMaps/GoogleMaps/GMSMarker.h"
+- "/Users/oskarzhang/workspace/Poke-New/new/PokeMap/Pods/Headers/Public/GoogleMaps/GoogleMaps/GMSUISettings.h"
+- "/Users/oskarzhang/workspace/Poke-New/new/PokeMap/Pods/Headers/Public/GoogleMaps/GoogleMaps/GMSMapView.h"
+- "/Users/oskarzhang/workspace/Poke-New/new/PokeMap/Pods/Headers/Public/GoogleMaps/GoogleMaps/GMSMapView+Animation.h"
+- "/Users/oskarzhang/workspace/Poke-New/new/PokeMap/Pods/Headers/Public/GoogleMaps/GoogleMaps/GMSMapLayer.h"
+- "/Users/oskarzhang/workspace/Poke-New/new/PokeMap/Pods/Headers/Public/GoogleMaps/GoogleMaps/GMSIndoorLevel.h"
+- "/Users/oskarzhang/workspace/Poke-New/new/PokeMap/Pods/Headers/Public/GoogleMaps/GoogleMaps/GMSIndoorDisplay.h"
+- "/Users/oskarzhang/workspace/Poke-New/new/PokeMap/Pods/Headers/Public/GoogleMaps/GoogleMaps/GMSIndoorBuilding.h"
+- "/Users/oskarzhang/workspace/Poke-New/new/PokeMap/Pods/Headers/Public/GoogleMaps/GoogleMaps/GMSGroundOverlay.h"
+- "/Users/oskarzhang/workspace/Poke-New/new/PokeMap/Pods/Headers/Public/GoogleMaps/GoogleMaps/GMSPath.h"
+- "/Users/oskarzhang/workspace/Poke-New/new/PokeMap/Pods/Headers/Public/GoogleMaps/GoogleMaps/GMSGeometryUtils.h"
+- "/Users/oskarzhang/workspace/Poke-New/new/PokeMap/Pods/Headers/Public/GoogleMaps/GoogleMaps/GMSGeocoder.h"
+- "/Users/oskarzhang/workspace/Poke-New/new/PokeMap/Pods/Headers/Public/GoogleMaps/GoogleMaps/GMSOverlay.h"
+- "/Users/oskarzhang/workspace/Poke-New/new/PokeMap/Pods/Headers/Public/GoogleMaps/GoogleMaps/GMSCircle.h"
+- "/Users/oskarzhang/workspace/Poke-New/new/PokeMap/Pods/Headers/Public/GoogleMaps/GoogleMaps/GMSCameraUpdate.h"
+- "/Users/oskarzhang/workspace/Poke-New/new/PokeMap/Pods/Headers/Public/GoogleMaps/GoogleMaps/GMSCameraPosition.h"
+- "/Users/oskarzhang/workspace/Poke-New/new/PokeMap/Pods/Headers/Public/GoogleMaps/GoogleMaps/GMSCALayer.h"
+- "/Users/oskarzhang/workspace/Poke-New/new/PokeMap/Pods/Headers/Public/GoogleMaps/GoogleMaps/GMSAutocompleteViewController.h"
+- "/Users/oskarzhang/workspace/Poke-New/new/PokeMap/Pods/Headers/Public/GoogleMaps/GoogleMaps/GMSAutocompleteTableDataSource.h"
+- "/Users/oskarzhang/workspace/Poke-New/new/PokeMap/Pods/Headers/Public/GoogleMaps/GoogleMaps/GMSPlace.h"
+- "/Users/oskarzhang/workspace/Poke-New/new/PokeMap/Pods/Headers/Public/GoogleMaps/GoogleMaps/GMSAutocompleteResultsViewController.h"
+- "/Users/oskarzhang/workspace/Poke-New/new/PokeMap/Pods/Headers/Public/GoogleMaps/GoogleMaps/GMSAutocompletePrediction.h"
+- "/Users/oskarzhang/workspace/Poke-New/new/PokeMap/Pods/Headers/Public/GoogleMaps/GoogleMaps/GMSAutocompleteMatchFragment.h"
+- "/Users/oskarzhang/workspace/Poke-New/new/PokeMap/Pods/Headers/Public/GoogleMaps/GoogleMaps/GMSAutocompleteFilter.h"
+- "/Users/oskarzhang/workspace/Poke-New/new/PokeMap/Pods/Headers/Public/GoogleMaps/GoogleMaps/GMSProjection.h"
+- "/Users/oskarzhang/workspace/Poke-New/new/PokeMap/Pods/Headers/Public/GoogleMaps/GoogleMaps/GMSCoordinateBounds.h"
+- "/Users/oskarzhang/workspace/Poke-New/new/PokeMap/Pods/Headers/Public/GoogleMaps/GoogleMaps/GMSAutocompleteFetcher.h"
+- "/Users/oskarzhang/workspace/Poke-New/new/PokeMap/Pods/Headers/Public/GoogleMaps/GoogleMaps/GMSAddressComponent.h"
+- "/Users/oskarzhang/workspace/Poke-New/new/PokeMap/Pods/Headers/Public/GoogleMaps/GoogleMaps/GMSDeprecationMacros.h"
+- "/Users/oskarzhang/workspace/Poke-New/new/PokeMap/Pods/Headers/Public/GoogleMaps/GoogleMaps/GMSCompatabilityMacros.h"
+- "/Users/oskarzhang/workspace/Poke-New/new/PokeMap/Pods/Headers/Public/GoogleMaps/GoogleMaps/GMSAddress.h"
+- "/Users/oskarzhang/workspace/Poke-New/new/PokeMap/Pods/GoogleMaps/Frameworks/GoogleMaps.framework/Headers/GoogleMaps.h"
+- "/Users/oskarzhang/workspace/Poke-New/new/PokeMap/Pods/GoogleMaps/Frameworks/GoogleMaps.framework/Modules/module.modulemap"
+interface-hash: "45018ca37af063ddf0cd3fd07e6e9124"

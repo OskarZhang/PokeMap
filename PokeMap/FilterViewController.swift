@@ -13,7 +13,6 @@ class FilterViewController: UIViewController,UITableViewDataSource,UITableViewDe
     var types:[Type]!
     var checked:[Bool]!
     var selectedTypes:[Type]!
-    
     weak var coordinator:FilterCoordinator!
     override func viewDidLoad() {
         PMClient.sharedClient.getTypes { (types, selectedTypes, error) in
@@ -21,14 +20,15 @@ class FilterViewController: UIViewController,UITableViewDataSource,UITableViewDe
                 self.types = types
                 self.selectedTypes = selectedTypes
                 self.setChecked()
-                self.tableView.reloadData()
+                
+                self.tableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: .Fade)
             }
         }
         tableView.dataSource = self
         tableView.delegate = self
         tableView.estimatedRowHeight = 114
         tableView.rowHeight = UITableViewAutomaticDimension
-
+        tableView.tableFooterView = UIView()
     }
     
     func setChecked() {
@@ -42,16 +42,29 @@ class FilterViewController: UIViewController,UITableViewDataSource,UITableViewDe
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return types == nil ? 0 : types.count
+        return types == nil ? 0 : types.count + 1
     }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("filterCell") as! FilterCell
-        let type = types[indexPath.item]
-        cell.titleLabel.text = type.name
-        let tintColor = UIColor(hex: type.color!.integerValue)
-        cell.titleLabel.textColor = tintColor
-        cell.accessoryType = checked[indexPath.item] ? .Checkmark : .None
-        cell.tintColor = tintColor
+        
+        if indexPath.item == 0 {
+            cell.titleLabel.text = "All Types"
+            cell.titleLabel.textColor = UIColor(hex: 0xE45C38)
+            cell.tintColor = UIColor(hex: 0xE45C38)
+            cell.accessoryType = checked.contains(true) ? .None : .Checkmark
+        }
+        else
+        {
+            let type = types[indexPath.item-1]
+            cell.titleLabel.text = type.name
+            if let color = type.color {
+                let tintColor = UIColor(hex: color.integerValue)
+                cell.titleLabel.textColor = tintColor
+                cell.tintColor = tintColor
+            }
+            cell.accessoryType = checked[indexPath.item-1] ? .Checkmark : .None
+        
+        }
         return cell
     }
     @IBAction func saveAll() {
@@ -66,8 +79,17 @@ class FilterViewController: UIViewController,UITableViewDataSource,UITableViewDe
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        checked[indexPath.item] = !checked[indexPath.item]
-        self.tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .None)
+        if indexPath.item == 0 {
+            checked = Array<Bool>(count: types.count,repeatedValue: false)
+            
+        }
+        else {
+            checked[indexPath.item-1] = !checked[indexPath.item-1]
+            
+        }
+//        self.tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .None)
+        self.tableView.reloadData()
+
     }
 
 }

@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="Pocket Monk.otf">
+            <string>PocketMonk</string>
+        </mutableArray>
+    </customFonts>
+    <scenes>
+        <!--Pokemon Search View Controller-->
+        <scene sceneID="VfY-jn-bKn">
+            <objects>
+                <viewController storyboardIdentifier="pokemonSearchViewController" id="Uhy-dU-9sf" customClass="PokemonSearchViewController" customModule="PokeMap" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="dOu-lI-nTB"/>
+                        <viewControllerLayoutGuide type="bottom" id="pqs-Nz-Nm5"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="IIi-cE-5FP">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="fOh-Zy-Zpo">
+                                <rect key="frame" x="0.0" y="100" width="600" height="44"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="114" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="OKA-g1-55E">
+                                <rect key="frame" x="20" y="144" width="560" height="448"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="searchCell" rowHeight="114" id="FJj-jU-GRZ" customClass="PokemonSearchCell" customModule="PokeMap" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="560" height="114"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="FJj-jU-GRZ" id="zBO-Fj-fS0">
+                                            <rect key="frame" x="0.0" y="0.0" width="560" height="114"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YbN-ty-18h">
+                                                    <rect key="frame" x="0.0" y="7" width="560" height="97.5"/>
+                                                    <subviews>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uff-OO-zMU">
+                                                            <rect key="frame" x="470" y="8" width="81.5" height="81.5"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="81.5" id="Abz-os-vge"/>
+                                                                <constraint firstAttribute="height" constant="81.5" id="dPX-Yi-Vjp"/>
+                                                            </constraints>
+                                                        </imageView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="asda" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Hy-HL-gkU">
+                                                            <rect key="frame" x="8" y="8" width="454" height="81.5"/>
+                                                            <fontDescription key="fontDescription" name="PocketMonk" family="Pocket Monk" pointSize="26"/>
+                                                            <color key="textColor" red="0.0078431372550000003" green="0.1019607843" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.34999999999999998" colorSpace="calibratedRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="bottom" secondItem="uff-OO-zMU" secondAttribute="bottom" constant="8" id="5ZT-mq-sSc"/>
+                                                        <constraint firstAttribute="trailing" secondItem="uff-OO-zMU" secondAttribute="trailing" constant="8.5" id="BbP-4o-4T2"/>
+                                                        <constraint firstItem="7Hy-HL-gkU" firstAttribute="top" secondItem="YbN-ty-18h" secondAttribute="top" constant="8" id="DP0-YD-q8d"/>
+                                                        <constraint firstAttribute="bottom" secondItem="7Hy-HL-gkU" secondAttribute="bottom" constant="8" id="J1i-vk-QZu"/>
+                                                        <constraint firstItem="uff-OO-zMU" firstAttribute="top" secondItem="YbN-ty-18h" secondAttribute="top" constant="8" id="Jla-oX-dny"/>
+                                                        <constraint firstItem="7Hy-HL-gkU" firstAttribute="leading" secondItem="YbN-ty-18h" secondAttribute="leading" constant="8" id="hOc-Xj-m07"/>
+                                                        <constraint firstItem="uff-OO-zMU" firstAttribute="leading" secondItem="7Hy-HL-gkU" secondAttribute="trailing" constant="8" id="oe9-fI-nY8"/>
+                                                    </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                            <integer key="value" value="8"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="YbN-ty-18h" firstAttribute="leading" secondItem="zBO-Fj-fS0" secondAttribute="leading" id="GHc-5R-9ze"/>
+                                                <constraint firstItem="YbN-ty-18h" firstAttribute="top" secondItem="zBO-Fj-fS0" secondAttribute="top" constant="7" id="LsT-PE-FQn"/>
+                                                <constraint firstAttribute="trailing" secondItem="YbN-ty-18h" secondAttribute="trailing" id="OpA-vV-JJ0"/>
+                                                <constraint firstAttribute="bottom" secondItem="YbN-ty-18h" secondAttribute="bottom" constant="9.5" id="x57-l6-L9g"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <outlet property="containerView" destination="YbN-ty-18h" id="qDn-4w-cWP"/>
+                                            <outlet property="nameLabel" destination="7Hy-HL-gkU" id="lVQ-yt-ChN"/>
+                                            <outlet property="pokemonIconImageView" destination="uff-OO-zMU" id="95B-Iy-ozH"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FlS-2G-xWr">
+                                <rect key="frame" x="555" y="50" width="30" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="DZJ-UL-PiX"/>
+                                    <constraint firstAttribute="width" constant="30" id="ori-7W-UUD"/>
+                                </constraints>
+                                <state key="normal" image="menuDown"/>
+                                <connections>
+                                    <action selector="didClickHide:" destination="Uhy-dU-9sf" eventType="touchUpInside" id="gaz-2e-A0W"/>
+                                    <action selector="dismissView:" destination="Uhy-dU-9sf" eventType="touchUpInside" id="wUL-kJ-MLa"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="OKA-g1-55E" firstAttribute="leading" secondItem="IIi-cE-5FP" secondAttribute="leading" constant="20" id="2CU-vL-4lo"/>
+                            <constraint firstAttribute="trailing" secondItem="fOh-Zy-Zpo" secondAttribute="trailing" id="M7V-dU-SQL"/>
+                            <constraint firstItem="pqs-Nz-Nm5" firstAttribute="top" secondItem="OKA-g1-55E" secondAttribute="bottom" constant="8" id="NiP-f7-Let"/>
+                            <constraint firstAttribute="trailing" secondItem="OKA-g1-55E" secondAttribute="trailing" constant="20" id="VuL-Bi-u28"/>
+                            <constraint firstItem="fOh-Zy-Zpo" firstAttribute="top" secondItem="dOu-lI-nTB" secondAttribute="bottom" constant="80" id="YFq-4w-KVx"/>
+                            <constraint firstItem="OKA-g1-55E" firstAttribute="top" secondItem="fOh-Zy-Zpo" secondAttribute="bottom" id="cOf-DI-OKZ"/>
+                            <constraint firstItem="FlS-2G-xWr" firstAttribute="top" secondItem="dOu-lI-nTB" secondAttribute="bottom" constant="30" id="dFe-5N-c5M"/>
+                            <constraint firstAttribute="trailing" secondItem="FlS-2G-xWr" secondAttribute="trailing" constant="15" id="gG6-53-Rca"/>
+                            <constraint firstItem="fOh-Zy-Zpo" firstAttribute="leading" secondItem="IIi-cE-5FP" secondAttribute="leading" id="xeD-sE-imk"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="OQB-nG-vgN">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="rxs-Xf-omz"/>
+                        <barButtonItem key="rightBarButtonItem" title="Next" id="VKe-k8-sR7"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="searchBar" destination="fOh-Zy-Zpo" id="wa2-oC-Ucq"/>
+                        <outlet property="tableView" destination="OKA-g1-55E" id="Dmj-fk-P1v"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FiS-WC-shH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="114" y="345"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="menuDown" width="42" height="23"/>
+    </resources>
+</document>

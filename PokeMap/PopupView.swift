@@ -23,13 +23,13 @@ class PopupView:UIView {
         popupView.center = CGPoint(x: screenWidth/2, y: screenHeight/2)
         popupView.transform = CGAffineTransformMakeScale(0.1, 0.1)
         UIApplication.sharedApplication().keyWindow?.addSubview(popupView)
-        UIView.animateWithDuration(0.5, delay: 0, usingSpringWithDamping: 0.3, initialSpringVelocity: 0.2, options: .CurveEaseIn , animations: {
+        UIView.animateWithDuration(0.2, delay: 0, usingSpringWithDamping: 0.3, initialSpringVelocity: 0.2, options: .CurveEaseIn , animations: {
             popupView.transform = CGAffineTransformMakeScale(1, 1)
-
-            }) { (finished) in
-                UIView.animateWithDuration(1, animations: { () -> Void in
-                    popupView.transform = CGAffineTransformIdentity
-                })
+            
+        }) { (finished) in
+            UIView.animateWithDuration(1, animations: { () -> Void in
+                popupView.transform = CGAffineTransformIdentity
+            })
         }
         
         

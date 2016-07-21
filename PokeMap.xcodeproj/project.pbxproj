@@ -7,16 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4B0AC73D1D3A1FBF00A07E06 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B0AC7321D3A1FBF00A07E06 /* Client.swift */; };
-		4B0AC73E1D3A1FBF00A07E06 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4B0AC7331D3A1FBF00A07E06 /* Info.plist */; };
-		4B0AC73F1D3A1FBF00A07E06 /* BoltsHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B0AC7351D3A1FBF00A07E06 /* BoltsHelpers.swift */; };
-		4B0AC7401D3A1FBF00A07E06 /* ClientPrivate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B0AC7361D3A1FBF00A07E06 /* ClientPrivate.swift */; };
-		4B0AC7411D3A1FBF00A07E06 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B0AC7371D3A1FBF00A07E06 /* Errors.swift */; };
-		4B0AC7421D3A1FBF00A07E06 /* Operation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B0AC7381D3A1FBF00A07E06 /* Operation.swift */; };
-		4B0AC7431D3A1FBF00A07E06 /* QueryEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B0AC7391D3A1FBF00A07E06 /* QueryEncoder.swift */; };
-		4B0AC7441D3A1FBF00A07E06 /* PFQuery+Subscribe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B0AC73A1D3A1FBF00A07E06 /* PFQuery+Subscribe.swift */; };
-		4B0AC7451D3A1FBF00A07E06 /* Parse+LiveQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B0AC73B1D3A1FBF00A07E06 /* Parse+LiveQuery.swift */; };
-		4B0AC7461D3A1FBF00A07E06 /* Subscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B0AC73C1D3A1FBF00A07E06 /* Subscription.swift */; };
 		4B0AC7481D3B0B2400A07E06 /* FilterScene.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4B0AC7471D3B0B2400A07E06 /* FilterScene.storyboard */; };
 		4B0AC74A1D3B0BBB00A07E06 /* FilterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B0AC7491D3B0BBB00A07E06 /* FilterCell.swift */; };
 		4B0AC74C1D3B0C3D00A07E06 /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B0AC74B1D3B0C3D00A07E06 /* FilterViewController.swift */; };
@@ -34,9 +24,15 @@
 		4B477A341D3728D200052172 /* LogPokemonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B477A331D3728D200052172 /* LogPokemonViewController.swift */; };
 		4B477A361D37304000052172 /* LogMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B477A351D37304000052172 /* LogMapViewController.swift */; };
 		4B477A381D37352E00052172 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B477A371D37352E00052172 /* LocationManager.swift */; };
+		4B594AA41D3CAF2D002F7FF0 /* EasyTipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B594AA11D3CAF2D002F7FF0 /* EasyTipView.swift */; };
+		4B594AA51D3CAF2D002F7FF0 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4B594AA21D3CAF2D002F7FF0 /* Info.plist */; };
+		4B594AA61D3CAF2D002F7FF0 /* UIKitExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B594AA31D3CAF2D002F7FF0 /* UIKitExtensions.swift */; };
 		4B66537C1D3C51BE00057D15 /* MainMapViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B66537B1D3C51BE00057D15 /* MainMapViewDataSource.swift */; };
 		4B66537E1D3C57DF00057D15 /* PopupNameView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B66537D1D3C57DF00057D15 /* PopupNameView.xib */; };
 		4B6653801D3C59AE00057D15 /* PopupNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B66537F1D3C59AE00057D15 /* PopupNameView.swift */; };
+		4B8FB23E1D3DF4D600D616B5 /* PokemonSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8FB23D1D3DF4D600D616B5 /* PokemonSearchViewController.swift */; };
+		4B8FB2401D3DF52700D616B5 /* SearchCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8FB23F1D3DF52700D616B5 /* SearchCoordinator.swift */; };
+		4B8FB2441D3DF95A00D616B5 /* SearchScene.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4B8FB2431D3DF95A00D616B5 /* SearchScene.storyboard */; };
 		4B987B1E1D37522400F38E74 /* ParseObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B987B1D1D37522400F38E74 /* ParseObject.swift */; };
 		4BBA8D121D376B460092308A /* PopupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4BBA8D111D376B460092308A /* PopupView.xib */; };
 		4BBA8D201D376CEB0092308A /* PopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BBA8D1F1D376CEB0092308A /* PopupView.swift */; };
@@ -198,16 +194,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		4B0AC7321D3A1FBF00A07E06 /* Client.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
-		4B0AC7331D3A1FBF00A07E06 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4B0AC7351D3A1FBF00A07E06 /* BoltsHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoltsHelpers.swift; sourceTree = "<group>"; };
-		4B0AC7361D3A1FBF00A07E06 /* ClientPrivate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientPrivate.swift; sourceTree = "<group>"; };
-		4B0AC7371D3A1FBF00A07E06 /* Errors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
-		4B0AC7381D3A1FBF00A07E06 /* Operation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Operation.swift; sourceTree = "<group>"; };
-		4B0AC7391D3A1FBF00A07E06 /* QueryEncoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueryEncoder.swift; sourceTree = "<group>"; };
-		4B0AC73A1D3A1FBF00A07E06 /* PFQuery+Subscribe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PFQuery+Subscribe.swift"; sourceTree = "<group>"; };
-		4B0AC73B1D3A1FBF00A07E06 /* Parse+LiveQuery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Parse+LiveQuery.swift"; sourceTree = "<group>"; };
-		4B0AC73C1D3A1FBF00A07E06 /* Subscription.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Subscription.swift; sourceTree = "<group>"; };
 		4B0AC7471D3B0B2400A07E06 /* FilterScene.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FilterScene.storyboard; sourceTree = "<group>"; };
 		4B0AC7491D3B0BBB00A07E06 /* FilterCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterCell.swift; sourceTree = "<group>"; };
 		4B0AC74B1D3B0C3D00A07E06 /* FilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
@@ -227,9 +213,16 @@
 		4B477A331D3728D200052172 /* LogPokemonViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogPokemonViewController.swift; sourceTree = "<group>"; };
 		4B477A351D37304000052172 /* LogMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogMapViewController.swift; sourceTree = "<group>"; };
 		4B477A371D37352E00052172 /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		4B594AA01D3CAF2D002F7FF0 /* EasyTipView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EasyTipView.h; sourceTree = "<group>"; };
+		4B594AA11D3CAF2D002F7FF0 /* EasyTipView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EasyTipView.swift; sourceTree = "<group>"; };
+		4B594AA21D3CAF2D002F7FF0 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4B594AA31D3CAF2D002F7FF0 /* UIKitExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIKitExtensions.swift; sourceTree = "<group>"; };
 		4B66537B1D3C51BE00057D15 /* MainMapViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMapViewDataSource.swift; sourceTree = "<group>"; };
 		4B66537D1D3C57DF00057D15 /* PopupNameView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PopupNameView.xib; sourceTree = "<group>"; };
 		4B66537F1D3C59AE00057D15 /* PopupNameView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopupNameView.swift; sourceTree = "<group>"; };
+		4B8FB23D1D3DF4D600D616B5 /* PokemonSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PokemonSearchViewController.swift; sourceTree = "<group>"; };
+		4B8FB23F1D3DF52700D616B5 /* SearchCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchCoordinator.swift; sourceTree = "<group>"; };
+		4B8FB2431D3DF95A00D616B5 /* SearchScene.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SearchScene.storyboard; sourceTree = "<group>"; };
 		4B987B1D1D37522400F38E74 /* ParseObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseObject.swift; sourceTree = "<group>"; };
 		4BBA8D111D376B460092308A /* PopupView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PopupView.xib; sourceTree = "<group>"; };
 		4BBA8D1F1D376CEB0092308A /* PopupView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopupView.swift; sourceTree = "<group>"; };
@@ -404,37 +397,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		4B0AC7311D3A1FBF00A07E06 /* ParseLiveQuery */ = {
-			isa = PBXGroup;
-			children = (
-				4B0AC7321D3A1FBF00A07E06 /* Client.swift */,
-				4B0AC7331D3A1FBF00A07E06 /* Info.plist */,
-				4B0AC7341D3A1FBF00A07E06 /* Internal */,
-				4B0AC73A1D3A1FBF00A07E06 /* PFQuery+Subscribe.swift */,
-				4B0AC73B1D3A1FBF00A07E06 /* Parse+LiveQuery.swift */,
-				4B0AC73C1D3A1FBF00A07E06 /* Subscription.swift */,
-			);
-			path = ParseLiveQuery;
-			sourceTree = "<group>";
-		};
-		4B0AC7341D3A1FBF00A07E06 /* Internal */ = {
-			isa = PBXGroup;
-			children = (
-				4B0AC7351D3A1FBF00A07E06 /* BoltsHelpers.swift */,
-				4B0AC7361D3A1FBF00A07E06 /* ClientPrivate.swift */,
-				4B0AC7371D3A1FBF00A07E06 /* Errors.swift */,
-				4B0AC7381D3A1FBF00A07E06 /* Operation.swift */,
-				4B0AC7391D3A1FBF00A07E06 /* QueryEncoder.swift */,
-			);
-			path = Internal;
-			sourceTree = "<group>";
-		};
 		4B0AC7501D3B15BB00A07E06 /* Coordinators */ = {
 			isa = PBXGroup;
 			children = (
 				4BBA8D311D37813F0092308A /* SubmissionCoordinator.swift */,
 				4B0AC7531D3B171B00A07E06 /* FilterCoordinator.swift */,
 				4B0AC7551D3B460100A07E06 /* AppCoordinator.swift */,
+				4B8FB23F1D3DF52700D616B5 /* SearchCoordinator.swift */,
 			);
 			name = Coordinators;
 			sourceTree = "<group>";
@@ -445,6 +414,7 @@
 				4B477A281D3721F800052172 /* LaunchScreen.storyboard */,
 				4B477A231D3721F800052172 /* LogScene.storyboard */,
 				4B0AC7471D3B0B2400A07E06 /* FilterScene.storyboard */,
+				4B8FB2431D3DF95A00D616B5 /* SearchScene.storyboard */,
 			);
 			name = Storyboards;
 			sourceTree = "<group>";
@@ -479,10 +449,10 @@
 		4B477A1E1D3721F800052172 /* PokeMap */ = {
 			isa = PBXGroup;
 			children = (
+				4B594A9F1D3CAF2D002F7FF0 /* EasyTip */,
 				4B477A1F1D3721F800052172 /* AppDelegate.swift */,
 				4B0AC7521D3B16D900A07E06 /* Managers */,
 				4B0AC7501D3B15BB00A07E06 /* Coordinators */,
-				4B0AC7311D3A1FBF00A07E06 /* ParseLiveQuery */,
 				4BBA8D2E1D3779D00092308A /* Views */,
 				4BBA8D0A1D37684E0092308A /* Assets */,
 				4BBA8D271D376E540092308A /* Controllers */,
@@ -492,6 +462,18 @@
 				4B477A311D3727B100052172 /* Extensions.swift */,
 			);
 			path = PokeMap;
+			sourceTree = "<group>";
+		};
+		4B594A9F1D3CAF2D002F7FF0 /* EasyTip */ = {
+			isa = PBXGroup;
+			children = (
+				4B594AA01D3CAF2D002F7FF0 /* EasyTipView.h */,
+				4B594AA11D3CAF2D002F7FF0 /* EasyTipView.swift */,
+				4B594AA21D3CAF2D002F7FF0 /* Info.plist */,
+				4B594AA31D3CAF2D002F7FF0 /* UIKitExtensions.swift */,
+			);
+			name = EasyTip;
+			path = Source;
 			sourceTree = "<group>";
 		};
 		4B987B1F1D37522B00F38E74 /* ParseModels */ = {
@@ -519,6 +501,7 @@
 				4B477A331D3728D200052172 /* LogPokemonViewController.swift */,
 				4B477A351D37304000052172 /* LogMapViewController.swift */,
 				4B0AC74B1D3B0C3D00A07E06 /* FilterViewController.swift */,
+				4B8FB23D1D3DF4D600D616B5 /* PokemonSearchViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -750,6 +733,14 @@
 					4B477A1B1D3721F800052172 = {
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = FC9U8C2DD5;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 0;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -780,6 +771,7 @@
 				4B0AC7481D3B0B2400A07E06 /* FilterScene.storyboard in Resources */,
 				4BBA8F991D38B6860092308A /* 150.png in Resources */,
 				4BBA8F611D38B6860092308A /* 094.png in Resources */,
+				4B8FB2441D3DF95A00D616B5 /* SearchScene.storyboard in Resources */,
 				4BBA8F3A1D38B6860092308A /* 055.png in Resources */,
 				4BBA8F291D38B6860092308A /* 038.png in Resources */,
 				4BBA8F871D38B6860092308A /* 132.png in Resources */,
@@ -824,6 +816,7 @@
 				4BBA8F351D38B6860092308A /* 050.png in Resources */,
 				4BBA8D121D376B460092308A /* PopupView.xib in Resources */,
 				4BBA8F721D38B6860092308A /* 111.png in Resources */,
+				4B594AA51D3CAF2D002F7FF0 /* Info.plist in Resources */,
 				4BBA8F4C1D38B6860092308A /* 073.png in Resources */,
 				4BBA8F641D38B6860092308A /* 097.png in Resources */,
 				4BBA8F691D38B6860092308A /* 102.png in Resources */,
@@ -872,7 +865,6 @@
 				4BBA8F981D38B6860092308A /* 149.png in Resources */,
 				4BBA8F4F1D38B6860092308A /* 076.png in Resources */,
 				4BBA8F7B1D38B6860092308A /* 120.png in Resources */,
-				4B0AC73E1D3A1FBF00A07E06 /* Info.plist in Resources */,
 				4BBA8F0C1D38B6860092308A /* 009.png in Resources */,
 				4BBA8F1A1D38B6860092308A /* 023.png in Resources */,
 				4BBA8F2E1D38B6860092308A /* 043.png in Resources */,
@@ -995,15 +987,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				4B0AC7541D3B171B00A07E06 /* FilterCoordinator.swift in Sources */,
-				4B0AC7401D3A1FBF00A07E06 /* ClientPrivate.swift in Sources */,
-				4B0AC7411D3A1FBF00A07E06 /* Errors.swift in Sources */,
 				4BBA8D321D37813F0092308A /* SubmissionCoordinator.swift in Sources */,
+				4B8FB2401D3DF52700D616B5 /* SearchCoordinator.swift in Sources */,
 				4BBA8D201D376CEB0092308A /* PopupView.swift in Sources */,
-				4B0AC73D1D3A1FBF00A07E06 /* Client.swift in Sources */,
 				4B477A221D3721F800052172 /* MainMapViewController.swift in Sources */,
 				4B477A321D3727B100052172 /* Extensions.swift in Sources */,
 				4B0AC74A1D3B0BBB00A07E06 /* FilterCell.swift in Sources */,
-				4B0AC7451D3A1FBF00A07E06 /* Parse+LiveQuery.swift in Sources */,
 				4B477A381D37352E00052172 /* LocationManager.swift in Sources */,
 				4B477A201D3721F800052172 /* AppDelegate.swift in Sources */,
 				4B0AC7561D3B460100A07E06 /* AppCoordinator.swift in Sources */,
@@ -1011,16 +1000,14 @@
 				4B477A361D37304000052172 /* LogMapViewController.swift in Sources */,
 				4B2D59041D37598D00EC3539 /* PMClient.swift in Sources */,
 				4B0AC75A1D3B68B200A07E06 /* MarkerInfoView.swift in Sources */,
-				4B0AC7431D3A1FBF00A07E06 /* QueryEncoder.swift in Sources */,
-				4B0AC7421D3A1FBF00A07E06 /* Operation.swift in Sources */,
-				4B0AC7461D3A1FBF00A07E06 /* Subscription.swift in Sources */,
 				4B6653801D3C59AE00057D15 /* PopupNameView.swift in Sources */,
+				4B594AA61D3CAF2D002F7FF0 /* UIKitExtensions.swift in Sources */,
 				4B0AC74C1D3B0C3D00A07E06 /* FilterViewController.swift in Sources */,
+				4B8FB23E1D3DF4D600D616B5 /* PokemonSearchViewController.swift in Sources */,
 				4B477A341D3728D200052172 /* LogPokemonViewController.swift in Sources */,
+				4B594AA41D3CAF2D002F7FF0 /* EasyTipView.swift in Sources */,
 				4B987B1E1D37522400F38E74 /* ParseObject.swift in Sources */,
 				4BBA8D301D3779E50092308A /* PokemonSearchCell.swift in Sources */,
-				4B0AC73F1D3A1FBF00A07E06 /* BoltsHelpers.swift in Sources */,
-				4B0AC7441D3A1FBF00A07E06 /* PFQuery+Subscribe.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -115,3 +115,6 @@ class LogPokemonViewDataSource:NSObject,UITableViewDataSource {
         return cell
     }
 }
+
+
+

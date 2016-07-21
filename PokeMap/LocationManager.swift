@@ -36,7 +36,6 @@ class LocationManager: NSObject,CLLocationManagerDelegate {
             currentLocation = locations.first
             let notification = NSNotification(name: "didUpdateLocation", object: currentLocation)
             NSNotificationCenter.defaultCenter().postNotification(notification)
-            
         }
         currentLocation = locations.first
         if UIApplication.sharedApplication().applicationState == .Inactive {
@@ -50,6 +49,7 @@ class LocationManager: NSObject,CLLocationManagerDelegate {
 //                    }
 //                }
 //            })
+//            PMClient.sharedClient.updateUserLocation(currentLocation)
         }
     }
     

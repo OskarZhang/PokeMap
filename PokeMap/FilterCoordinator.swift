@@ -30,6 +30,7 @@ class FilterCoordinator:NSObject {
     
     func dismissFilterView() {
         mainVC.titleLabel.text = nil
+        mainVC.updateFilterButton()
         filterVC.dismissViewControllerAnimated(true) { 
             self.mainVC.turnOffBlur()
             self.mainVC.didUpdateFilter()

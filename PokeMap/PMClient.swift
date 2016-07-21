@@ -8,6 +8,7 @@
 
 import Foundation
 import Parse
+import CoreLocation
 class PMClient {
     static var sharedClient: PMClient = PMClient()
     var types:[Type] = []
@@ -15,6 +16,11 @@ class PMClient {
     
     var livemodeTimer:NSTimer?
     var timerInfo:LiveModeData?
+    var pokemonInSearch:[Pokemon] = [] {
+        didSet {
+            print("pokemon set")
+        }
+    }
     var filterApplied:Bool {
         get {
             return types.count > 0
@@ -29,11 +35,15 @@ class PMClient {
             sightingQuery.whereKey("createdAt", greaterThan: NSDate().dateByAddingTimeInterval(-60*30))
         }
         sightingQuery.findObjectsInBackgroundWithBlock({ (sightings, error) in
-            if (self.latestGetPokemonTime == currentTime) {
-                completion(sightings as? [Sighting],error)
+            if (self.latestGetPokemonTime == currentTime && sightings != nil) {
+                let filteredSightings = Sighting.filterByTypes(self.types, sightings: sightings!, pokemonsInSearch: self.pokemonInSearch)
+                
+                completion(filteredSightings as! [Sighting],error)
             }
         })
     }
+    
+    
     
     func getPokemonNearbyAllTime(location:CLLocationCoordinate2D,range:Double,completion:([Sighting]!,NSError?)->()) {
         livemodeTimer?.invalidate()
@@ -41,7 +51,7 @@ class PMClient {
         getPokemonNearby(location, range: range, completion: completion)
     }
     
-
+    
     func getPokemonNearbyLive(location:CLLocationCoordinate2D,range:Double,callback:([Sighting]!,NSError?)->()) {
         livemodeTimer?.invalidate()
         timerInfo = LiveModeData(location: location, range: range, callback: callback)
@@ -58,11 +68,12 @@ class PMClient {
     func autocompletePokemonByName(keywords:String?,page:Int,completion:([Pokemon]!,NSError?)->()) {
         let pokemonQuery = Pokemon.query()!
         pokemonQuery.fromLocalDatastore()
+        pokemonQuery.addAscendingOrder("name")
         if let keywords = keywords {
             pokemonQuery.whereKey("name", containsString: keywords.capitalizedString)
         }
-        pokemonQuery.limit = 20
-        pokemonQuery.skip = 20 * page
+        pokemonQuery.limit = 100
+        
         if !NSUserDefaults.standardUserDefaults().boolForKey("hasCachedPokemons") {
             downloadPokemons()?.continueWithSuccessBlock({ (task) -> AnyObject? in
                 pokemonQuery.findObjectsInBackgroundWithBlock { (pokemons, error) in
@@ -71,17 +82,26 @@ class PMClient {
                 return nil
             })
         } else {
+
             pokemonQuery.findObjectsInBackgroundWithBlock { (pokemons, error) in
                 completion(pokemons as! [Pokemon],error)
             }
             
         }
+
+    }
+    
+    
+    
+    func applySearches(pokemon:Pokemon) {
+        pokemonInSearch = [pokemon]
     }
     
     
     func getTypes(completion:([Type],[Type],NSError?)->Void) {
         let typesQuery = Type.query()!
         typesQuery.fromLocalDatastore()
+        typesQuery.addAscendingOrder("name")
         if !NSUserDefaults.standardUserDefaults().boolForKey("hasCachedTypes") {
             downloadTypes()?.continueWithSuccessBlock({ (task) -> AnyObject? in
                 typesQuery.findObjectsInBackgroundWithBlock { (objects, error) in
@@ -96,19 +116,24 @@ class PMClient {
         }
     }
     
-    func addPokemon(pokemon:Pokemon,location:CLLocation,city:String,state:String,country:String,completion:(NSError?)->()) {
+    func addPokemon(pokemon:Pokemon,location:CLLocation,city:String,state:String,country:String,name:String? = nil,completion:(NSError?)->()) {
         let parseLocation = PFGeoPoint(location: location)
-        let user = PFUser.currentUser()
+        let user = PFUser.currentUser() as! User
         let dict:Dictionary = ["pokemon":pokemon,"location":parseLocation,"state":state,"country":country,"city":city]
         let sighting = PFObject(className: "Sighting",dictionary: dict)
         sighting["user"] = user
+        sighting["types"] = pokemon["types"]
+        user.nickname = name
+        user.saveInBackground()
         sighting.saveInBackgroundWithBlock { (success, error) in
             completion(error)
         }
     }
     
     func downloadPokemons() -> BFTask? {
-        return Pokemon.query()?.findObjectsInBackground().continueWithBlock({ (task) -> AnyObject? in
+        let query = Pokemon.query()!
+        query.limit = 200
+        return query.findObjectsInBackground().continueWithBlock({ (task) -> AnyObject? in
             let pokemons = task.result as! [Pokemon]
             return PFObject.pinAllInBackground(pokemons)
         }).continueWithBlock({ (task) -> AnyObject? in
@@ -134,6 +159,12 @@ class PMClient {
     
     func applyFilters(types:[Type]!) {
         self.types = types
+    }
+    
+    func updateUserLocation(location:CLLocation) {
+        let user = PFUser.currentUser() as? User
+        user?.location = PFGeoPoint(location: location)
+        user?.saveInBackground()
     }
     
 }

@@ -9,6 +9,7 @@
 import Foundation
 import CoreLocation
 import UIKit
+import Parse
 class SubmissionCoordinator:NSObject {
     weak var mainVC:MainMapViewController!
     var pokemonVC:LogPokemonViewController!
@@ -43,22 +44,38 @@ class SubmissionCoordinator:NSObject {
         activeVC = mapVC
     }
     
+    
     func finishSubmission(location:CLLocation) {
-        locationSelected = location
-        LocationManager.locationToCityName(location) {
-            locationNames, success in
-            if success {
-                self.city = locationNames!.0
-                self.state = locationNames!.1
-                self.country = locationNames!.2
-                PMClient.sharedClient.addPokemon(self.pokemonSelected, location: self.locationSelected, city: self.city, state: self.state, country: self.country, completion: { (error) in
+        self.dismissViewController(self.mapVC)
+        
+        let currentUser = PFUser.currentUser() as? User
+        PopupNameView.getView(currentUser?.nickname) { (name) in
+            let addPokemon = {
+                PMClient.sharedClient.addPokemon(self.pokemonSelected, location: location, city: self.city, state: self.state, country: self.country,name:name, completion: { (error) in
                     if error == nil {
-                        self.dismissViewController(self.mapVC)
+                        
                     }
                 })
             }
+            if self.city == nil || self.state == nil || self.country == nil {
+                LocationManager.locationToCityName(location) {
+                    locationNames, success in
+                    if success {
+                        self.city = locationNames!.0
+                        self.state = locationNames!.1
+                        self.country = locationNames!.2
+                        addPokemon()
+                    }
+                }
+            } else {
+                addPokemon()
+            }
+
         }
+        
     }
+    
+    
     
     func startSubmission() {
         pokemonVC.modalPresentationStyle = .OverCurrentContext

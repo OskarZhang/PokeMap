@@ -38,29 +38,55 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.rootViewController = mainViewController
         window?.makeKeyAndVisible()
         LocationManager.sharedLocationManager.startLocationRecording()
-        PFAnonymousUtils.logInInBackground()
+        if PFUser.currentUser() == nil {
+            PFAnonymousUtils.logInInBackground()
+            
+        }
+        let settings = UIUserNotificationSettings(forTypes: [.Alert, .Badge, .Sound], categories: nil)
+        application.registerUserNotificationSettings(settings)
+        application.registerForRemoteNotifications()
         return true
     }
     
     func configureAppearance() {
-        UINavigationBar.appearance().barTintColor = PMColor
-        UINavigationBar.appearance().tintColor = UIColor.whiteColor()
-        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor()]
-        UIBarButtonItem.appearance().setBackButtonTitlePositionAdjustment(UIOffset(horizontal: 0, vertical: -60),
-                                                                          forBarMetrics: .Default)
+
+        
+        var preferences = EasyTipView.Preferences()
+        preferences.drawing.font = UIFont(name: "Futura-Medium", size: 13)!
+        preferences.drawing.foregroundColor = UIColor.whiteColor()
+        preferences.drawing.backgroundColor = PMColor
+        preferences.drawing.arrowPosition = EasyTipView.ArrowPosition.Top
+        EasyTipView.globalPreferences = preferences
         
     }
     
     
-    
-    func applicationDidBecomeActive(application: UIApplication) {
-        LocationManager.sharedLocationManager.startMonitoringSignificantChanges(false)
-        
+    func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
+        let installation = PFInstallation.currentInstallation()
+        installation.setDeviceTokenFromData(deviceToken)
+        installation.addUniqueObject("global", forKey: "channels")
+        if let user = PFUser.currentUser() {
+            
+            installation.setObject(user, forKey: "user")
+        }
+        installation.saveInBackground()
     }
-    func applicationDidEnterBackground(application: UIApplication) {
-        LocationManager.sharedLocationManager.startMonitoringSignificantChanges(true)
+    
+    
+
+    func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
+        print(error)
     }
     
+//    
+//    func applicationDidBecomeActive(application: UIApplication) {
+//        LocationManager.sharedLocationManager.startMonitoringSignificantChanges(false)
+//        
+//    }
+//    func applicationDidEnterBackground(application: UIApplication) {
+//        LocationManager.sharedLocationManager.startMonitoringSignificantChanges(true)
+//    }
+//    
     func applicationWillResignActive(application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.

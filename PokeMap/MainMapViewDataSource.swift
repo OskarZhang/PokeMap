@@ -15,11 +15,9 @@ class MainMapViewControllerDataSource:NSObject {
     var recentSightings:[Sighting] = []
     var recentFetchedAt:NSDate!
     var allTimeFetchedAt:NSDate!
-    var realTimeSocket:Subscription<Sighting>!
     var realTimeMode:Bool = true
     weak var mapView:GMSMapView!
     var lastFetchedLocation:CLLocation!
-    
     init(mapView:GMSMapView!) {
         self.mapView = mapView
     }
@@ -39,15 +37,6 @@ class MainMapViewControllerDataSource:NSObject {
                 toAdd = sightings
             }
             
-            print("new: \(sightings.count)")
-            print("old: \(oldValue == nil ? 0 : oldValue.count)")
-            
-            print("sets:")
-            print(toAdd.count)
-            print(toDelete.count)
-            
-            
-            print("Camera Zoom:\(mapView.camera.zoom * 5)")
             markers = markers.filter { (marker) -> Bool in
                 for removed in toDelete {
                     if (marker.userData as! Sighting).objectId == removed.objectId {
@@ -80,18 +69,17 @@ class MainMapViewControllerDataSource:NSObject {
         lastFetchedLocation = cllocation
         
         let left = mapView.projection.visibleRegion().nearLeft
-        let right = mapView.projection.visibleRegion().nearRight
+        let right = mapView.projection.visibleRegion().farLeft
         let distance:Double = CLLocation(latitude: left.latitude, longitude: left.longitude).distanceFromLocation(CLLocation(latitude: right.latitude, longitude: right.longitude))/1000/2
         
         if !realTimeMode {
             self.allTimeFetchedAt = NSDate()
-            PMClient.sharedClient.getPokemonNearby(location, range: distance, completion: { (sightings, error) in
+            PMClient.sharedClient.getPokemonNearbyAllTime(location, range: distance, completion: { (sightings, error) in
                 if error == nil {
                     self.allTimeSightings = sightings
                     self.updateViews()
                 }
             })
-            
             
         } else {
             self.recentFetchedAt = NSDate()
@@ -108,13 +96,7 @@ class MainMapViewControllerDataSource:NSObject {
     func switchMode() {
         realTimeMode = !realTimeMode
         mapView.clear()
-        //        if recentFetchedAt != nil && allTimeFetchedAt != nil {
-        //            if (realTimeMode && recentFetchedAt?.compare(allTimeFetchedAt) == .OrderedAscending) ||
-        //                (!realTimeMode && allTimeFetchedAt.compare(recentFetchedAt) == .OrderedAscending) {
-        //                updateViews()
-        //                return
-        //            }
-        //        }
+        sightings = []
         fetchPokemons(mapView.camera.target, zoomLevel: Int(mapView.camera.zoom), modeSwitch: true)
     }
     

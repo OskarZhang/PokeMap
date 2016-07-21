@@ -29,7 +29,7 @@ class MarkerInfoView:UIView {
     @IBOutlet weak var messageLabel: UILabel!
     
     @IBOutlet weak var charmaLabel: UILabel!
-    class func getView(name:String, charmaPoint:Int, withMessage:Bool,charmaAction:MarkerInfoViewCharmaAction) -> MarkerInfoView {
+    class func getView(name:String, charmaPoint:Int, withMessage:Bool,hasUpvoted:Bool,charmaAction:MarkerInfoViewCharmaAction) -> MarkerInfoView {
         let markerView =  UINib(nibName: "MarkerInfoView", bundle: NSBundle.mainBundle()).instantiateWithOwner(self, options: nil).first as! MarkerInfoView
         markerView.action = charmaAction
         markerView.withMessage = withMessage
@@ -38,9 +38,9 @@ class MarkerInfoView:UIView {
         markerView.charmaPoint = charmaPoint
         markerView.charmaLabel.text = "\(charmaPoint) charma"
         markerView.messageHeight.constant = withMessage ? MESSAGE_HEIGHT : 0
-
         
         
+        markerView.charmaButton.enabled = !hasUpvoted
         
         let screenWidth = UIScreen.mainScreen().bounds.width
         let screenHeight = UIScreen.mainScreen().bounds.height
@@ -62,7 +62,6 @@ class MarkerInfoView:UIView {
             })
         }
         
-        
         return markerView
     }
     
@@ -73,13 +72,18 @@ class MarkerInfoView:UIView {
         self.messageLabel.adjustsFontSizeToFitWidth = true
         containerView.layer.cornerRadius = 8
         containerView.layer.borderWidth = 4
-        containerView.layer.borderColor = UIColor(red: 247/255, green: 156/255, blue: 29/255, alpha: 1).CGColor
-//        charmaButton.setBackgroundImage(UIImage(named:""), forState: <#T##UIControlState#>)
+        containerView.layer.borderColor = PMColor.CGColor
+        charmaButton.setBackgroundImage(UIImage(named:"CharmaUpvoted"), forState: .Disabled)
+        charmaButton.setBackgroundImage(UIImage(named:"CharmaUpvoted"), forState: .Highlighted)
+        
     }
     @IBAction func didClickCharma(sender: AnyObject) {
         action?()
         charmaPoint! += 1
+        charmaButton.enabled = false
+        let numberCharma = NSUserDefaults.standardUserDefaults().integerForKey("numberCharmaAdded") + 1
         
+        NSUserDefaults.standardUserDefaults().setInteger(numberCharma, forKey: "numberCharmaAdded")
         self.charmaLabel.text = "\(charmaPoint) charma"
         
     }
@@ -97,10 +101,10 @@ class MarkerInfoView:UIView {
             
         }
     }
-
+    
     
     @IBAction func didClickCloseButton(sender: AnyObject) {
         dismiss()
     }
-
+    
 }
