@@ -1,6 +1,9 @@
 PODS:
   - Bolts-Swift (1.1.0)
   - Bolts/Tasks (1.8.4)
+  - Crashlytics (3.7.2):
+    - Fabric (~> 1.6.3)
+  - Fabric (1.6.7)
   - GoogleMaps (1.13.2)
   - Parse (1.13.0):
     - Bolts/Tasks (~> 1.6)
@@ -8,6 +11,8 @@ PODS:
 
 DEPENDENCIES:
   - Bolts-Swift
+  - Crashlytics
+  - Fabric
   - GoogleMaps
   - Parse
   - SocketRocket
@@ -15,6 +20,8 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
   Bolts-Swift: 63ef77f967f795415531da45eef419eab79ec730
+  Crashlytics: 130ab943f8c78cda7a814b434f270b2e2c8a3cba
+  Fabric: caf7580c725e64db144f610ac65cd60956911dc7
   GoogleMaps: b20a103ff307f58392e603cf142e59d7e30374c1
   Parse: f51c24d2feb412e4b2d6cc73d37cb24e8d0089bc
   SocketRocket: d57c7159b83c3c6655745cd15302aa24b6bae531

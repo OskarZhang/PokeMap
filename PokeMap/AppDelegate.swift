@@ -8,11 +8,13 @@
 import Parse
 import UIKit
 import GoogleMaps
+import Fabric
+import Crashlytics
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
-    
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
@@ -27,6 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             $0.localDatastoreEnabled = true
         }
         
+        Fabric.with([Crashlytics.self])
         Parse.enableLocalDatastore()
         Parse.initializeWithConfiguration(configuration)
         
@@ -35,6 +38,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Pokemon.registerSubclass()
         Type.registerSubclass()
         Sighting.registerSubclass()
+        
+        
+        
         window?.rootViewController = mainViewController
         window?.makeKeyAndVisible()
         LocationManager.sharedLocationManager.startLocationRecording()
@@ -42,9 +48,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             PFAnonymousUtils.logInInBackground()
             
         }
+        else {
+            print("SESSION")
+            print(PFUser.currentUser()?.sessionToken)
+        }
         let settings = UIUserNotificationSettings(forTypes: [.Alert, .Badge, .Sound], categories: nil)
         application.registerUserNotificationSettings(settings)
         application.registerForRemoteNotifications()
+        
+        
         return true
     }
     

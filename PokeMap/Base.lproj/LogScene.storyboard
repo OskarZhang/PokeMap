@@ -88,10 +88,10 @@
                                 </prototypes>
                             </tableView>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rC3-8n-dbN">
-                                <rect key="frame" x="555" y="50" width="30" height="20"/>
+                                <rect key="frame" x="545" y="50" width="40" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="KCo-Q2-RyR"/>
-                                    <constraint firstAttribute="width" constant="30" id="SXv-TY-I9d"/>
+                                    <constraint firstAttribute="width" constant="40" id="SXv-TY-I9d"/>
                                 </constraints>
                                 <state key="normal" image="menuDown"/>
                                 <connections>
@@ -194,10 +194,10 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BsB-hc-C28">
-                                <rect key="frame" x="550" y="50" width="30" height="20"/>
+                                <rect key="frame" x="540" y="50" width="40" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="SGw-qU-OrG"/>
-                                    <constraint firstAttribute="width" constant="30" id="vw0-96-sdN"/>
+                                    <constraint firstAttribute="width" constant="40" id="vw0-96-sdN"/>
                                 </constraints>
                                 <state key="normal" image="menuDown"/>
                                 <connections>

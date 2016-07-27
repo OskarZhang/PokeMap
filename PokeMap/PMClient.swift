@@ -13,7 +13,7 @@ class PMClient {
     static var sharedClient: PMClient = PMClient()
     var types:[Type] = []
     var latestGetPokemonTime:NSDate!
-    
+    var rarityTargeted:Int = 0
     var livemodeTimer:NSTimer?
     var timerInfo:LiveModeData?
     var pokemonInSearch:[Pokemon] = [] {
@@ -28,19 +28,30 @@ class PMClient {
     }
     
     func getPokemonNearby(location:CLLocationCoordinate2D,range:Double,live:Bool = false,completion:([Sighting]!,NSError?)->()) {
-        let currentTime = NSDate()
-        latestGetPokemonTime = currentTime
-        let sightingQuery = Sighting.getNearbyQuery(location, range: range)
-        if live {
-            sightingQuery.whereKey("createdAt", greaterThan: NSDate().dateByAddingTimeInterval(-60*30))
-        }
-        sightingQuery.findObjectsInBackgroundWithBlock({ (sightings, error) in
-            if (self.latestGetPokemonTime == currentTime && sightings != nil) {
-                let filteredSightings = Sighting.filterByTypes(self.types, sightings: sightings!, pokemonsInSearch: self.pokemonInSearch)
-                
-                completion(filteredSightings as! [Sighting],error)
+        let getPokemonNearby = {
+            let currentTime = NSDate()
+            self.latestGetPokemonTime = currentTime
+            let sightingQuery = Sighting.getNearbyQuery(location, range: range)
+            
+            if live {
+                sightingQuery.whereKey("expirationTime", greaterThan: NSDate())
+                sightingQuery.addDescendingOrder("expirationTime")
             }
-        })
+            sightingQuery.findObjectsInBackgroundWithBlock({ (sightings, error) in
+                if (self.latestGetPokemonTime == currentTime && sightings != nil) {
+                    completion(sightings as! [Sighting],error)
+                }
+            })
+        }
+
+        if !NSUserDefaults.standardUserDefaults().boolForKey("hasCachedPokemons") {
+            downloadPokemons()?.continueWithBlock({ (task) -> AnyObject? in
+                getPokemonNearby()
+                return nil
+            })
+        } else {
+            getPokemonNearby()
+        }
     }
     
     
@@ -51,17 +62,24 @@ class PMClient {
         getPokemonNearby(location, range: range, completion: completion)
     }
     
-    
+    var completedLoadingLiveMode:Bool = true
     func getPokemonNearbyLive(location:CLLocationCoordinate2D,range:Double,callback:([Sighting]!,NSError?)->()) {
         livemodeTimer?.invalidate()
-        timerInfo = LiveModeData(location: location, range: range, callback: callback)
-        livemodeTimer = NSTimer.scheduledTimerWithTimeInterval(5, target: self, selector: #selector(self.handleLiveModeTimer), userInfo: nil, repeats: true)
+        let injectedCallback:([Sighting]!,NSError?)->() = {
+            (sightings,error) in
+            self.completedLoadingLiveMode = true
+            callback(sightings,error)
+        }
+        timerInfo = LiveModeData(location: location, range: range, callback: injectedCallback)
+        livemodeTimer = NSTimer.scheduledTimerWithTimeInterval(7, target: self, selector: #selector(self.handleLiveModeTimer), userInfo: nil, repeats: true)
         handleLiveModeTimer()
     }
     
-    
     @objc func handleLiveModeTimer() {
-        getPokemonNearby(timerInfo!.location, range: timerInfo!.range, live:true, completion: timerInfo!.callback)
+        if completedLoadingLiveMode {
+            completedLoadingLiveMode = false
+            getPokemonNearby(timerInfo!.location, range: timerInfo!.range, live:true, completion: timerInfo!.callback)
+        }
     }
     
     
@@ -97,6 +115,10 @@ class PMClient {
         pokemonInSearch = [pokemon]
     }
     
+    func applyRarity(rarity:Int){
+        rarityTargeted = rarity
+    }
+    
     
     func getTypes(completion:([Type],[Type],NSError?)->Void) {
         let typesQuery = Type.query()!
@@ -116,11 +138,22 @@ class PMClient {
         }
     }
     
-    func addPokemon(pokemon:Pokemon,location:CLLocation,city:String,state:String,country:String,name:String? = nil,completion:(NSError?)->()) {
+    func addPokemon(pokemon:Pokemon,location:CLLocation,city:String?,state:String?,country:String?,name:String? = nil,completion:(NSError?)->()) {
         let parseLocation = PFGeoPoint(location: location)
         let user = PFUser.currentUser() as! User
-        let dict:Dictionary = ["pokemon":pokemon,"location":parseLocation,"state":state,"country":country,"city":city]
+        var dict:[String:AnyObject] = ["pokemon":pokemon,"location":parseLocation]
+        if let state = state {
+            dict["state"] = state
+        }
+        if let city = city {
+            dict["city"] = city
+        }
+        if let country = country {
+            dict["country"] = country
+        }
+        
         let sighting = PFObject(className: "Sighting",dictionary: dict)
+        
         sighting["user"] = user
         sighting["types"] = pokemon["types"]
         user.nickname = name

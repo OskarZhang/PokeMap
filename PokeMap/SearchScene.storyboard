@@ -87,10 +87,10 @@
                                 </prototypes>
                             </tableView>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FlS-2G-xWr">
-                                <rect key="frame" x="555" y="50" width="30" height="20"/>
+                                <rect key="frame" x="545" y="50" width="40" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="DZJ-UL-PiX"/>
-                                    <constraint firstAttribute="width" constant="30" id="ori-7W-UUD"/>
+                                    <constraint firstAttribute="width" constant="40" id="ori-7W-UUD"/>
                                 </constraints>
                                 <state key="normal" image="menuDown"/>
                                 <connections>

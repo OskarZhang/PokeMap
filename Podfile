@@ -7,3 +7,6 @@ pod 'GoogleMaps'
 pod 'Bolts-Swift'
 pod 'SocketRocket'
 #pod 'ParseLiveQuery'
+pod 'Fabric'
+pod 'Crashlytics'
+

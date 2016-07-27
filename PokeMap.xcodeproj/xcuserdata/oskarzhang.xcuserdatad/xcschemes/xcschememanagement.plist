@@ -11,10 +11,15 @@
 			<key>orderHint</key>
 			<integer>6</integer>
 		</dict>
+		<key>PokeMap-loc.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>6</integer>
+		</dict>
 		<key>PokeMap.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>5</integer>
+			<integer>0</integer>
 		</dict>
 		<key>PokeMap_Location.xcscheme</key>
 		<dict>

@@ -10,13 +10,77 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PokeMap/PMClient.swift"
-            timestampString = "490730849.93355"
+            timestampString = "491300738.215974"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "41"
             endingLineNumber = "41"
             landmarkName = "getPokemonNearby(_:range:live:completion:)"
             landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PokeMap/MainMapViewController.swift"
+            timestampString = "491301140.005872"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "325"
+            endingLineNumber = "325"
+            landmarkName = "mapView(_:willMove:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PokeMap/PMClient.swift"
+            timestampString = "491301298.071293"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "40"
+            endingLineNumber = "40"
+            landmarkName = "getPokemonNearby(_:range:live:completion:)"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PokeMap.PMClient.(getPokemonNearby (__C.CLLocationCoordinate2D, range : Swift.Double, live : Swift.Bool, completion : (Swift.ImplicitlyUnwrappedOptional&lt;Swift.Array&lt;PokeMap.Sighting&gt;&gt;, Swift.Optional&lt;__ObjC.NSError&gt;) -&gt; ()) -&gt; ()).(closure #1)"
+                  moduleName = "PokeMap"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/oskarzhang/workspace/Side%20Projects/PokeMap/PokeMap/PMClient.swift"
+                  timestampString = "491301298.304079"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "40"
+                  endingLineNumber = "40"
+                  offsetFromSymbolStart = "376">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PokeMap.PMClient.(getPokemonNearby (__C.CLLocationCoordinate2D, range : Swift.Double, live : Swift.Bool, completion : (Swift.ImplicitlyUnwrappedOptional&lt;Swift.Array&lt;PokeMap.Sighting&gt;&gt;, Swift.Optional&lt;__ObjC.NSError&gt;) -&gt; ()) -&gt; ()).(closure #1).(closure #1)"
+                  moduleName = "PokeMap"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/oskarzhang/workspace/Side%20Projects/PokeMap/PokeMap/PMClient.swift"
+                  timestampString = "491301298.304257"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "41"
+                  endingLineNumber = "41"
+                  offsetFromSymbolStart = "40">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

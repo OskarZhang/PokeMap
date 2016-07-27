@@ -61,9 +61,9 @@ class SubmissionCoordinator:NSObject {
                 LocationManager.locationToCityName(location) {
                     locationNames, success in
                     if success {
-                        self.city = locationNames!.0
-                        self.state = locationNames!.1
-                        self.country = locationNames!.2
+                        self.city = locationNames.0
+                        self.state = locationNames.1
+                        self.country = locationNames.2
                         addPokemon()
                     }
                 }

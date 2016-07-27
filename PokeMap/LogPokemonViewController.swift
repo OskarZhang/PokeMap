@@ -28,7 +28,7 @@ class LogPokemonViewController:UIViewController,UITableViewDelegate,UISearchBarD
     }
     
     override func awakeFromNib() {
-        self.title = "Record Sighting"
+        self.title = "Report Sighting"
     }
     
     

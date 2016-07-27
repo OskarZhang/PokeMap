@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import GoogleMaps
+
 class MainMapViewControllerDataSource:NSObject {
     var markers:[GMSMarker] = []
     var allTimeSightings:[Sighting] = []
@@ -18,12 +19,14 @@ class MainMapViewControllerDataSource:NSObject {
     var realTimeMode:Bool = true
     weak var mapView:GMSMapView!
     var lastFetchedLocation:CLLocation!
+    var dataFetchingDelegate:MainMapViewControllerDataFetchingDelegate?
     init(mapView:GMSMapView!) {
         self.mapView = mapView
     }
     
     var sightings:[Sighting]! {
         didSet {
+            dataFetchingDelegate?.didFinishLoading()
             var toAdd:[Sighting] = []
             var toDelete:[Sighting] = []
             if oldValue != nil {
@@ -31,7 +34,6 @@ class MainMapViewControllerDataSource:NSObject {
                 let newSet = Set(sightings)
                 toDelete = Array<Sighting>(oldSet.subtract(newSet))
                 toAdd = Array<Sighting>(newSet.subtract(oldSet))
-                
                 
             } else {
                 toAdd = sightings
@@ -63,15 +65,16 @@ class MainMapViewControllerDataSource:NSObject {
     
     func fetchPokemons(location:CLLocationCoordinate2D,zoomLevel:Int,modeSwitch:Bool) {
         let cllocation = CLLocation(latitude: location.latitude, longitude: location.longitude)
-        if let lastLocation = lastFetchedLocation where cllocation.distanceFromLocation(lastLocation) <= 1000 && !modeSwitch {
-            return
-        }
+//        if let lastLocation = lastFetchedLocation where cllocation.distanceFromLocation(lastLocation) <= 1000 && !modeSwitch {
+//            return
+//        }
         lastFetchedLocation = cllocation
         
         let left = mapView.projection.visibleRegion().nearLeft
         let right = mapView.projection.visibleRegion().farLeft
-        let distance:Double = CLLocation(latitude: left.latitude, longitude: left.longitude).distanceFromLocation(CLLocation(latitude: right.latitude, longitude: right.longitude))/1000/2
+        let distance:Double = CLLocation(latitude: left.latitude, longitude: left.longitude).distanceFromLocation(CLLocation(latitude: right.latitude, longitude: right.longitude))/1000.00/2.00
         
+        dataFetchingDelegate?.didStartLoading()
         if !realTimeMode {
             self.allTimeFetchedAt = NSDate()
             PMClient.sharedClient.getPokemonNearbyAllTime(location, range: distance, completion: { (sightings, error) in
@@ -92,6 +95,8 @@ class MainMapViewControllerDataSource:NSObject {
             })
         }
     }
+ 
+
     
     func switchMode() {
         realTimeMode = !realTimeMode
@@ -99,10 +104,27 @@ class MainMapViewControllerDataSource:NSObject {
         sightings = []
         fetchPokemons(mapView.camera.target, zoomLevel: Int(mapView.camera.zoom), modeSwitch: true)
     }
-    
+
     func updateViews() {
-        sightings = realTimeMode ? recentSightings : allTimeSightings
+        let allSightings = realTimeMode ? recentSightings : allTimeSightings
+//        if PMClient.sharedClient.types.count == 0 && PMClient.sharedClient.pokemonInSearch.count == 0 {
+//            sightings = allSightings
+//        } else {
+        
+        if allSightings.count == 0 && realTimeMode {
+            self.dataFetchingDelegate?.didFindNoData()
+        }
+        
+        sightings = Sighting.filterByTypes(PMClient.sharedClient.types, allSightings, PMClient.sharedClient.pokemonInSearch, PMClient.sharedClient.rarityTargeted) as! [Sighting]
+        
+//        }
     }
     
+}
+
+protocol MainMapViewControllerDataFetchingDelegate {
+    func didFinishLoading()
+    func didStartLoading()
+    func didFindNoData()
 }
 

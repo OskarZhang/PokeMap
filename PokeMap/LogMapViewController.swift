@@ -63,7 +63,7 @@ class LogMapViewController:UIViewController,UITextFieldDelegate {
     
     func setMapLocation() {
         if let location = LocationManager.sharedLocationManager.currentLocation {
-            mapView.camera = GMSCameraPosition(target: location.coordinate, zoom: 15, bearing: 30, viewingAngle: 45);
+            mapView.camera = GMSCameraPosition(target: location.coordinate, zoom: 16, bearing: 0, viewingAngle: 0);
         }
     }
     

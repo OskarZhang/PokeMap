@@ -13,7 +13,7 @@ typealias MarkerInfoViewCharmaAction = ()->()
 class MarkerInfoView:UIView {
     static let LEADING_PADDING:CGFloat = 30
     static let HEIGHT:CGFloat = 200
-    
+    static let TOP_PADDING:CGFloat = 200
     @IBOutlet weak var containerView: UIView!
     
     
@@ -43,23 +43,18 @@ class MarkerInfoView:UIView {
         markerView.charmaButton.enabled = !hasUpvoted
         
         let screenWidth = UIScreen.mainScreen().bounds.width
-        let screenHeight = UIScreen.mainScreen().bounds.height
-        let frame = CGRect(x: LEADING_PADDING, y: 0, width: screenWidth - LEADING_PADDING*2, height: HEIGHT)
+        let frame = CGRect(x: LEADING_PADDING, y: -HEIGHT, width: screenWidth - LEADING_PADDING*2, height: HEIGHT)
         
         
-        let configuredFrame = withMessage ? frame : CGRect(x: 0, y: 0, width: frame.width, height: frame.height - MESSAGE_HEIGHT)
+        let configuredFrame = withMessage ? frame : CGRect(x: 0, y: MESSAGE_HEIGHT - frame.height, width: frame.width, height: frame.height - MESSAGE_HEIGHT)
         markerView.frame = configuredFrame
-        
-        markerView.center = CGPoint(x: screenWidth/2, y: screenHeight/2)
-        markerView.transform = CGAffineTransformMakeScale(0.1, 0.1)
+        markerView.center.x = screenWidth/2
         UIApplication.sharedApplication().keyWindow?.addSubview(markerView)
-        UIView.animateWithDuration(0.5, delay: 0, usingSpringWithDamping: 0.3, initialSpringVelocity: 0.2, options: .CurveEaseIn , animations: {
-            markerView.transform = CGAffineTransformMakeScale(1, 1)
+        UIView.animateWithDuration(0.3, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.2, options: .CurveEaseIn , animations: {
+            markerView.center.y = TOP_PADDING
             
         }) { (finished) in
-            UIView.animateWithDuration(1, animations: { () -> Void in
-                markerView.transform = CGAffineTransformIdentity
-            })
+        
         }
         
         return markerView
@@ -90,14 +85,9 @@ class MarkerInfoView:UIView {
     
     
     func dismiss() {
-        UIView.animateWithDuration(0.5, delay: 0, usingSpringWithDamping: 0.4, initialSpringVelocity: 0.2, options: .CurveEaseOut , animations: {
-            self.transform = CGAffineTransformMakeScale(0.01, 0.01)
-            
+        UIView.animateWithDuration(0.3, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.2, options: .CurveEaseIn , animations: {
+            self.frame = CGRectMake(self.frame.origin.x, -self.frame.height, self.frame.width, self.frame.height)
         }) { (finished) in
-            UIView.animateWithDuration(1, animations: { () -> Void in
-                self.transform = CGAffineTransformIdentity
-                self.removeFromSuperview()
-            })
             
         }
     }

@@ -34,6 +34,8 @@
 		4B8FB2401D3DF52700D616B5 /* SearchCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8FB23F1D3DF52700D616B5 /* SearchCoordinator.swift */; };
 		4B8FB2441D3DF95A00D616B5 /* SearchScene.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4B8FB2431D3DF95A00D616B5 /* SearchScene.storyboard */; };
 		4B987B1E1D37522400F38E74 /* ParseObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B987B1D1D37522400F38E74 /* ParseObject.swift */; };
+		4BA0F7811D488F2E00101666 /* RaritySelectorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4BA0F7801D488F2E00101666 /* RaritySelectorView.xib */; };
+		4BA0F7831D4892AA00101666 /* RaritySelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BA0F7821D4892AA00101666 /* RaritySelectorView.swift */; };
 		4BBA8D121D376B460092308A /* PopupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4BBA8D111D376B460092308A /* PopupView.xib */; };
 		4BBA8D201D376CEB0092308A /* PopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BBA8D1F1D376CEB0092308A /* PopupView.swift */; };
 		4BBA8D301D3779E50092308A /* PokemonSearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BBA8D2F1D3779E50092308A /* PokemonSearchCell.swift */; };
@@ -224,6 +226,8 @@
 		4B8FB23F1D3DF52700D616B5 /* SearchCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchCoordinator.swift; sourceTree = "<group>"; };
 		4B8FB2431D3DF95A00D616B5 /* SearchScene.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SearchScene.storyboard; sourceTree = "<group>"; };
 		4B987B1D1D37522400F38E74 /* ParseObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseObject.swift; sourceTree = "<group>"; };
+		4BA0F7801D488F2E00101666 /* RaritySelectorView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RaritySelectorView.xib; sourceTree = "<group>"; };
+		4BA0F7821D4892AA00101666 /* RaritySelectorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RaritySelectorView.swift; sourceTree = "<group>"; };
 		4BBA8D111D376B460092308A /* PopupView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PopupView.xib; sourceTree = "<group>"; };
 		4BBA8D1F1D376CEB0092308A /* PopupView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopupView.swift; sourceTree = "<group>"; };
 		4BBA8D2F1D3779E50092308A /* PokemonSearchCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PokemonSearchCell.swift; sourceTree = "<group>"; };
@@ -449,8 +453,8 @@
 		4B477A1E1D3721F800052172 /* PokeMap */ = {
 			isa = PBXGroup;
 			children = (
-				4B594A9F1D3CAF2D002F7FF0 /* EasyTip */,
 				4B477A1F1D3721F800052172 /* AppDelegate.swift */,
+				4B594A9F1D3CAF2D002F7FF0 /* EasyTip */,
 				4B0AC7521D3B16D900A07E06 /* Managers */,
 				4B0AC7501D3B15BB00A07E06 /* Coordinators */,
 				4BBA8D2E1D3779D00092308A /* Views */,
@@ -518,6 +522,8 @@
 				4B0AC7491D3B0BBB00A07E06 /* FilterCell.swift */,
 				4B0AC7571D3B5C2F00A07E06 /* MarkerInfoView.xib */,
 				4B0AC7591D3B68B200A07E06 /* MarkerInfoView.swift */,
+				4BA0F7801D488F2E00101666 /* RaritySelectorView.xib */,
+				4BA0F7821D4892AA00101666 /* RaritySelectorView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -710,6 +716,7 @@
 				4B477A1A1D3721F800052172 /* Resources */,
 				A4C1ECDFB0FC4464706C886A /* Embed Pods Frameworks */,
 				A9C5746D69604B0D5A1B220B /* Copy Pods Resources */,
+				4BA0F7721D409B9800101666 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -791,6 +798,7 @@
 				4BBA8F8A1D38B6860092308A /* 135.png in Resources */,
 				4BBA8F3D1D38B6860092308A /* 058.png in Resources */,
 				4BBA8F171D38B6860092308A /* 020.png in Resources */,
+				4BA0F7811D488F2E00101666 /* RaritySelectorView.xib in Resources */,
 				4BBA8F071D38B6860092308A /* 004.png in Resources */,
 				4BBA8F7E1D38B6860092308A /* 123.png in Resources */,
 				4BBA8E6B1D3894D00092308A /* Pocket Monk.otf in Resources */,
@@ -934,6 +942,20 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		4BA0F7721D409B9800101666 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" f8c4894a1802c1f37b74605ff9785eb90b099e3d 963cc402a5df51c8d78fcf0b8fd371eb7888d294533200d74ef1f5a6852b9cca\n";
+			showEnvVarsInLog = 0;
+		};
 		946F1EB18DB4028A24AD0813 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -995,6 +1017,7 @@
 				4B0AC74A1D3B0BBB00A07E06 /* FilterCell.swift in Sources */,
 				4B477A381D37352E00052172 /* LocationManager.swift in Sources */,
 				4B477A201D3721F800052172 /* AppDelegate.swift in Sources */,
+				4BA0F7831D4892AA00101666 /* RaritySelectorView.swift in Sources */,
 				4B0AC7561D3B460100A07E06 /* AppCoordinator.swift in Sources */,
 				4B66537C1D3C51BE00057D15 /* MainMapViewDataSource.swift in Sources */,
 				4B477A361D37304000052172 /* LogMapViewController.swift in Sources */,

@@ -38,19 +38,9 @@ class LocationManager: NSObject,CLLocationManagerDelegate {
             NSNotificationCenter.defaultCenter().postNotification(notification)
         }
         currentLocation = locations.first
-        if UIApplication.sharedApplication().applicationState == .Inactive {
-//            PMClient.sharedClient.getPokemonNearby(currentLocation.coordinate, range: 1, completion: { (sightings, error) in
-//                for sighting in sightings {
-//                    if sighting.pokemon!.name! != "Zubat" {
-//                        let notification = UILocalNotification()
-//                        notification.fireDate = NSDate(timeIntervalSinceNow: 5)
-//                        notification.alertBody = "There is a \(sighting.pokemon!.name!) nearby!"
-//                        UIApplication.sharedApplication().scheduleLocalNotification(notification)
-//                    }
-//                }
-//            })
+//        if UIApplication.sharedApplication().applicationState == .Inactive {
 //            PMClient.sharedClient.updateUserLocation(currentLocation)
-        }
+//        }
     }
     
     func startMonitoringSignificantChanges(yes:Bool) {
@@ -58,12 +48,12 @@ class LocationManager: NSObject,CLLocationManagerDelegate {
             locationManager.startMonitoringSignificantLocationChanges()
         }
         else {
-            locationManager.stopMonitoringSignificantLocationChanges()
+//            locationManager.stopMonitoringSignificantLocationChanges()
             locationManager.startUpdatingLocation()
         }
     }
     
-    static func locationToCityName(location:CLLocation,completion:((String,String,String)?,Bool)->Void)//magic
+    static func locationToCityName(location:CLLocation,completion:((String?,String?,String?),Bool)->Void)//magic
     {
         let geoCoder = CLGeocoder()
         geoCoder.reverseGeocodeLocation(location, completionHandler: { (placemarks, error) -> Void in
@@ -72,20 +62,18 @@ class LocationManager: NSObject,CLLocationManagerDelegate {
                     let state = place.addressDictionary!["State"] as? String
                     let country = place.country
                     let locality = place.locality
+                    
     
-                    if locality == nil && country == nil && state == nil {
-                        completion(nil,false)
-                    } else {
-                        completion((locality!,state!,country!),true)
-                    }
+                    completion((locality,state,country),true)
+                    
                 }
                 else {
-                    completion(nil,false)
+                    completion((nil,nil,nil),false)
                 }
                 
             }
             else {
-                completion(nil,false)
+                completion((nil,nil,nil),false)
             }
         })
     }

@@ -95,7 +95,7 @@ class Sighting: PFObject,PFSubclassing {
         return sightingQuery
     }
     
-    class func filterByTypes(types:[Type],sightings:[PFObject],pokemonsInSearch:[Pokemon]) ->[PFObject] {
+    class func filterByTypes( types:[Type] = [], _ sightings:[PFObject], _ pokemonsInSearch:[Pokemon] = [], _ rarityTargeted:Int? = nil) ->[PFObject] {
         if types.count == 0 && pokemonsInSearch.count == 0 {
             return sightings
         }

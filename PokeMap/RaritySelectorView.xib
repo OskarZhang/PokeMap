@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="Pocket Monk.otf">
+            <string>PocketMonk</string>
+            <string>PocketMonk</string>
+            <string>PocketMonk</string>
+            <string>PocketMonk</string>
+        </mutableArray>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="qua-tW-qyD" customClass="RaritySelectorView" customModule="PokeMap" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="666" height="198"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="WlK-Xj-NOX">
+                    <rect key="frame" x="10" y="10" width="646" height="178"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qaU-s2-tyI">
+                            <rect key="frame" x="0.0" y="0.0" width="160" height="178"/>
+                            <subviews>
+                                <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l8y-hY-YMf">
+                                    <rect key="frame" x="0.0" y="0.0" width="152" height="170"/>
+                                    <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="NXl-Rw-xUN">
+                                        <rect key="frame" x="0.0" y="0.0" width="152" height="170"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    </view>
+                                    <blurEffect style="light"/>
+                                </visualEffectView>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="alc-yV-InR">
+                                    <rect key="frame" x="10" y="57" width="137" height="64"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="64" id="KoT-tJ-8Jl"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" name="PocketMonk" family="Pocket Monk" pointSize="21"/>
+                                    <state key="normal" title="regular">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstItem="alc-yV-InR" firstAttribute="centerY" secondItem="qaU-s2-tyI" secondAttribute="centerY" id="49g-Y9-ENN"/>
+                                <constraint firstAttribute="bottom" secondItem="l8y-hY-YMf" secondAttribute="bottom" constant="8" id="4lq-kS-fM9"/>
+                                <constraint firstAttribute="trailing" secondItem="l8y-hY-YMf" secondAttribute="trailing" constant="7" id="9Ex-mM-hnq"/>
+                                <constraint firstItem="alc-yV-InR" firstAttribute="leading" secondItem="qaU-s2-tyI" secondAttribute="leading" constant="10" id="Mw1-bK-fJd"/>
+                                <constraint firstItem="l8y-hY-YMf" firstAttribute="leading" secondItem="qaU-s2-tyI" secondAttribute="leading" id="UJU-Kb-ZHa"/>
+                                <constraint firstItem="alc-yV-InR" firstAttribute="centerX" secondItem="qaU-s2-tyI" secondAttribute="centerX" constant="-1" id="wIy-dJ-bsX"/>
+                                <constraint firstItem="l8y-hY-YMf" firstAttribute="top" secondItem="qaU-s2-tyI" secondAttribute="top" id="yAb-2M-pi1"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k27-rh-52V">
+                            <rect key="frame" x="163" y="0.0" width="159" height="178"/>
+                            <subviews>
+                                <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dfi-xZ-oYc">
+                                    <rect key="frame" x="0.0" y="0.0" width="152" height="170"/>
+                                    <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="JmO-W6-pfB">
+                                        <rect key="frame" x="0.0" y="0.0" width="152" height="170"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    </view>
+                                    <blurEffect style="light"/>
+                                </visualEffectView>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wV1-UC-Hlq">
+                                    <rect key="frame" x="8" y="57" width="143" height="64"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="64" id="Gxm-Xf-dgb"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" name="PocketMonk" family="Pocket Monk" pointSize="22"/>
+                                    <state key="normal" title="rare">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstItem="dfi-xZ-oYc" firstAttribute="top" secondItem="k27-rh-52V" secondAttribute="top" id="5sb-3s-85b"/>
+                                <constraint firstItem="wV1-UC-Hlq" firstAttribute="centerY" secondItem="k27-rh-52V" secondAttribute="centerY" id="FjR-mc-3zS"/>
+                                <constraint firstItem="dfi-xZ-oYc" firstAttribute="leading" secondItem="k27-rh-52V" secondAttribute="leading" id="HwL-0d-5UE"/>
+                                <constraint firstItem="wV1-UC-Hlq" firstAttribute="leading" secondItem="k27-rh-52V" secondAttribute="leading" constant="8" id="Jqi-LU-SDb"/>
+                                <constraint firstItem="wV1-UC-Hlq" firstAttribute="centerX" secondItem="k27-rh-52V" secondAttribute="centerX" id="OKo-Lw-732"/>
+                                <constraint firstAttribute="trailing" secondItem="dfi-xZ-oYc" secondAttribute="trailing" constant="7" id="W3F-qE-aWO"/>
+                                <constraint firstAttribute="bottom" secondItem="dfi-xZ-oYc" secondAttribute="bottom" constant="8" id="k7O-cQ-Sxg"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2h9-I4-AaI">
+                            <rect key="frame" x="325" y="0.0" width="160" height="178"/>
+                            <subviews>
+                                <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CvI-Wo-5yU">
+                                    <rect key="frame" x="0.0" y="0.0" width="152" height="170"/>
+                                    <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="eYe-ex-Gy9">
+                                        <rect key="frame" x="0.0" y="0.0" width="152" height="170"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    </view>
+                                    <blurEffect style="light"/>
+                                </visualEffectView>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VLk-LW-KBD">
+                                    <rect key="frame" x="8" y="57" width="135.5" height="64"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="64" id="weM-bu-dBd"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" name="PocketMonk" family="Pocket Monk" pointSize="24"/>
+                                    <state key="normal" title="epic">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstItem="VLk-LW-KBD" firstAttribute="leading" secondItem="2h9-I4-AaI" secondAttribute="leading" constant="8" id="2Wz-p7-fhx"/>
+                                <constraint firstItem="CvI-Wo-5yU" firstAttribute="leading" secondItem="2h9-I4-AaI" secondAttribute="leading" id="EMa-me-ZgX"/>
+                                <constraint firstItem="VLk-LW-KBD" firstAttribute="centerY" secondItem="2h9-I4-AaI" secondAttribute="centerY" id="IKs-hf-Jyr"/>
+                                <constraint firstItem="VLk-LW-KBD" firstAttribute="centerX" secondItem="2h9-I4-AaI" secondAttribute="centerX" constant="-4.25" id="NSd-Vj-fRE"/>
+                                <constraint firstItem="CvI-Wo-5yU" firstAttribute="top" secondItem="2h9-I4-AaI" secondAttribute="top" id="QPg-Iz-59z"/>
+                                <constraint firstAttribute="trailing" secondItem="CvI-Wo-5yU" secondAttribute="trailing" constant="7" id="dIc-rN-Y6g"/>
+                                <constraint firstAttribute="bottom" secondItem="CvI-Wo-5yU" secondAttribute="bottom" constant="8" id="onJ-Tb-RQY"/>
+                            </constraints>
+                        </view>
+                        <view alpha="0.69999999999999996" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NYf-oh-43o">
+                            <rect key="frame" x="487" y="0.0" width="159" height="178"/>
+                            <subviews>
+                                <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HPh-TH-bcp">
+                                    <rect key="frame" x="0.0" y="0.0" width="147" height="170"/>
+                                    <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="bAs-MF-dca">
+                                        <rect key="frame" x="0.0" y="0.0" width="147" height="170"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    </view>
+                                    <blurEffect style="light"/>
+                                </visualEffectView>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GIg-qe-j1L">
+                                    <rect key="frame" x="10" y="53" width="132" height="64"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="64" id="Pym-ku-mRT"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" name="PocketMonk" family="Pocket Monk" pointSize="21"/>
+                                    <state key="normal" title="INSANE">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstItem="HPh-TH-bcp" firstAttribute="leading" secondItem="NYf-oh-43o" secondAttribute="leading" id="Ly5-CH-wKa"/>
+                                <constraint firstItem="GIg-qe-j1L" firstAttribute="centerX" secondItem="NYf-oh-43o" secondAttribute="centerX" constant="-3.5" id="Qga-YL-XbK"/>
+                                <constraint firstItem="HPh-TH-bcp" firstAttribute="top" secondItem="NYf-oh-43o" secondAttribute="top" id="RD9-Ec-Ari"/>
+                                <constraint firstItem="GIg-qe-j1L" firstAttribute="centerY" secondItem="NYf-oh-43o" secondAttribute="centerY" constant="-4" id="bKz-7b-SH6"/>
+                                <constraint firstAttribute="trailing" secondItem="HPh-TH-bcp" secondAttribute="trailing" constant="12" id="cCY-VB-1oh"/>
+                                <constraint firstAttribute="bottom" secondItem="HPh-TH-bcp" secondAttribute="bottom" constant="8" id="krp-zQ-7nZ"/>
+                                <constraint firstItem="GIg-qe-j1L" firstAttribute="leading" secondItem="NYf-oh-43o" secondAttribute="leading" constant="10" id="xvA-cN-TZ5"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="qaU-s2-tyI" firstAttribute="width" secondItem="k27-rh-52V" secondAttribute="width" id="8lX-rS-26W"/>
+                        <constraint firstItem="qaU-s2-tyI" firstAttribute="width" secondItem="2h9-I4-AaI" secondAttribute="width" id="C5l-aH-3a3"/>
+                        <constraint firstItem="2h9-I4-AaI" firstAttribute="width" secondItem="NYf-oh-43o" secondAttribute="width" id="WQJ-uL-V7L"/>
+                    </constraints>
+                </stackView>
+            </subviews>
+            <color key="backgroundColor" red="0.89411764709999997" green="0.36078431370000003" blue="0.21960784310000001" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="WlK-Xj-NOX" firstAttribute="centerY" secondItem="qua-tW-qyD" secondAttribute="centerY" id="Emm-Vw-KEj"/>
+                <constraint firstItem="WlK-Xj-NOX" firstAttribute="centerX" secondItem="qua-tW-qyD" secondAttribute="centerX" id="e84-6d-m5a"/>
+                <constraint firstItem="WlK-Xj-NOX" firstAttribute="top" secondItem="qua-tW-qyD" secondAttribute="top" constant="10" id="fQa-4v-4JZ"/>
+                <constraint firstItem="WlK-Xj-NOX" firstAttribute="leading" secondItem="qua-tW-qyD" secondAttribute="leading" constant="10" id="fmv-ke-12A"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="647" y="125"/>
+        </view>
+    </objects>
+</document>
