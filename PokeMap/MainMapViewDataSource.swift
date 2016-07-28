@@ -12,8 +12,8 @@ import GoogleMaps
 
 class MainMapViewControllerDataSource:NSObject {
     var markers:[GMSMarker] = []
-    var allTimeSightings:[Sighting] = []
-    var recentSightings:[Sighting] = []
+    var allTimeSightings:[RealmSighting] = []
+    var recentSightings:[RealmSighting] = []
     var recentFetchedAt:NSDate!
     var allTimeFetchedAt:NSDate!
     var realTimeMode:Bool = true
@@ -24,16 +24,16 @@ class MainMapViewControllerDataSource:NSObject {
         self.mapView = mapView
     }
     
-    var sightings:[Sighting]! {
+    var sightings:[RealmSighting]! {
         didSet {
             dataFetchingDelegate?.didFinishLoading()
-            var toAdd:[Sighting] = []
-            var toDelete:[Sighting] = []
+            var toAdd:[RealmSighting] = []
+            var toDelete:[RealmSighting] = []
             if oldValue != nil {
                 let oldSet = Set(oldValue)
                 let newSet = Set(sightings)
-                toDelete = Array<Sighting>(oldSet.subtract(newSet))
-                toAdd = Array<Sighting>(newSet.subtract(oldSet))
+                toDelete = Array<RealmSighting>(oldSet.subtract(newSet))
+                toAdd = Array<RealmSighting>(newSet.subtract(oldSet))
                 
             } else {
                 toAdd = sightings
@@ -41,7 +41,7 @@ class MainMapViewControllerDataSource:NSObject {
             
             markers = markers.filter { (marker) -> Bool in
                 for removed in toDelete {
-                    if (marker.userData as! Sighting).objectId == removed.objectId {
+                    if (marker.userData as! RealmSighting) == removed {
                         marker.map = nil
                         return false
                     }
@@ -50,15 +50,15 @@ class MainMapViewControllerDataSource:NSObject {
             }
             
             for sighting in toAdd {
-                if let pokemon = sighting.pokemon {
-                    let position = CLLocationCoordinate2D(latitude: sighting.location!.latitude,longitude: sighting.location!.longitude)
+//                if let pokemon = sighting.pokemon {
+                    let position = CLLocation(latitude: sighting.latitude.value!, longitude: sighting.longitude.value!).coordinate
                     let marker = GMSMarker(position: position)
-                    marker.title = pokemon.sound ?? "Hey"
+                    marker.title = sighting.pokemon.sound ?? "Hey"
                     marker.userData = sighting
-                    marker.icon = UIImage(named: pokemon.pid!)!.resize(CGSize(width: 40, height: 40))
+                    marker.icon = UIImage(named: sighting.pokemon.pid!)!.resize(CGSize(width: 40, height: 40))
                     marker.map = self.mapView
                     markers.append(marker)
-                }
+//                }
             }
         }
     }
@@ -115,9 +115,8 @@ class MainMapViewControllerDataSource:NSObject {
             self.dataFetchingDelegate?.didFindNoData()
         }
         
-        sightings = Sighting.filterByTypes(PMClient.sharedClient.types, allSightings, PMClient.sharedClient.pokemonInSearch, PMClient.sharedClient.rarityTargeted) as! [Sighting]
+        sightings = Sighting.filterByTypes(PMClient.sharedClient.types, allSightings, PMClient.sharedClient.pokemonInSearch, PMClient.sharedClient.rarityTargeted) //as! [RealmSighting]
         
-//        }
     }
     
 }

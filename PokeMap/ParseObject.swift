@@ -95,7 +95,7 @@ class Sighting: PFObject,PFSubclassing {
         return sightingQuery
     }
     
-    class func filterByTypes( types:[Type] = [], _ sightings:[PFObject], _ pokemonsInSearch:[Pokemon] = [], _ rarityTargeted:Int? = nil) ->[PFObject] {
+    class func filterByTypes( types:[Type] = [], _ sightings:[RealmSighting], _ pokemonsInSearch:[Pokemon] = [], _ rarityTargeted:Int? = nil) ->[RealmSighting] {
         if types.count == 0 && pokemonsInSearch.count == 0 {
             return sightings
         }
@@ -104,9 +104,9 @@ class Sighting: PFObject,PFSubclassing {
         }
         let typeSet = Set<String>(typesStr)
         return sightings.filter({ (sighting) -> Bool in
-            let types = sighting["types"] as? [String]
+            let types = sighting.types // ["types"] as? [String]
             
-            if types == nil {
+            if types.count == 0 {
                 return false
             }
             
@@ -114,8 +114,8 @@ class Sighting: PFObject,PFSubclassing {
             
             var matchByType = false
             if typeSet.count > 0 {
-                for poketype in types! {
-                    if typeSet.contains(poketype as String) {
+                for poketype in types {
+                    if typeSet.contains(poketype.value!) {
                         matchByType =  true
                     }
                 }
@@ -125,9 +125,9 @@ class Sighting: PFObject,PFSubclassing {
 
             var matchByPokemon = false
             if pokemonsInSearch.count > 0 {
-                if let pokemon = sighting["pokemon"] as? Pokemon where pokemonsInSearch.contains(pokemon) {
+//                if /**let pokemon = sighting.pokemon  ["pokemon"] as? Pokemon where **/ pokemonsInSearch.contains(sighting.pokemon) {
                     matchByPokemon = true
-                }
+//                }
             } else {
                 matchByPokemon = true
             }

@@ -9,6 +9,8 @@
 import Foundation
 import Parse
 import CoreLocation
+import RealmSwift
+import Realm
 class PMClient {
     static var sharedClient: PMClient = PMClient()
     var types:[Type] = []
@@ -27,21 +29,46 @@ class PMClient {
         }
     }
     
-    func getPokemonNearby(location:CLLocationCoordinate2D,range:Double,live:Bool = false,completion:([Sighting]!,NSError?)->()) {
+    func getPokemonNearby(location:CLLocationCoordinate2D,range:Double,live:Bool = false,completion:([RealmSighting]!,NSError?)->()) {
         let getPokemonNearby = {
             let currentTime = NSDate()
             self.latestGetPokemonTime = currentTime
             let sightingQuery = Sighting.getNearbyQuery(location, range: range)
             
             if live {
-                sightingQuery.whereKey("expirationTime", greaterThan: NSDate())
-                sightingQuery.addDescendingOrder("expirationTime")
+                sightingQuery.whereKey("createdAt", greaterThan: NSDate().dateByAddingTimeInterval(-60*30))
+            }
+            let realm = try! Realm()
+
+            let currentLocation = CLLocation(latitude: location.latitude, longitude: location.longitude)
+            let predicate = NSPredicate(block: { (sighting, binding) -> Bool in
+                    let latitude = (sighting as! RealmSighting).latitude.value!
+                    let longitude = (sighting as! RealmSighting).longitude.value!
+                    let newLocation = CLLocation(latitude: latitude, longitude: longitude)
+                    return newLocation.distanceFromLocation(currentLocation) <= range
+            })
+            
+            let cachedObjects = realm.objects(RealmSighting.self).filter(predicate)
+            if cachedObjects.count > 0 {
+                completion(Array(cachedObjects),nil)
+                return
             }
             sightingQuery.findObjectsInBackgroundWithBlock({ (sightings, error) in
+                
                 if (self.latestGetPokemonTime == currentTime && sightings != nil) {
-                    completion(sightings as! [Sighting],error)
-                }
-            })
+                    let cached = sightings!.map {
+                        RealmSighting(value: $0)
+                    }
+                    completion(cached,error)
+                    try! realm.write({
+                        realm.add(cached)
+                    })
+                    
+                    }
+                })
+//                return nil
+//            })
+            
         }
 
         if !NSUserDefaults.standardUserDefaults().boolForKey("hasCachedPokemons") {
@@ -56,16 +83,16 @@ class PMClient {
     
     
     
-    func getPokemonNearbyAllTime(location:CLLocationCoordinate2D,range:Double,completion:([Sighting]!,NSError?)->()) {
+    func getPokemonNearbyAllTime(location:CLLocationCoordinate2D,range:Double,completion:([RealmSighting]!,NSError?)->()) {
         livemodeTimer?.invalidate()
         timerInfo = nil
         getPokemonNearby(location, range: range, completion: completion)
     }
     
     var completedLoadingLiveMode:Bool = true
-    func getPokemonNearbyLive(location:CLLocationCoordinate2D,range:Double,callback:([Sighting]!,NSError?)->()) {
+    func getPokemonNearbyLive(location:CLLocationCoordinate2D,range:Double,callback:([RealmSighting]!,NSError?)->()) {
         livemodeTimer?.invalidate()
-        let injectedCallback:([Sighting]!,NSError?)->() = {
+        let injectedCallback:([RealmSighting]!,NSError?)->() = {
             (sightings,error) in
             self.completedLoadingLiveMode = true
             callback(sightings,error)
@@ -206,5 +233,5 @@ class PMClient {
 struct LiveModeData {
     var location:CLLocationCoordinate2D
     var range:Double
-    var callback:([Sighting]!,NSError?)->()
+    var callback:([RealmSighting]!,NSError?)->()
 }

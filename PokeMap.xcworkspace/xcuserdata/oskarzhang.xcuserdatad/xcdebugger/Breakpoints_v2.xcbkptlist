@@ -6,15 +6,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PokeMap/PMClient.swift"
-            timestampString = "491300738.215974"
+            timestampString = "491385162.992848"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "41"
-            endingLineNumber = "41"
+            startingLineNumber = "71"
+            endingLineNumber = "71"
             landmarkName = "getPokemonNearby(_:range:live:completion:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -41,12 +41,28 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "PokeMap/PMClient.swift"
-            timestampString = "491301298.071293"
+            filePath = "PokeMap/MainMapViewController.swift"
+            timestampString = "491303378.551457"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "40"
-            endingLineNumber = "40"
+            startingLineNumber = "415"
+            endingLineNumber = "415"
+            landmarkName = "showStatusOverlay()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PokeMap/PMClient.swift"
+            timestampString = "491385162.992848"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "56"
+            endingLineNumber = "56"
             landmarkName = "getPokemonNearby(_:range:live:completion:)"
             landmarkType = "5">
             <Locations>
@@ -54,33 +70,157 @@
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "PokeMap.PMClient.(getPokemonNearby (__C.CLLocationCoordinate2D, range : Swift.Double, live : Swift.Bool, completion : (Swift.ImplicitlyUnwrappedOptional&lt;Swift.Array&lt;PokeMap.Sighting&gt;&gt;, Swift.Optional&lt;__ObjC.NSError&gt;) -&gt; ()) -&gt; ()).(closure #1)"
+                  symbolName = "PokeMap.PMClient.(getPokemonNearby (__C.CLLocationCoordinate2D, range : Swift.Double, live : Swift.Bool, completion : (Swift.ImplicitlyUnwrappedOptional&lt;Swift.Array&lt;PokeMap.RealmSighting&gt;&gt;, Swift.Optional&lt;__ObjC.NSError&gt;) -&gt; ()) -&gt; ()).(closure #1)"
                   moduleName = "PokeMap"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/oskarzhang/workspace/Side%20Projects/PokeMap/PokeMap/PMClient.swift"
-                  timestampString = "491301298.304079"
+                  timestampString = "491387011.181862"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "40"
-                  endingLineNumber = "40"
-                  offsetFromSymbolStart = "376">
+                  startingLineNumber = "56"
+                  endingLineNumber = "56"
+                  offsetFromSymbolStart = "812">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "PokeMap.PMClient.(getPokemonNearby (__C.CLLocationCoordinate2D, range : Swift.Double, live : Swift.Bool, completion : (Swift.ImplicitlyUnwrappedOptional&lt;Swift.Array&lt;PokeMap.Sighting&gt;&gt;, Swift.Optional&lt;__ObjC.NSError&gt;) -&gt; ()) -&gt; ()).(closure #1).(closure #1)"
+                  symbolName = "PokeMap.PMClient.(getPokemonNearby (__C.CLLocationCoordinate2D, range : Swift.Double, live : Swift.Bool, completion : (Swift.ImplicitlyUnwrappedOptional&lt;Swift.Array&lt;PokeMap.RealmSighting&gt;&gt;, Swift.Optional&lt;__ObjC.NSError&gt;) -&gt; ()) -&gt; ()).(closure #1).(closure #2)"
                   moduleName = "PokeMap"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/oskarzhang/workspace/Side%20Projects/PokeMap/PokeMap/PMClient.swift"
-                  timestampString = "491301298.304257"
+                  timestampString = "491387011.181963"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "41"
-                  endingLineNumber = "41"
-                  offsetFromSymbolStart = "40">
+                  startingLineNumber = "58"
+                  endingLineNumber = "58"
+                  offsetFromSymbolStart = "56">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PokeMap/RealmModels.swift"
+            timestampString = "491385962.697451"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "20"
+            endingLineNumber = "20"
+            landmarkName = "RealmSighting"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PokeMap.RealmSighting.charma.getter : Swift.Optional&lt;__ObjC.NSNumber&gt;"
+                  moduleName = "PokeMap"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/oskarzhang/workspace/Side%20Projects/PokeMap/PokeMap/RealmModels.swift"
+                  timestampString = "491385962.777215"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "20"
+                  endingLineNumber = "20"
+                  offsetFromSymbolStart = "48">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PokeMap.RealmSighting.charma.setter : Swift.Optional&lt;__ObjC.NSNumber&gt;"
+                  moduleName = "PokeMap"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/oskarzhang/workspace/Side%20Projects/PokeMap/PokeMap/RealmModels.swift"
+                  timestampString = "491385962.777383"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "20"
+                  endingLineNumber = "20"
+                  offsetFromSymbolStart = "76">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PokeMap.RealmSighting.init (value : Swift.AnyObject) -&gt; PokeMap.RealmSighting"
+                  moduleName = "PokeMap"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/oskarzhang/workspace/Side%20Projects/PokeMap/PokeMap/RealmModels.swift"
+                  timestampString = "491385962.77747"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "20"
+                  endingLineNumber = "20"
+                  offsetFromSymbolStart = "204">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PokeMap.RealmSighting.init () -&gt; PokeMap.RealmSighting"
+                  moduleName = "PokeMap"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/oskarzhang/workspace/Side%20Projects/PokeMap/PokeMap/RealmModels.swift"
+                  timestampString = "491385962.777549"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "20"
+                  endingLineNumber = "20"
+                  offsetFromSymbolStart = "196">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PokeMap.RealmSighting.init (realm : __ObjC.RLMRealm, schema : __ObjC.RLMObjectSchema) -&gt; PokeMap.RealmSighting"
+                  moduleName = "PokeMap"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/oskarzhang/workspace/Side%20Projects/PokeMap/PokeMap/RealmModels.swift"
+                  timestampString = "491385962.777637"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "20"
+                  endingLineNumber = "20"
+                  offsetFromSymbolStart = "204">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PokeMap.RealmSighting.init (value : Swift.AnyObject, schema : __ObjC.RLMSchema) -&gt; PokeMap.RealmSighting"
+                  moduleName = "PokeMap"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/oskarzhang/workspace/Side%20Projects/PokeMap/PokeMap/RealmModels.swift"
+                  timestampString = "491385962.777713"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "20"
+                  endingLineNumber = "20"
+                  offsetFromSymbolStart = "204">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PokeMap/ParseObject.swift"
+            timestampString = "491386481.421808"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "121"
+            endingLineNumber = "121"
+            landmarkName = "filterByTypes(_:_:_:_:)"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

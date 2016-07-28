@@ -406,7 +406,7 @@ extension MainMapViewController:MainMapViewControllerDataFetchingDelegate {
         statusBarOverlay.text = "Loading..."
         statusBarOverlay.backgroundColor = PMColor
 
-        self.loadingViewShowScheduler = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(self.showStatusOverlay), userInfo: nil, repeats: false)
+        self.loadingViewShowScheduler = NSTimer.scheduledTimerWithTimeInterval(0.8, target: self, selector: #selector(self.showStatusOverlay), userInfo: nil, repeats: false)
         
         
     }
@@ -420,10 +420,7 @@ extension MainMapViewController:MainMapViewControllerDataFetchingDelegate {
         
     }
     func hideStatusOverlay() {
-        if !isShowingStatusBar {
-            loadingViewShowScheduler?.invalidate()
-            return
-        }
+        loadingViewShowScheduler?.invalidate()
         UIApplication.sharedApplication().statusBarHidden = false
         isShowingStatusBar = false
         UIView.animateWithDuration(0.2, animations: {

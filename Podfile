@@ -9,4 +9,5 @@ pod 'SocketRocket'
 #pod 'ParseLiveQuery'
 pod 'Fabric'
 pod 'Crashlytics'
+pod 'RealmSwift'
 
