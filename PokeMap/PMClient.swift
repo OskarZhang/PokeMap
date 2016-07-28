@@ -47,8 +47,8 @@ class PMClient {
                     let newLocation = CLLocation(latitude: latitude, longitude: longitude)
                     return newLocation.distanceFromLocation(currentLocation) <= range
             })
-            
-            let cachedObjects = realm.objects(RealmSighting.self).filter(predicate)
+
+            let cachedObjects = realm.objects(RealmSighting.self).filter("latitude")
             if cachedObjects.count > 0 {
                 completion(Array(cachedObjects),nil)
                 return
