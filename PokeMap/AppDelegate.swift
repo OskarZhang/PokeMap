@@ -10,7 +10,7 @@ import UIKit
 import GoogleMaps
 import Fabric
 import Crashlytics
-
+import Realm
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
@@ -32,8 +32,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Fabric.with([Crashlytics.self])
         Parse.enableLocalDatastore()
         Parse.initializeWithConfiguration(configuration)
+//            try! NSFileManager.defaultManager().removeItemAtURL(url)
+            let realm = RLMRealm.defaultRealm()
+            realm.beginWriteTransaction()
+            realm.deleteAllObjects()
+            try! realm.commitWriteTransaction()
         
-        
+
         User.registerSubclass()
         Pokemon.registerSubclass()
         Type.registerSubclass()

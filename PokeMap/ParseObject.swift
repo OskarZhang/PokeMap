@@ -86,7 +86,7 @@ class Sighting: PFObject,PFSubclassing {
     
     static func getNearbyQuery(location:CLLocationCoordinate2D,range:Double) -> PFQuery {
         let sightingQuery = query()!
-        sightingQuery.limit = 200
+        sightingQuery.limit = 1000
         sightingQuery.includeKey("pokemon")
         sightingQuery.includeKey("user")
 

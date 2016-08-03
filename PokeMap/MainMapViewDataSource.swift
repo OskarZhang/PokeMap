@@ -70,14 +70,29 @@ class MainMapViewControllerDataSource:NSObject {
 //        }
         lastFetchedLocation = cllocation
         
-        let left = mapView.projection.visibleRegion().nearLeft
-        let right = mapView.projection.visibleRegion().farLeft
-        let distance:Double = CLLocation(latitude: left.latitude, longitude: left.longitude).distanceFromLocation(CLLocation(latitude: right.latitude, longitude: right.longitude))/1000.00/2.00
+        let nearLeft = mapView.projection.visibleRegion().nearLeft
+        let farLeft = mapView.projection.visibleRegion().farLeft
+        let farRight = mapView.projection.visibleRegion().farRight
+        let nearRight = mapView.projection.visibleRegion().nearRight
+        let longitudeRange = (nearLeft.longitude - nearRight.longitude)/2
+        let latitudeRange = (farLeft.latitude - nearLeft.latitude)/2
+        
+        let minLat = min(nearLeft.latitude,nearRight.latitude,farLeft.latitude,farRight.latitude)
+        let maxLat = max(nearLeft.latitude,nearRight.latitude,farLeft.latitude,farRight.latitude)
+        let minLong = min(nearLeft.longitude,nearRight.longitude,farLeft.longitude,farRight.longitude)
+        let maxLong = max(nearLeft.longitude,nearRight.longitude,farLeft.longitude,farRight.longitude)
+        
+        
+        
+//        let distance:Double = CLLocation(latitude: left.latitude, longitude: left.longitude).distanceFromLocation(CLLocation(latitude: right.latitude, longitude: right.longitude))/1000.00/2.00
+        
+        
+        
         
         dataFetchingDelegate?.didStartLoading()
         if !realTimeMode {
             self.allTimeFetchedAt = NSDate()
-            PMClient.sharedClient.getPokemonNearbyAllTime(location, range: distance, completion: { (sightings, error) in
+            PMClient.sharedClient.getPokemonNearbyAllTime(location, range: (minLat,minLong,maxLat,maxLong), zoomLevel: mapView.camera.zoom, completion: { (sightings, error) in
                 if error == nil {
                     self.allTimeSightings = sightings
                     self.updateViews()
@@ -87,7 +102,7 @@ class MainMapViewControllerDataSource:NSObject {
         } else {
             self.recentFetchedAt = NSDate()
             recentSightings = []
-            PMClient.sharedClient.getPokemonNearbyLive(location, range: distance, callback: { (sightings, error) in
+            PMClient.sharedClient.getPokemonNearbyLive(location, range: (minLat,minLong,maxLat,maxLong), zoomLevel: mapView.camera.zoom, callback: { (sightings, error) in
                 if error == nil {
                     self.recentSightings = sightings
                     self.updateViews()

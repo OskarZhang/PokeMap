@@ -9,8 +9,7 @@
 import UIKit
 import GoogleMaps
 import Parse
-
-
+import RealmSwift
 var PMColor = UIColor(hex: 0xE45C38)
 class MainMapViewController: UIViewController,GMSMapViewDelegate {
     var mapView:GMSMapView!
@@ -82,6 +81,8 @@ class MainMapViewController: UIViewController,GMSMapViewDelegate {
     
     func configrueViews() {
         mapView = GMSMapView(frame: self.view.bounds)
+        mapView.settings.rotateGestures = false;
+        mapView.settings.tiltGestures = false;
         mapView.delegate = self
         mapView.myLocationEnabled = true
         
@@ -301,9 +302,9 @@ class MainMapViewController: UIViewController,GMSMapViewDelegate {
     
     
     func mapView(mapView: GMSMapView, didTapMarker marker: GMSMarker) -> Bool {
-        let sighting = (marker.userData as! Sighting)
+        let sighting = (marker.userData as! RealmSighting)
         
-        var name = sighting.user?.nickname
+        var name:String? = nil// sighting.user?.nickname
         if name == nil {
             name = "uniorns"
         }
@@ -312,11 +313,15 @@ class MainMapViewController: UIViewController,GMSMapViewDelegate {
         
         let showMessage = numCharma <= 5
         
-        markerView = MarkerInfoView.getView(name!, charmaPoint: sighting.charma?.integerValue ?? 0, withMessage: showMessage,hasUpvoted: sighting.hasUpvoted, charmaAction: {
-            let orgCharma = sighting.charma?.integerValue ?? 0
-            sighting.charma = NSNumber(integer: orgCharma+1)
-            sighting.hasUpvoted = true
-            sighting.saveInBackground()
+        markerView = MarkerInfoView.getView(name!, charmaPoint: sighting.charma ?? 0, withMessage: showMessage,hasUpvoted: sighting.hasUpvoted, charmaAction: {
+            let orgCharma = sighting.charma
+            try! Realm().write({
+                sighting.charma = orgCharma + 1
+                sighting.hasUpvoted = true
+            })
+            let parseSighting = PFObject(withoutDataWithClassName: "Sighting", objectId: sighting.id)
+            parseSighting["charma"] = sighting.charma
+            parseSighting.saveInBackground()
         })
         return true
     }

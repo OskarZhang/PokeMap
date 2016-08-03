@@ -11,6 +11,8 @@ import Parse
 import CoreLocation
 import RealmSwift
 import Realm
+
+
 class PMClient {
     static var sharedClient: PMClient = PMClient()
     var types:[Type] = []
@@ -29,36 +31,62 @@ class PMClient {
         }
     }
     
-    func getPokemonNearby(location:CLLocationCoordinate2D,range:Double,live:Bool = false,completion:([RealmSighting]!,NSError?)->()) {
+    
+    func getPokemonNearby(location:CLLocationCoordinate2D,range:(Double,Double,Double,Double),zoomLevel:Float,live:Bool = false,completion:([RealmSighting]!,NSError?)->()) {
         let getPokemonNearby = {
             let currentTime = NSDate()
             self.latestGetPokemonTime = currentTime
-            let sightingQuery = Sighting.getNearbyQuery(location, range: range)
+            let realm = try! Realm()
+            let minLat = range.0
+            let minLong = range.1
+            let maxLat = range.2
+            let maxLong = range.3
             
+            let min = CLLocation(latitude: minLat, longitude: minLong)
+            let max = CLLocation(latitude: maxLat, longitude: maxLong)
+            let distance = min.distanceFromLocation(max) / 1000 / 2
+            
+            let minLatpredicate = NSPredicate(format: "latitude >= %f", minLat)
+            let maxLatpredicate = NSPredicate(format: "latitude <= %f", maxLat)
+            let minLongpredicate = NSPredicate(format: "longitude >= %f", minLong)
+            let maxLongpredicate = NSPredicate(format: "longitude <= %f", maxLong)
+            
+//            let predicate = NSCompoundPredicate.init(andPredicateWithSubpredicates: [minLatpredicate,maxLatpredicate,minLongpredicate,maxLongpredicate])
+//            
+//            var cachedObjects = realm.objects(RealmSighting.self).filter(predicate)
+//            if cachedObjects.count >= 100  && !live {
+//                var res:[RealmSighting] = []
+//                for i in 0..<100 {
+//                    res.append(cachedObjects[i])
+//                }
+//                let newPredicate = self.detectCluster(&res,zoom: zoomLevel)
+//                //block cluster area, requery
+//                let compoundPredicate = NSCompoundPredicate(andPredicateWithSubpredicates: [predicate,newPredicate])
+//                cachedObjects = realm.objects(RealmSighting.self).filter(compoundPredicate)
+//                    if cachedObjects.count > 0 {
+//                    res = []
+//                    for i in 0..<cachedObjects.count - 1 {
+//                        res.append(cachedObjects[i])
+//                    }
+//                }
+//                completion(res,nil)
+//                return
+//            }
+//            
+            let sightingQuery = Sighting.getNearbyQuery(location, range: distance)
             if live {
                 sightingQuery.whereKey("createdAt", greaterThan: NSDate().dateByAddingTimeInterval(-60*30))
             }
-            let realm = try! Realm()
-
-            let currentLocation = CLLocation(latitude: location.latitude, longitude: location.longitude)
-            let predicate = NSPredicate(block: { (sighting, binding) -> Bool in
-                    let latitude = (sighting as! RealmSighting).latitude.value!
-                    let longitude = (sighting as! RealmSighting).longitude.value!
-                    let newLocation = CLLocation(latitude: latitude, longitude: longitude)
-                    return newLocation.distanceFromLocation(currentLocation) <= range
-            })
-
-            let cachedObjects = realm.objects(RealmSighting.self).filter("latitude")
-            if cachedObjects.count > 0 {
-                completion(Array(cachedObjects),nil)
-                return
-            }
+            
             sightingQuery.findObjectsInBackgroundWithBlock({ (sightings, error) in
                 
+                
                 if (self.latestGetPokemonTime == currentTime && sightings != nil) {
-                    let cached = sightings!.map {
+                    var cached = sightings!.map {
                         RealmSighting(value: $0)
                     }
+                    self.detectCluster(&cached,zoom: zoomLevel)
+                    
                     completion(cached,error)
                     try! realm.write({
                         realm.add(cached)
@@ -66,8 +94,6 @@ class PMClient {
                     
                     }
                 })
-//                return nil
-//            })
             
         }
 
@@ -82,22 +108,65 @@ class PMClient {
     }
     
     
+    func detectCluster(inout sightings:[RealmSighting],zoom:Float) -> NSPredicate {
+        let clusterItems = sightings.enumerate().map{ (index,element) in ClusterItem(position: CLLocationCoordinate2D(latitude: element.latitude.underlyingValue as! Double, longitude: element.longitude.underlyingValue as! Double), index: index)}
+        let algo = GMUGridBasedClusterAlgorithm()
+        algo.addItems(clusterItems)
+        let clusters = algo.clustersAtZoom(zoom)
+        var predicate:[NSPredicate] = []
+        var newSightings:[RealmSighting] = []
+        for cluster in clusters
+        {
+            if cluster.count >= 10 {
+                print("pos : \(cluster.position) ")
+                let lats = cluster.items.map {$0.position.latitude}
+                let maxLat = lats.maxElement()
+                let minLat = lats.minElement()
+                let lons = cluster.items.map {$0.position.longitude}
+                let maxLon = lons.maxElement()
+                let minLon = lons.minElement()
+                
+                
+                print("minX \(minLat)")
+                print("maxX \(maxLat)")
+                print("minY \(minLon)")
+                print("maxY \(maxLon)")
+                let minLatpredicate = NSPredicate(format: "latitude <= %f", minLat!)
+                let maxLatpredicate = NSPredicate(format: "latitude >= %f", maxLat!)
+                let minLongpredicate = NSPredicate(format: "longitude <= %f", minLon!)
+                let maxLongpredicate = NSPredicate(format: "longitude >= %f", maxLon!)
+                
+                let compound = NSCompoundPredicate(andPredicateWithSubpredicates: [minLatpredicate,maxLatpredicate,minLongpredicate,maxLongpredicate])
+                predicate.append(compound)
+                
+                //clean
+                for i in 1..<10 /**(cluster.items as! [ClusterItem])**/ {
+                    let index = (cluster.items[i] as! ClusterItem).index
+                    newSightings.append(sightings[index])
+                }
+            }
+            
+        }
+        sightings = newSightings
+        return NSCompoundPredicate(orPredicateWithSubpredicates: predicate)
+    }
     
-    func getPokemonNearbyAllTime(location:CLLocationCoordinate2D,range:Double,completion:([RealmSighting]!,NSError?)->()) {
+    
+    func getPokemonNearbyAllTime(location:CLLocationCoordinate2D,range:(Double,Double,Double,Double),zoomLevel:Float,completion:([RealmSighting]!,NSError?)->()) {
         livemodeTimer?.invalidate()
         timerInfo = nil
-        getPokemonNearby(location, range: range, completion: completion)
+        getPokemonNearby(location, range: range, zoomLevel: zoomLevel,completion: completion)
     }
     
     var completedLoadingLiveMode:Bool = true
-    func getPokemonNearbyLive(location:CLLocationCoordinate2D,range:Double,callback:([RealmSighting]!,NSError?)->()) {
+    func getPokemonNearbyLive(location:CLLocationCoordinate2D,range:(Double,Double,Double,Double),zoomLevel:Float,callback:([RealmSighting]!,NSError?)->()) {
         livemodeTimer?.invalidate()
         let injectedCallback:([RealmSighting]!,NSError?)->() = {
             (sightings,error) in
             self.completedLoadingLiveMode = true
             callback(sightings,error)
         }
-        timerInfo = LiveModeData(location: location, range: range, callback: injectedCallback)
+        timerInfo = LiveModeData(location: location, range: range, zoomLevel: zoomLevel ,callback: injectedCallback)
         livemodeTimer = NSTimer.scheduledTimerWithTimeInterval(7, target: self, selector: #selector(self.handleLiveModeTimer), userInfo: nil, repeats: true)
         handleLiveModeTimer()
     }
@@ -105,7 +174,7 @@ class PMClient {
     @objc func handleLiveModeTimer() {
         if completedLoadingLiveMode {
             completedLoadingLiveMode = false
-            getPokemonNearby(timerInfo!.location, range: timerInfo!.range, live:true, completion: timerInfo!.callback)
+            getPokemonNearby(timerInfo!.location, range: timerInfo!.range, zoomLevel: timerInfo!.zoomLevel, live:true, completion: timerInfo!.callback)
         }
     }
     
@@ -118,7 +187,7 @@ class PMClient {
             pokemonQuery.whereKey("name", containsString: keywords.capitalizedString)
         }
         pokemonQuery.limit = 100
-        
+    
         if !NSUserDefaults.standardUserDefaults().boolForKey("hasCachedPokemons") {
             downloadPokemons()?.continueWithSuccessBlock({ (task) -> AnyObject? in
                 pokemonQuery.findObjectsInBackgroundWithBlock { (pokemons, error) in
@@ -229,9 +298,19 @@ class PMClient {
     
 }
 
+class ClusterItem: NSObject, GMUClusterItem {
+    var position: CLLocationCoordinate2D
+    var index:Int
+    init(position: CLLocationCoordinate2D,index:Int) {
+        self.position = position
+        self.index = index
+    }
+}
+
 
 struct LiveModeData {
     var location:CLLocationCoordinate2D
-    var range:Double
+    var range:(Double,Double,Double,Double)
+    var zoomLevel:Float
     var callback:([RealmSighting]!,NSError?)->()
 }

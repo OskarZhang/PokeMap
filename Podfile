@@ -1,13 +1,11 @@
 
 platform :ios, '8.0'
 use_frameworks!
-
 pod 'Parse'
 pod 'GoogleMaps'
-pod 'Bolts-Swift'
-pod 'SocketRocket'
-#pod 'ParseLiveQuery'
 pod 'Fabric'
 pod 'Crashlytics'
 pod 'RealmSwift'
+pod 'RxSwift',    '~> 2.0'
+pod 'RxCocoa',    '~> 2.0'
 

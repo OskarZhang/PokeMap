@@ -17,28 +17,31 @@ class RealmSighting:Object {
     var longitude = RealmOptional<Double>()
     dynamic var pokemon:RealmPokemon!
     dynamic var hasUpvoted: Bool = false
-    var charma = RealmOptional<Int>()
-//    dynamic var user:User?
+    dynamic var charma = 0
     var types = List<RealmString>()
     dynamic var state:String?
     dynamic var country:String?
     dynamic var city:String?
+    dynamic var fetchedAt = NSDate()
+    dynamic var expirationTime:NSDate?
+    dynamic var id:String?
+    dynamic var name:String?
     
     override init(value: AnyObject) {
         let sighting = value as! PFObject
         let geopoint = sighting["location"] as! PFGeoPoint
-        latitude = RealmOptional<Double>()
         latitude.value = geopoint.latitude
-        longitude = RealmOptional<Double>()
         longitude.value = geopoint.longitude
         pokemon = RealmPokemon(value: sighting["pokemon"] as! Pokemon)
-        charma = RealmOptional<Int>()
-        charma.value = (sighting["charma"] as? NSNumber)?.integerValue
-//        user = sighting["user"] as? User
-        types.appendContentsOf((pokemon["types"] as! [String]).map{RealmString(value: $0)})
+        charma = (sighting["charma"] as? NSNumber)?.integerValue ?? 0 
+        name = (sighting["user"] as? User)?.nickname
+        id = sighting.objectId!
+        types.appendContentsOf(pokemon.types)
+        expirationTime = sighting["expirationTime"] as? NSDate
         state = sighting["state"] as? String
         country = sighting["country"] as? String
         city = sighting["city"] as? String
+        
 
         super.init()
     }
@@ -47,13 +50,13 @@ class RealmSighting:Object {
     }
     
     required init(realm: RLMRealm, schema: RLMObjectSchema) {
-        fatalError("init(realm:schema:) has not been implemented")
+        super.init(realm: realm, schema: schema)
     }
     
     
     
     required init(value: AnyObject, schema: RLMSchema) {
-        fatalError("init(value:schema:) has not been implemented")
+        super.init(value: value, schema: schema)
     }
 }
 
@@ -66,8 +69,9 @@ class RealmPokemon: Object {
     dynamic var sound:String?
     override init(value: AnyObject) {
         let pokemon = value as! PFObject
-
-        types.appendContentsOf((pokemon["types"] as! [String]).map{RealmString(value: $0)})
+        if let typesStr = pokemon["types"] as? [String] {
+            types.appendContentsOf(typesStr.map{ RealmString(value: ["value":$0])})
+        }
         pid = pokemon["pid"] as? String
         sound = pokemon["sound"] as? String
         rarity.value = pokemon["rarity"] as? Int
@@ -78,11 +82,11 @@ class RealmPokemon: Object {
     }
     
     required init(realm: RLMRealm, schema: RLMObjectSchema) {
-        fatalError("init(realm:schema:) has not been implemented")
+        super.init(realm: realm, schema: schema)
     }
     
     required init(value: AnyObject, schema: RLMSchema) {
-        fatalError("init(value:schema:) has not been implemented")
+        super.init(value: value, schema: schema)
     }
 
 }
@@ -90,20 +94,6 @@ class RealmPokemon: Object {
 
 class RealmString:Object {
     dynamic var value:String?
-    override init(value: AnyObject) {
-        self.value = (value as! String)
-        super.init(value: value)
-    }
-    required init() {
-        super.init()
-    }
-    
-    required init(realm: RLMRealm, schema: RLMObjectSchema) {
-        fatalError("init(realm:schema:) has not been implemented")
-    }
-    
-    required init(value: AnyObject, schema: RLMSchema) {
-        fatalError("init(value:schema:) has not been implemented")
-    }
+
 
 }
